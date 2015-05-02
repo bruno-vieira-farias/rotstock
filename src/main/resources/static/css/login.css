@@ -4,8 +4,10 @@
 
 
 body{
-    background:#222D3A;
-    color: #FFF;
+    background-image: url("../images/backgroundTec.jpg");
+    background-repeat: no;
+
+    background-size: 100% 100%
 }
 .alert{
     margin: 20px auto;
@@ -258,7 +260,7 @@ label.checkbox input{
 
 }
 /* Logn Shadow Style */
-.login-box{
+/*.login-box{
     box-shadow: rgb(29, 38, 49) 1px 1px,
     rgb(29, 38, 49) 2px 2px,
     rgb(29, 38, 49) 3px 3px,
@@ -465,7 +467,7 @@ rgb(34, 45, 58) 203px 203px;
 rgb(34, 45, 58) 204px 204px;
 rgb(34, 45, 58) 205px 205px;
 rgb(34, 45, 58) 206px 206px;
-}
+}*/
 
 .page-icon .glyphicon{
     font-size: 3em;
@@ -503,7 +505,7 @@ rgb(34, 45, 58) 206px 206px;
     animation-delay: 0.8s;
     bottom: -118px;
     position: relative;
-    box-shadow: rgb(29, 38, 49) 1px 1px,
+   /* box-shadow: rgb(29, 38, 49) 1px 1px,
     rgb(29, 38, 49) 2px 2px,
     rgb(29, 38, 49) 3px 3px,
     rgb(29, 38, 49) 4px 4px,
@@ -552,7 +554,7 @@ rgb(34, 45, 58) 206px 206px;
     rgb(29, 38, 49) 47px 47px,
     rgb(29, 38, 49) 48px 48px,
     rgb(29, 38, 49) 49px 49px,
-    rgb(29, 38, 49) 50px 50px;
+    rgb(29, 38, 49) 50px 50px;*/
 }
 
 #footer-text{
