@@ -13,7 +13,7 @@ public class Usuario {
 
     private String nome;
     private String email;
-    private String password;
+    private String senha;
 
     @Override
     public boolean equals(Object o) {
@@ -40,7 +40,7 @@ public class Usuario {
         return email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
 }
