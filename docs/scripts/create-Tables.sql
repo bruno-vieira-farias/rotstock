@@ -16,9 +16,5 @@ CREATE TABLE "usuario"
 CREATE TABLE "local"
 (
   id          SERIAL  PRIMARY KEY   NOT NULL,
-  nome        TEXT    UNIQUE        NOT NULL,
-  logradouro  TEXT                  NOT NULL,
-  cep	        TEXT		              NOT NULL,
-  cidade      TEXT		              NOT NULL,
-  estado      TEXT		              NOT NULL
+  nome        TEXT    UNIQUE        NOT NULL
 );

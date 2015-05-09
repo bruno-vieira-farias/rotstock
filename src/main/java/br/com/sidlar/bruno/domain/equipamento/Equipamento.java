@@ -1,6 +1,6 @@
 package br.com.sidlar.bruno.domain.equipamento;
 
-
+import br.com.sidlar.bruno.domain.Local;
 import org.joda.time.DateTime;
 
 public class Equipamento {
@@ -9,10 +9,10 @@ public class Equipamento {
     private String modelo;
     private DateTime dataAquisicao;
     private DateTime dataDesativacao;
+    private Local local;
 
     private enum Proprietario {
-        SIDLAR("Sid lar"),
-        VIVO("Vivo");
+        SIDLAR("Sidlar"),VIVO("Vivo");
 
         private String descricao;
 
