@@ -1,7 +1,7 @@
 package br.com.sidlar.bruno.infrastructure.security;
 
-import br.com.sidlar.bruno.domain.Usuario;
-import br.com.sidlar.bruno.domain.UsuarioRepository;
+import br.com.sidlar.bruno.domain.Usuario.Usuario;
+import br.com.sidlar.bruno.domain.Usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

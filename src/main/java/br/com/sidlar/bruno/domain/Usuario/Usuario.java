@@ -1,4 +1,4 @@
-package br.com.sidlar.bruno.domain;
+package br.com.sidlar.bruno.domain.Usuario;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

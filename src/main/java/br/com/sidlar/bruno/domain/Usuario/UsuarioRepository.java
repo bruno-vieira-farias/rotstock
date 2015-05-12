@@ -1,5 +1,6 @@
-package br.com.sidlar.bruno.domain;
+package br.com.sidlar.bruno.domain.Usuario;
 
+import br.com.sidlar.bruno.domain.Usuario.Usuario;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

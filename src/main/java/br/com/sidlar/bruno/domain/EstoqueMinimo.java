@@ -1,9 +1,8 @@
 package br.com.sidlar.bruno.domain;
 
-import br.com.sidlar.bruno.domain.Finalidade;
-import br.com.sidlar.bruno.domain.ItemConsumo;
+import com.google.common.collect.ImmutableList;
 
 public class EstoqueMinimo {
-    private Enum<Finalidade> finalidade;
-    private Enum<ItemConsumo> itemConsumo;
+    private ImmutableList<Finalidade> finalidades;
+    private ImmutableList<ItemConsumo> itensConsumo;
 }

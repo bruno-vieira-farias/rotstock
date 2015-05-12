@@ -2,13 +2,30 @@ package br.com.sidlar.bruno.domain.equipamento;
 
 import br.com.sidlar.bruno.domain.Local;
 import org.joda.time.DateTime;
+import org.hibernate.annotations.Type;
+import javax.persistence.*;
+import java.util.Objects;
 
-public class Equipamento {
+@Entity
+@Table(name="equipamento")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+abstract public class Equipamento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String serial;
     private String fabricante;
     private String modelo;
+
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime dataAquisicao;
+
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime dataDesativacao;
+
+    @ManyToOne
+    @JoinColumn(name="id_local")
     private Local local;
 
     private enum Proprietario {
@@ -23,5 +40,21 @@ public class Equipamento {
         public String getDescricao() {
             return descricao;
         }
+    }
+    @Enumerated(EnumType.STRING)
+    private Proprietario proprietario;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Equipamento)) return false;
+        Equipamento that = (Equipamento) o;
+        return Objects.equals(serial, that.serial);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(serial);
     }
 }

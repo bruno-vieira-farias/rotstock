@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS "usuario" CASCADE;
 DROP TABLE IF EXISTS "local" CASCADE;
+DROP TABLE IF EXISTS "equipamento" CASCADE;
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -17,4 +18,31 @@ CREATE TABLE "local"
 (
   id          SERIAL  PRIMARY KEY   NOT NULL,
   nome        TEXT    UNIQUE        NOT NULL
+);
+
+CREATE TABLE "equipamento"
+(
+  id              SERIAL      PRIMARY KEY   NOT NULL,
+  serial          TEXT                      NOT NULL,
+  fabricante      TEXT                      NOT NULL,
+  modelo          TEXT                      NOT NULL,
+  data_criacao    TIMESTAMP                 NOT NULL,
+  data_inativacao TIMESTAMP                         ,
+  proprietario    TEXT                      NOT NULL,
+  --Discriminator identifica as especializacoes dos equipamentos
+  discriminator   TEXT                      NOT NULL,
+  --discriminator Computador
+  processador     TEXT                              ,
+  memoria         TEXT                              ,
+  hd              TEXT                              ,
+  --discriminator Impressora
+  colorida        BOOLEAN                           ,
+  tipo_impressora TEXT                              ,
+  --discriminator Monitor
+  polegadas       TEXT                              ,
+  --discriminator Teclado e Mouse
+  tipo_conexao    TEXT                              ,
+  --discriminator Telefone
+  sem_fio         BOOLEAN                           ,
+  ip              BOOLEAN
 );

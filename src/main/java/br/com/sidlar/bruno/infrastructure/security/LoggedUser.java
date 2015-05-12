@@ -1,6 +1,6 @@
 package br.com.sidlar.bruno.infrastructure.security;
 
-import br.com.sidlar.bruno.domain.Usuario;
+import br.com.sidlar.bruno.domain.Usuario.Usuario;
 import org.springframework.security.core.userdetails.User;
 import java.util.Collections;
 

@@ -1,12 +1,15 @@
 package br.com.sidlar.bruno.domain;
 
+import br.com.sidlar.bruno.domain.Usuario.Usuario;
+import br.com.sidlar.bruno.domain.equipamento.Equipamento;
 import org.joda.time.DateTime;
 
 public class ItemEstoqueRotativo {
     private DateTime dataEntrada;
     private String defeito;
     private Usuario usuarioEntrada;
-    private Enum<Finalidade> finalidade;
+    private Finalidade finalidade;
+    private Equipamento equipamento;
 
     private enum Status{
         EM_AVALIACAO("Em avaliação"),
