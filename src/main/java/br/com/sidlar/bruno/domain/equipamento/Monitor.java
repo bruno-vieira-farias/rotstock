@@ -11,8 +11,8 @@ public class Monitor extends Equipamento{
     private enum Polegadas{
         QUINZE("15"),
         DEZESSETE("17"),
-        DEZOITO("15"),
-        VINTE_DOIS("15");
+        DEZOITO("18"),
+        VINTE_DOIS("22");
 
         private String descricao;
 

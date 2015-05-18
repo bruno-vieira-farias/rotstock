@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layoutDecorator/mainDecorator">
+<head>
+    <style>
+        .equipamento{
+            padding-top: 17px
+        }
+        [class*="equipamento-"]{
+            display: none;
+        }
+
+    </style>
+    <script>
+        $(function () {
+            $("#tipo-equipamento").on("click", function(){
+                var selectedContainerClass = $(this).find("option:selected").data("container-class");
+                $("[class*='equipamento-']").fadeOut(1);
+                $("." + selectedContainerClass).fadeIn(500);
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+<section id="content" class="container" layout:fragment="content">
+    <div class="container">
+        <h1>Cadastro de Equipamentos</h1>
+        <div class="row">
+            <form class="form-horizontal" method="post" action="#" name="cadastra-form" >
+                <div class="equipamento">
+                    <div class="form-group">
+                        <label for="serial" >Serial:</label>
+                        <input type="text" class="form-control" id="serial"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="fabricante">Fabricante</label>
+                        <input class="form-control" type="text" id="fabricante"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo</label>
+                        <input class="form-control" type="text" id="modelo"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="proprietario">Proprietario</label>
+                        <select class="form-control"  id="proprietario">
+                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
+                            <option value="SIDLAR">Sidlar</option>
+                            <option value="VIVO">Vivo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="local">Local</label>
+                        <select class="form-control" id="local">
+                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
+                            <option value="MATRIZ">Matriz</option>
+                            <option value="ARICANDUVA">Aricanduva</option>
+                            <option value="CENTRAL-PLAZA">Central Plaza</option>
+                            <option value="INTERLAGOS">Interlagos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-equipamento">Tipo de Equipamento</label>
+                        <select class="form-control" id="tipo-equipamento">
+                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
+                            <option data-container-class="equipamento-computador"  value="COMPUTADOR">Computador</option>
+                            <option data-container-class="equipamento-impressora" value="IMPRESSORA">Impressora</option>
+                            <option data-container-class="equipamento-monitor" value="MONITOR">Monitor</option>
+                            <option data-container-class="equipamento-teclado-mouse" value="TECLADO">Teclado</option>
+                            <option data-container-class="equipamento-teclado-mouse" value="MOUSE">Mouse</option>
+                            <option data-container-class="equipamento-leitor-cheque" value="LEITOR-CHEQUE">Leitor de Cheque</option>
+                            <option data-container-class="equipamento-telefone" value="TELEFONE">Telefone</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="equipamento equipamento-computador container-escondido">
+                    <div class="form-group">
+                        <label for="processador">Processador</label>
+                        <input class="form-control" type="text" id="processador"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="memoria">Memoria</label>
+                        <input class="form-control" type="text" id="memoria"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="hd">HD</label>
+                        <input class="form-control" type="text" id="hd"/>
+                    </div>
+                </div>
+                <div class="equipamento equipamento-impressora container-escondido">
+                    <div class="form-group">
+                        <label>Colorida</label>
+                        <div class="radio" >
+                            <label> <input type="radio" name="cor" value="true" /> Sim </label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="cor" value="false" checked="checked" />Nao</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo-impressora">Tipo</label>
+                        <select class="form-control" id="tipo-impressora">
+                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
+                            <option value="LASER">Laser</option>
+                            <option value="JATO_TINTA">Jato de Tinta</option>
+                            <option value="MATRICIAL_NF">Matricial NF</option>
+                            <option value="MATRICIAL_CHEQUE">Matricial Cheque</option>
+                            <option value="TERMICA">Termica Etiqueta</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="equipamento equipamento-monitor container-escondido">
+                    <div class="form-group">
+                        <label for="polegada">Polegadas</label>
+                        <select id="polegada" class="form-control">
+                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
+                            <option value="QUINZE">15'</option>
+                            <option value="DEZESSETE">17'</option>
+                            <option value="DEZOITO">18'</option>
+                            <option value="VINTEEDOIS">22'</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="equipamento equipamento-teclado-mouse container-escondido">
+                    <div class="form-group">
+                        <label for="teclado">Conexao</label>
+                        <select class="form-control" id="teclado">
+                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
+                            <option value="USB">USB</option>
+                            <option value="PS2">PS2</option>
+                            <option value="BLUETOOTH">BlueTooth</option>
+                            <option value="WIRELESS">Wireless</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="equipamento equipamento-telefone container-escondido">
+                    <div class="form-group">
+                        <label>Sem Fio</label>
+                        <div class="radio" >
+                            <label> <input type="radio" name="sem-fio" value="true" />Sim</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="sem-fio" value="false" checked="checked" />Nao</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ip</label>
+                        <div class="radio" >
+                            <label> <input type="radio" name="ip" value="true" />Sim</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="ip" value="false" checked="checked" />Nao</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
