@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="StartRotStock" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.sidlar.bruno.Application" />
+    <module name="rotstock" />
+    <envs>
+      <env name="DATABASE_URL" value="jdbc:postgresql://ec2-184-73-165-195.compute-1.amazonaws.com:5432/d35f8a2s3kapu1?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" />
+      <env name="DATABASE_USER" value="rqejspbihacera" />
+      <env name="DATABASE_PASSWORD" value="YRN8noxllPPsG670adysV_6qXd" />
+    </envs>
+    <method />
+  </configuration>
+</component>
