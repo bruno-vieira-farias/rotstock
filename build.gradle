@@ -19,7 +19,7 @@ apply plugin: 'spring-boot'
 
 
 jar {
-    baseName = 'bruno'
+    baseName = 'rotstock'
     version =  '1.0.0'
 }
 

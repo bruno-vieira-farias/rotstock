@@ -27,11 +27,11 @@
     <div class="container">
         <h1>Cadastro de Equipamentos</h1>
         <div class="row">
-            <form class="form-horizontal" method="post" action="#" name="cadastra-form" >
+            <form class="form-horizontal" method="post" action="#" th:object="${equipamentoForm}" name="cadastra-form" >
                 <div class="equipamento">
                     <div class="form-group">
                         <label for="serial" >Serial:</label>
-                        <input type="text" class="form-control" id="serial"/>
+                        <input type="text" class="form-control" id="serial" th:field="*{serial}"/>
                     </div>
                     <div class="form-group">
                         <label for="fabricante">Fabricante</label>
@@ -44,19 +44,17 @@
                     <div class="form-group">
                         <label for="proprietario">Proprietario</label>
                         <select class="form-control"  id="proprietario">
-                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
-                            <option value="SIDLAR">Sidlar</option>
-                            <option value="VIVO">Vivo</option>
+                            <option th:each="proprietario : ${proprietarios}"
+                                    th:value="${proprietario}"
+                                    th:text="${proprietario.descricao}">Proprietario</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="local">Local</label>
-                        <select class="form-control" id="local">
-                            <!--<option disabled selected> &#45;&#45; selecione uma opção &#45;&#45; </option>-->
-                            <option value="MATRIZ">Matriz</option>
-                            <option value="ARICANDUVA">Aricanduva</option>
-                            <option value="CENTRAL-PLAZA">Central Plaza</option>
-                            <option value="INTERLAGOS">Interlagos</option>
+                        <select class="form-control"  id="local">
+                            <option th:each="local : ${locais}"
+                                    th:value="${local.id}"
+                                    th:text="${local.nome}">Local</option>
                         </select>
                     </div>
                     <div class="form-group">
