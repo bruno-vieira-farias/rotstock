@@ -1,0 +1,28 @@
+package br.com.sidlar.rotstock.presentation;
+
+public enum TipoEquipamento {
+    COMPUTADOR("Computador","equipamento-computador"),
+    IMPRESSORA("Impressora","equipamento-impressora"),
+    MONITOR("Monitor","equipamento-monitor"),
+    TECLADO("Teclado","equipamento-teclado-mouse"),
+    MOUSE("Mouse","equipamento-teclado-mouse"),
+    LEITOR_CHEQUE("Leitor de Cheque","equipamento-leitor-cheque"),
+    TELEFONE("Telefone","equipamento-telefone");
+
+    String descricao;
+    String categoria;
+
+    TipoEquipamento(String descricao,String categoria) {
+        this.categoria = categoria;
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+}
+

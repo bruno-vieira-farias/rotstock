@@ -13,16 +13,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CadastroEquipamentoController {
 
     @Autowired
-    LocalRepository localRepository;
+    private LocalRepository localRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String goHome(EquipamentoForm equipamentoForm, ModelMap modelMap) {
+       // Equipamento e = equipamentoForm.toEquipamento();
+        // equipamentoRepository.guarda(e);
         modelMap.addAttribute("proprietarios", Proprietario.values());
         modelMap.addAttribute("tiposImpressora", TipoImpressora.values());
         modelMap.addAttribute("polegadas", Polegadas.values());
         modelMap.addAttribute("tiposConexao", TipoConexao.values());
         modelMap.addAttribute("locais", localRepository.buscaTodosLocais());
-
+        modelMap.addAttribute("tiposEquipamento",TipoEquipamento.values());
 
         return "cadastro";
     }
