@@ -9,6 +9,7 @@ import java.util.Objects;
 @Entity
 @Table(name="equipamento")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="discriminator", discriminatorType = DiscriminatorType.STRING)
 abstract public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +19,7 @@ abstract public class Equipamento {
     private String fabricante;
     private String modelo;
 
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    private DateTime dataAquisicao;
-
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    private DateTime dataDesativacao;
+    private Boolean isAtivo = Boolean.TRUE;
 
     @ManyToOne
     @JoinColumn(name="id_local")
@@ -31,6 +28,16 @@ abstract public class Equipamento {
     @Enumerated(EnumType.STRING)
     private Proprietario proprietario;
 
+    public Equipamento() {
+    }
+
+    public Equipamento(String serial, String fabricante, String modelo, Local local, Proprietario proprietario) {
+        this.serial = serial;
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.local = local;
+        this.proprietario = proprietario;
+    }
 
     @Override
     public boolean equals(Object o) {

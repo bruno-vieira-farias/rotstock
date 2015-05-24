@@ -1,6 +1,8 @@
 package br.com.sidlar.rotstock.domain.Usuario;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -33,6 +35,7 @@ public class UsuarioRepository {
             return Optional.empty();
         }
     }
+    @Transactional
     public void adiciona(Usuario usuario) {
         em.persist(usuario);
     }

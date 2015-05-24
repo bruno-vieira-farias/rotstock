@@ -13,7 +13,7 @@ public class Local {
     private String nome;
 
 
-    public Integer getId() {
+   public Integer getId() {
         return id;
     }
 

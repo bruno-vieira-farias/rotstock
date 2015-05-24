@@ -26,9 +26,9 @@ CREATE TABLE "equipamento"
   serial          TEXT                      NOT NULL,
   fabricante      TEXT                      NOT NULL,
   modelo          TEXT                      NOT NULL,
-  data_criacao    TIMESTAMP                 NOT NULL,
-  data_inativacao TIMESTAMP                         ,
   proprietario    TEXT                      NOT NULL,
+  is_ativo           BOOLEAN                   NOT NULL,
+  id_local         INT      NOT NULL REFERENCES "local",
   --Discriminator identifica as especializacoes dos equipamentos
   discriminator   TEXT                      NOT NULL,
   --discriminator Computador

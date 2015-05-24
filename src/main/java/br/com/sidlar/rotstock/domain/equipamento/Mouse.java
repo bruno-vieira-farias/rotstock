@@ -7,4 +7,11 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Mouse")
 public class Mouse extends Equipamento{
     private TipoConexao tipoConexao;
+
+    public Mouse() {
+    }
+
+    public Mouse(TipoConexao tipoConexao) {
+        this.tipoConexao = tipoConexao;
+    }
 }

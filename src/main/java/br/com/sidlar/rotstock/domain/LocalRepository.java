@@ -1,9 +1,6 @@
-package br.com.sidlar.rotstock.domain.equipamento;
+package br.com.sidlar.rotstock.domain;
 
-
-import br.com.sidlar.rotstock.domain.Local;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -18,6 +15,10 @@ public class LocalRepository {
     public List<Local> buscaTodosLocais() {
         TypedQuery<Local> query = em.createQuery("SELECT l FROM Local l", Local.class);
         return query.getResultList();
+    }
+
+    public Local buscaPorId(int id) {
+        return em.find(Local.class,id);
     }
 
 }

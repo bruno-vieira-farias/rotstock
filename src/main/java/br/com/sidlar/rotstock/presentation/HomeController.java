@@ -10,10 +10,6 @@ public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String goHome() {
-        //TipoConexao.values();
-
-
         return "index";
     }
-
 }

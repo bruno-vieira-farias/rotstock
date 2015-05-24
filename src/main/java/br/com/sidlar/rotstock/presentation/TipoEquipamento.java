@@ -4,9 +4,9 @@ public enum TipoEquipamento {
     COMPUTADOR("Computador","equipamento-computador"),
     IMPRESSORA("Impressora","equipamento-impressora"),
     MONITOR("Monitor","equipamento-monitor"),
-    TECLADO("Teclado","equipamento-teclado-mouse"),
-    MOUSE("Mouse","equipamento-teclado-mouse"),
-    LEITOR_CHEQUE("Leitor de Cheque","equipamento-leitor-cheque"),
+    TECLADO("Teclado","equipamento-teclado"),
+    MOUSE("Mouse","equipamento-mouse"),
+    LEITOR_CHEQUE("Leitor de Cheque","equipamento-leitor_cheque"),
     TELEFONE("Telefone","equipamento-telefone");
 
     String descricao;

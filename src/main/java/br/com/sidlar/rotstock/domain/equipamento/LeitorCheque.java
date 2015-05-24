@@ -7,4 +7,5 @@ import javax.persistence.Entity;
 @DiscriminatorValue("LeitorCheque")
 public class LeitorCheque extends Equipamento {
 
+
 }

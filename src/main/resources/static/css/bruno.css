@@ -1,1 +1,10 @@
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+
+}
+
+.eu{
+    background-image: url("../images/Lindo.png") ;
+    background-repeat: no-repeat;
+    padding-bottom: 50%;
+}

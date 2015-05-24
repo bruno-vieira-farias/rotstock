@@ -9,4 +9,13 @@ public class Computador extends Equipamento {
     private String processador;
     private String memoria;
     private String hd;
+
+    public Computador() {
+    }
+
+    public Computador(String processador, String memoria, String hd) {
+        this.processador = processador;
+        this.memoria = memoria;
+        this.hd = hd;
+    }
 }
