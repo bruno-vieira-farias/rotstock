@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 public class EquipamentoForm {
 
-    @Size(min=2, max=30, message = "Xiii...")
+    @Size(min=6, max=10, message = "O serial deve possuir entre 6 e 10 caracteres")
     private String serial;
     private String fabricante;
     private String modelo;
@@ -23,15 +23,15 @@ public class EquipamentoForm {
     private String memoria;
     private String hd;
 
-    private Boolean colorida = Boolean.FALSE;
+    private Boolean colorida;
     private TipoImpressora tipoImpressora;
 
     private Polegadas polegadas;
 
     private TipoConexao tipoConexao;
 
-    private Boolean semFio = Boolean.FALSE;
-    private Boolean ip = Boolean.FALSE;
+    private Boolean semFio;
+    private Boolean ip;
 
     public String getSerial() {
         return serial;

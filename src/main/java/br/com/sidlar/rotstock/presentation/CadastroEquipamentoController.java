@@ -23,6 +23,9 @@ public class CadastroEquipamentoController {
     @Autowired
     private EquipamentoRepository equipamentoRepository;
 
+    @Autowired
+    private ConvertToEquipamento conversor;
+
     @RequestMapping(method = RequestMethod.GET)
     public String goHome(EquipamentoForm equipamentoForm ) {
         return "cadastro";
@@ -33,9 +36,7 @@ public class CadastroEquipamentoController {
         if (bindingResult.hasErrors()) {
             return "cadastro";
         }
-        ConvertForEquipamento conversor = new ConvertForEquipamento(equipamentoForm,localRepository.buscaPorId(equipamentoForm.getIdLocal()));
-        equipamentoRepository.gravaEquipamento(conversor.getEquipamento());
-
+        equipamentoRepository.gravaEquipamento(conversor.getEquipamento(equipamentoForm));
         return "redirect:/CadastroEquipamento";
     }
 
