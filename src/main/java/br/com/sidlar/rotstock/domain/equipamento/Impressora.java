@@ -1,6 +1,8 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
 
+import br.com.sidlar.rotstock.domain.Local;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,7 +19,8 @@ public class Impressora extends Equipamento{
     public Impressora() {
     }
 
-    public Impressora(Boolean colorida, TipoImpressora tipoImpressora) {
+    public Impressora(String serial, String fabricante, String modelo, Local local, Proprietario proprietario, Boolean colorida, TipoImpressora tipoImpressora) {
+        super(serial, fabricante, modelo, local, proprietario);
         this.colorida = colorida;
         this.tipoImpressora = tipoImpressora;
     }

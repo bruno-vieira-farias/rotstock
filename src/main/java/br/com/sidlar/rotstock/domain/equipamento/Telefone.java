@@ -1,5 +1,7 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
+import br.com.sidlar.rotstock.domain.Local;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -12,8 +14,9 @@ public class Telefone extends Equipamento{
     public Telefone() {
     }
 
-    public Telefone(Boolean ip, Boolean semFio) {
-        this.ip = ip;
+    public Telefone(String serial, String fabricante, String modelo, Local local, Proprietario proprietario, Boolean semFio, Boolean ip) {
+        super(serial, fabricante, modelo, local, proprietario);
         this.semFio = semFio;
+        this.ip = ip;
     }
 }

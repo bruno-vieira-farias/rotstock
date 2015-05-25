@@ -1,5 +1,7 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
+import br.com.sidlar.rotstock.domain.Local;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -11,7 +13,8 @@ public class Teclado extends Equipamento{
     public Teclado() {
     }
 
-    public Teclado(Enum<TipoConexao> tipoConexao) {
+    public Teclado(String serial, String fabricante, String modelo, Local local, Proprietario proprietario, Enum<TipoConexao> tipoConexao) {
+        super(serial, fabricante, modelo, local, proprietario);
         this.tipoConexao = tipoConexao;
     }
 }

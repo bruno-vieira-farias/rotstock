@@ -2,8 +2,6 @@ package br.com.sidlar.rotstock.presentation;
 
 import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.LocalRepository;
-import br.com.sidlar.rotstock.domain.Usuario.Usuario;
-import br.com.sidlar.rotstock.domain.Usuario.UsuarioRepository;
 import br.com.sidlar.rotstock.domain.equipamento.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +18,6 @@ import java.util.List;
 public class CadastroEquipamentoController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
     private LocalRepository localRepository;
 
     @Autowired
@@ -34,18 +29,14 @@ public class CadastroEquipamentoController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String cadastra(@Valid EquipamentoForm hml, BindingResult bindingResult) {
+    public String cadastra(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "cadastro";
         }
+        ConvertForEquipamento conversor = new ConvertForEquipamento(equipamentoForm,localRepository.buscaPorId(equipamentoForm.getIdLocal()));
+        equipamentoRepository.gravaEquipamento(conversor.getEquipamento());
 
-        PreparaEquipamento prepara = new PreparaEquipamento(hml,localRepository.buscaPorId(hml.getIdLocal()));
-
-        Equipamento e = prepara.getEquipamentoPreparado();
-
-        equipamentoRepository.gravaEquipamento(e);
-
-        return "cadastro";
+        return "redirect:/CadastroEquipamento";
     }
 
     @ModelAttribute("proprietarios")

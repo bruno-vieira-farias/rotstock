@@ -98,10 +98,10 @@
                     <div class="form-group">
                         <label>Colorida</label>
                         <div class="radio" >
-                            <label> <input type="radio" name="cor" th:value="*{colorida}" th:field="*{colorida}" th:checked="true"/> Sim </label>
+                            <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" th:checked="true"/> Sim </label>
                         </div>
                         <div class="radio">
-                            <label> <input type="radio" name="cor" th:value="*{colorida}" th:field="*{colorida}" checked="checked" />Nao</label>
+                            <label> <input type="radio" name="cor" th:value="false" th:field="*{colorida}" th:checked="checked" />Nao</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -130,7 +130,7 @@
                 <div class="equipamento equipamento-teclado equipamento-mouse container-escondido">
                     <div class="form-group">
                         <label for="teclado">Conexao</label>
-                        <select class="form-control" id="teclado" th:field="*{colorida}">
+                        <select class="form-control" id="teclado" th:field="*{tipoConexao}">
                             <option selected="selected" value="-1"> ---Selecione uma opção---</option>
                             <option th:each="tipoConexao : ${tiposConexao}"
                                     th:value="${tipoConexao}"
@@ -143,19 +143,19 @@
                     <div class="form-group">
                         <label>Sem Fio</label>
                         <div class="radio" >
-                            <label> <input type="radio" name="sem-fio" th:value="*{semFio}" th:field="*{semFio}" />Sim</label>
+                            <label> <input type="radio" name="sem-fio" th:value="true" th:field="*{semFio}" />Sim</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="sem-fio" th:value="*{semFio}" th:field="*{semFio}" checked="checked" />Nao</label>
+                            <label><input type="radio" name="sem-fio" th:value="false" th:field="*{semFio}" th:checked="checked" />Nao</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Ip</label>
                         <div class="radio" >
-                            <label> <input type="radio" name="ip" value="true" />Sim</label>
+                            <label> <input type="radio" name="ip" value="true" th:field="*{ip}"/>Sim</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="ip" value="false" checked="checked" />Nao</label>
+                            <label><input type="radio" name="ip" value="false" th:field="*{ip}" th:checked="checked" />Nao</label>
                         </div>
                     </div>
                 </div>
@@ -164,8 +164,6 @@
                         <button type="submit" class="btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
-
-
             </form>
         </div>
     </div>

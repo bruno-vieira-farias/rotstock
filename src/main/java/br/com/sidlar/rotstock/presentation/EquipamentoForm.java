@@ -23,16 +23,15 @@ public class EquipamentoForm {
     private String memoria;
     private String hd;
 
-    private Boolean colorida;
+    private Boolean colorida = Boolean.FALSE;
     private TipoImpressora tipoImpressora;
 
     private Polegadas polegadas;
 
     private TipoConexao tipoConexao;
 
-    private Boolean semFio;
-    private Boolean ip;
-
+    private Boolean semFio = Boolean.FALSE;
+    private Boolean ip = Boolean.FALSE;
 
     public String getSerial() {
         return serial;
