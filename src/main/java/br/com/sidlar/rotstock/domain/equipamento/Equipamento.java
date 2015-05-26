@@ -1,8 +1,7 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
 import br.com.sidlar.rotstock.domain.Local;
-import org.joda.time.DateTime;
-import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -19,7 +18,7 @@ abstract public class Equipamento {
     private String fabricante;
     private String modelo;
 
-    private Boolean isAtivo = Boolean.TRUE;
+    private boolean ativo;
 
     @ManyToOne
     @JoinColumn(name="id_local")
@@ -31,10 +30,11 @@ abstract public class Equipamento {
     public Equipamento() {
     }
 
-    public Equipamento(String serial, String fabricante, String modelo, Local local, Proprietario proprietario) {
+    public Equipamento(String serial, String fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
         this.serial = serial;
         this.fabricante = fabricante;
         this.modelo = modelo;
+        this.ativo = ativo;
         this.local = local;
         this.proprietario = proprietario;
     }

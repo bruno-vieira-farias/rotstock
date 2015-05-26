@@ -39,7 +39,7 @@
                 <div class="equipamento">
                     <div class="form-group" th:classappend="${#fields.hasErrors('serial')} ? 'has-error' : ''">
                         <label for="serial" class="control-label">Serial:</label>
-                        <input type="text" class="form-control" id="serial" th:field="*{serial}"  />
+                        <input type="text" class="form-control" id="serial" th:field="*{serial}" autofocus="autofocus"/>
                         <p th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">Name Error</p>
                     </div>
                     <div class="form-group">
@@ -98,7 +98,7 @@
                     <div class="form-group">
                         <label>Colorida</label>
                         <div class="radio" >
-                            <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" th:checked="true"/> Sim </label>
+                            <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" /> Sim </label>
                         </div>
                         <div class="radio">
                             <label> <input type="radio" name="cor" th:value="false" th:field="*{colorida}" th:checked="checked" />Nao</label>

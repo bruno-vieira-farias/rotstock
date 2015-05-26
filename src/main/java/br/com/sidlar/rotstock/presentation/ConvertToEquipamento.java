@@ -1,106 +1,66 @@
 package br.com.sidlar.rotstock.presentation;
 
-import br.com.sidlar.rotstock.domain.LocalRepository;
-import br.com.sidlar.rotstock.domain.equipamento.*;
+import br.com.sidlar.rotstock.domain.equipamento.Equipamento;
+import br.com.sidlar.rotstock.domain.equipamento.fabrica.CaracteristicasBasicasEquipamento;
+import br.com.sidlar.rotstock.domain.equipamento.fabrica.EquipamentoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConvertToEquipamento {
     @Autowired
-    private LocalRepository localRepository;
+    private EquipamentoFactory equipamentoFactory;
 
     public Equipamento getEquipamento(EquipamentoForm equipamentoForm) {
+        CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento =
+                new CaracteristicasBasicasEquipamento(
+                        equipamentoForm.getSerial(),
+                        equipamentoForm.getFabricante(),
+                        equipamentoForm.getModelo(),
+                        equipamentoForm.getIdLocal(),
+                        equipamentoForm.getProprietario()
+                );
         switch (equipamentoForm.getTipoEquipamento()) {
             case MONITOR:
-                return criaMonitor(equipamentoForm);
+                return equipamentoFactory.criaMonitor(
+                        caracteristicasBasicasEquipamento,
+                        equipamentoForm.getPolegadas()
+                );
             case COMPUTADOR:
-                return criaComputador(equipamentoForm);
+                return equipamentoFactory.criaComputador(
+                        caracteristicasBasicasEquipamento,
+                        equipamentoForm.getProcessador(),
+                        equipamentoForm.getMemoria(),
+                        equipamentoForm.getHd()
+                );
             case TECLADO:
-                return  criaTeclado(equipamentoForm);
+                return equipamentoFactory.criaTeclado(
+                        caracteristicasBasicasEquipamento,
+                        equipamentoForm.getTipoConexao()
+                );
             case MOUSE:
-                return  criaMouse(equipamentoForm);
+                return equipamentoFactory.criaMouse(
+                        caracteristicasBasicasEquipamento,
+                        equipamentoForm.getTipoConexao()
+                );
             case LEITOR_CHEQUE:
-                return criaLeitorCheque(equipamentoForm);
+                return equipamentoFactory.criaLeitorCheque(
+                        caracteristicasBasicasEquipamento
+                        );
             case TELEFONE:
-                return criaTelefone(equipamentoForm);
+                return equipamentoFactory.criaTelefone(
+                        caracteristicasBasicasEquipamento,
+                        equipamentoForm.getSemFio(),
+                        equipamentoForm.getIp()
+                );
             case IMPRESSORA:
-                return criaImpressora(equipamentoForm);
+                return equipamentoFactory.criaImpressora(
+                        caracteristicasBasicasEquipamento,
+                        equipamentoForm.getColorida(),
+                        equipamentoForm.getTipoImpressora()
+                );
+            default:
+                throw new IllegalArgumentException("Não é possivel criar o equipamento com o identificador " + equipamentoForm.getTipoEquipamento());
         }
-        return null;
     }
-    private Equipamento criaImpressora(EquipamentoForm equipamentoForm) {
-        return new Impressora(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario(),
-                equipamentoForm.getColorida(),
-                equipamentoForm.getTipoImpressora()
-        );
-    }
-    private Equipamento criaTelefone(EquipamentoForm equipamentoForm) {
-        return new Telefone(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario(),
-                equipamentoForm.getSemFio(),
-                equipamentoForm.getIp()
-        );
-    }
-    private Equipamento criaLeitorCheque(EquipamentoForm equipamentoForm) {
-        return new LeitorCheque(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario()
-        );
-    }
-    private Equipamento criaMouse(EquipamentoForm equipamentoForm) {
-            return new Mouse(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario(),
-                equipamentoForm.getTipoConexao()
-        );
-    }
-    private Equipamento criaTeclado(EquipamentoForm equipamentoForm) {
-        return new Teclado(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario(),
-                equipamentoForm.getTipoConexao()
-        );
-    }
-    private Equipamento criaComputador(EquipamentoForm equipamentoForm) {
-        return new Computador(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario(),
-                equipamentoForm.getProcessador(),
-                equipamentoForm.getMemoria(),
-                equipamentoForm.getHd()
-        );
-    }
-    private Equipamento criaMonitor(EquipamentoForm equipamentoForm) {
-        return new Monitor(
-                equipamentoForm.getSerial(),
-                equipamentoForm.getFabricante(),
-                equipamentoForm.getModelo(),
-                localRepository.buscaPorId(equipamentoForm.getIdLocal()),
-                equipamentoForm.getProprietario(),
-                equipamentoForm.getPolegadas()
-        );
-    }
-
 }

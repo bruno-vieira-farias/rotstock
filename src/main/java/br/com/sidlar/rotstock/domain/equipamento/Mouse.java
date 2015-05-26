@@ -13,8 +13,8 @@ public class Mouse extends Equipamento{
     public Mouse() {
     }
 
-    public Mouse(String serial, String fabricante, String modelo, Local local, Proprietario proprietario, TipoConexao tipoConexao) {
-        super(serial, fabricante, modelo, local, proprietario);
+    public Mouse(String serial, String fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, TipoConexao tipoConexao) {
+        super(serial, fabricante, modelo, ativo, local, proprietario);
         this.tipoConexao = tipoConexao;
     }
 }

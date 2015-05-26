@@ -16,7 +16,7 @@ VALUES
   (13 ,'Ponta de Estoque'		    ),
   (14 ,'Santo Andre Colchoes'	  );
 
-ALTER TABLE local SEQUENCE local_id_seq RESTART WITH 15;
+
 
 INSERT INTO "usuario"
   (id	,email						        ,nome		    ,senha                           )
@@ -26,10 +26,10 @@ VALUES
   (3	,'osvaldo@sidlar.com.br'	,'Osvaldo'	,crypt('osvaldo',gen_salt('bf'))),
   (4	,'rholitiz@sidlar.com.br'	,'Rafael'	  ,crypt('rafael'	,gen_salt('bf')))
 ;
-ALTER SEQUENCE usuario_id_seq RESTART WITH 5;
+
 
 INSERT INTO "equipamento"
-  (id ,serial   ,fabricante ,modelo   ,is_ativo ,proprietario ,id_local  ,discriminator ,processador ,memoria ,hd     ,colorida ,tipo_impressora   ,polegadas  ,tipo_conexao ,sem_fio  ,ip)
+  (id ,serial   ,fabricante ,modelo   ,ativo ,proprietario ,id_local  ,discriminator ,processador ,memoria ,hd     ,colorida ,tipo_impressora   ,polegadas  ,tipo_conexao ,sem_fio  ,ip)
 VALUES
   (1  ,'SID01'  ,'STI'      ,'CS-1047',TRUE  ,'VIVO'       ,1         ,'Computador'  ,'Intel i5'  ,'8GB'   ,'500GB',NULL     ,NULL              ,NULL       ,NULL         ,NULL     ,NULL),
   (2  ,'SID02'  ,'STI'      ,'CS-1047',TRUE  ,'VIVO'       ,2         ,'Computador'  ,'Intel i5'  ,'8GB'   ,'500GB',NULL     ,NULL              ,NULL       ,NULL         ,NULL     ,NULL),
@@ -40,3 +40,5 @@ VALUES
   (7  ,'SID07'  ,'SANSUNG'  ,'SYNCB'  ,TRUE  ,'SIDLAR'     ,7          ,'Monitor'     ,NULL        ,NULL    ,NULL   ,NULL     ,NULL              ,'QUINZE'   ,NULL         ,NULL     ,NULL)
 ;
 ALTER SEQUENCE equipamento_id_seq RESTART WITH 15;
+ALTER SEQUENCE local_id_seq RESTART WITH 15;
+ALTER SEQUENCE usuario_id_seq RESTART WITH 5;
