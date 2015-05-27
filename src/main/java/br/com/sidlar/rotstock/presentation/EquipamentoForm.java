@@ -1,11 +1,6 @@
 package br.com.sidlar.rotstock.presentation;
 
-import br.com.sidlar.rotstock.domain.Local;
-import br.com.sidlar.rotstock.domain.equipamento.Polegadas;
-import br.com.sidlar.rotstock.domain.equipamento.Proprietario;
-import br.com.sidlar.rotstock.domain.equipamento.TipoConexao;
-import br.com.sidlar.rotstock.domain.equipamento.TipoImpressora;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import br.com.sidlar.rotstock.domain.equipamento.*;
 
 import javax.validation.constraints.Size;
 
@@ -13,15 +8,16 @@ public class EquipamentoForm {
 
     @Size(min=6, max=10, message = "O serial deve possuir entre 6 e 10 caracteres")
     private String serial;
-    private String fabricante;
+
+    private Fabricante fabricante;
     private String modelo;
     private Proprietario proprietario;
     private Integer idLocal;
     private TipoEquipamento tipoEquipamento;
 
-    private String processador;
-    private String memoria;
-    private String hd;
+    private Processador processador;
+    private Memoria memoria;
+    private Hd hd;
 
     private Boolean colorida;
     private TipoImpressora tipoImpressora;
@@ -41,11 +37,11 @@ public class EquipamentoForm {
         this.serial = serial;
     }
 
-    public String getFabricante() {
+    public Fabricante getFabricante() {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
     }
 
@@ -81,27 +77,27 @@ public class EquipamentoForm {
         this.tipoEquipamento = tipoEquipamento;
     }
 
-    public String getProcessador() {
+    public Processador getProcessador() {
         return processador;
     }
 
-    public void setProcessador(String processador) {
+    public void setProcessador(Processador processador) {
         this.processador = processador;
     }
 
-    public String getMemoria() {
+    public Memoria getMemoria() {
         return memoria;
     }
 
-    public void setMemoria(String memoria) {
+    public void setMemoria(Memoria memoria) {
         this.memoria = memoria;
     }
 
-    public String getHd() {
+    public Hd getHd() {
         return hd;
     }
 
-    public void setHd(String hd) {
+    public void setHd(Hd hd) {
         this.hd = hd;
     }
 

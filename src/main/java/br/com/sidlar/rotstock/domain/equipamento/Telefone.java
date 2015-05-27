@@ -14,7 +14,7 @@ public class Telefone extends Equipamento{
     public Telefone() {
     }
 
-    public Telefone(String serial, String fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Boolean semFio, Boolean ip) {
+    public Telefone(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Boolean semFio, Boolean ip) {
         super(serial, fabricante, modelo, ativo, local, proprietario);
         this.semFio = semFio;
         this.ip = ip;

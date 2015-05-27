@@ -15,7 +15,9 @@ abstract public class Equipamento {
     private Integer id;
 
     private String serial;
-    private String fabricante;
+
+    @Enumerated(EnumType.STRING)
+    private Fabricante fabricante;
     private String modelo;
 
     private boolean ativo;
@@ -30,7 +32,7 @@ abstract public class Equipamento {
     public Equipamento() {
     }
 
-    public Equipamento(String serial, String fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
+    public Equipamento(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
         this.serial = serial;
         this.fabricante = fabricante;
         this.modelo = modelo;

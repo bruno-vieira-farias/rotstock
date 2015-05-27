@@ -1,9 +1,25 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
 public enum Fabricante {
-    HP(),
-    EPSON(),
-    AOC(),
-    SANSUNG(),
-    TOSHIBA()
+    AOC("AOC"),
+    DELL("Dell"),
+    ELGIN("Elgin"),
+    EPSON("Epson"),
+    HP("Hp"),
+    INTELBRAS("Intelbras"),
+    LENOVO("Lenovo"),
+    SANSUNG("Sansung"),
+    SIEMENS("Siemens"),
+    TOSHIBA("Semp Toshiba"),
+    GENERICO("Generico");
+
+    String descricao;
+
+    Fabricante(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }

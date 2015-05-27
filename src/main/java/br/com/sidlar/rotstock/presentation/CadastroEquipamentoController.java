@@ -39,7 +39,6 @@ public class CadastroEquipamentoController {
         equipamentoRepository.gravaEquipamento(conversor.getEquipamento(equipamentoForm));
         return "redirect:/CadastroEquipamento";
     }
-
     @ModelAttribute("proprietarios")
     public Proprietario[] getProprietarios() {
         return Proprietario.values();
@@ -64,5 +63,26 @@ public class CadastroEquipamentoController {
     public TipoEquipamento[] getTipoEquipamento() {
         return TipoEquipamento.values();
     }
+    @ModelAttribute("fabricantes")
+    public Fabricante[] getFabricantes() {
+        return Fabricante.values();
+    }
+    @ModelAttribute("processadores")
+    public Processador[] getProcessadores() {
+        return Processador.values();
+    }
+    @ModelAttribute("memorias")
+    public Memoria[] getMemorias() {
+        return Memoria.values();
+    }
+    @ModelAttribute("hds")
+    public Hd[] getHds() {
+        return Hd.values();
+    }
+
+
+
+
+
 }
 

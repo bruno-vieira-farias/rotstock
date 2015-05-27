@@ -1,15 +1,16 @@
 package br.com.sidlar.rotstock.domain.equipamento.fabrica;
 
+import br.com.sidlar.rotstock.domain.equipamento.Fabricante;
 import br.com.sidlar.rotstock.domain.equipamento.Proprietario;
 
 public class CaracteristicasBasicasEquipamento {
     private String serial;
-    private String fabricante;
+    private Fabricante fabricante;
     private String modelo;
     private int idLocal;
     private Proprietario proprietario;
 
-    public CaracteristicasBasicasEquipamento(String serial, String fabricante, String modelo, int idLocal, Proprietario proprietario) {
+    public CaracteristicasBasicasEquipamento(String serial, Fabricante fabricante, String modelo, int idLocal, Proprietario proprietario) {
         this.serial = serial;
         this.fabricante = fabricante;
         this.modelo = modelo;
@@ -21,7 +22,7 @@ public class CaracteristicasBasicasEquipamento {
         return serial;
     }
 
-    public String getFabricante() {
+    public Fabricante getFabricante() {
         return fabricante;
     }
 

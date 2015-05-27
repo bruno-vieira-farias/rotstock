@@ -62,7 +62,7 @@ public class EquipamentoFactory {
                 caracteristicasBasicasEquipamento.getProprietario(),
                 tipoConexao);
     }
-    public Equipamento criaComputador(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, String processador, String memoria, String hd) {
+    public Equipamento criaComputador(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, Processador processador, Memoria memoria, Hd hd) {
         return new Computador(
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),

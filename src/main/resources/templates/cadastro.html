@@ -33,139 +33,179 @@
 <body>
 <section id="content" class="container" layout:fragment="content">
     <div class="container">
-        <h1>Cadastro de Equipamentos</h1>
-        <div class="row">
-            <form class="form-horizontal" method="post" th:action="@{/CadastroEquipamento}" th:object="${equipamentoForm}" name="cadastra-form" onsubmit="return validaForm()">
-                <div class="equipamento">
-                    <div class="form-group" th:classappend="${#fields.hasErrors('serial')} ? 'has-error' : ''">
-                        <label for="serial" class="control-label">Serial:</label>
-                        <input type="text" class="form-control" id="serial" th:field="*{serial}" autofocus="autofocus"/>
-                        <p th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">Name Error</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="fabricante">Fabricante</label>
-                        <input class="form-control" type="text" id="fabricante" th:field="*{fabricante}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="modelo">Modelo</label>
-                        <input class="form-control" type="text" id="modelo" th:field="*{modelo}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="proprietario">Proprietario</label>
-                        <select class="form-control"  id="proprietario" th:field="*{proprietario}">
-                            <option selected="selected" value="-1"> ---Selecione uma opção---</option>
-                            <option th:each="proprietario : ${proprietarios}"
-                                    th:value="${proprietario}"
-                                    th:text="${proprietario.descricao}">Proprietario
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="local">Local</label>
-                        <select class="form-control"  id="local" th:field="*{idLocal}">
-                            <option selected="selected" value="-1"> ---Selecione uma opção---</option>
-                            <option th:each="local : ${locais}"
-                                    th:value="${local.id}"
-                                    th:text="${local.nome}">Local</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo-equipamento">Tipo de Equipamento</label>
-                        <select class="form-control" id="tipo-equipamento" th:field="*{tipoEquipamento}" >
-                            <option  selected="selected" value="-1"> ---Selecione uma opção---</option>
-                            <option th:each="tipoEquipamento : ${tiposEquipamento}"
-                                    th:value="${tipoEquipamento}"
-                                    th:text="${tipoEquipamento.descricao}"
-                                    data-th-attr="data-container-class=${tipoEquipamento.categoria}">Equipamento</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="equipamento equipamento-computador container-escondido">
-                    <div class="form-group">
-                        <label for="processador">Processador</label>
-                        <input class="form-control" type="text" id="processador" th:field="*{processador}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="memoria">Memoria</label>
-                        <input class="form-control" type="text" id="memoria" th:field="*{memoria}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="hd">HD</label>
-                        <input class="form-control" type="text" id="hd" th:field="*{hd}"/>
-                    </div>
-                </div>
-                <div class="equipamento equipamento-impressora container-escondido">
-                    <div class="form-group">
-                        <label>Colorida</label>
-                        <div class="radio" >
-                            <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" /> Sim </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="cor" th:value="false" th:field="*{colorida}" th:checked="checked" />Nao</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo-impressora">Tipo</label>
-                        <select class="form-control" id="tipo-impressora" th:field="*{tipoImpressora}">
-                            <option  selected="selected" value="-1"> ---Selecione uma opção---</option>
-                            <option th:each="tipoImpressora : ${tiposImpressora}"
-                                    th:value="${tipoImpressora}"
-                                    th:text="${tipoImpressora.descricao}">Tipo Impressora
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="equipamento equipamento-monitor container-escondido">
-                    <div class="form-group">
-                        <label for="polegada">Polegadas</label>
-                        <select id="polegada" class="form-control" th:field="*{polegadas}">
-                            <option selected="selected" value="-1"> ---Selecione uma opção---</option>
-                            <option th:each="polegada : ${polegadas}"
-                                    th:value="${polegada}"
-                                    th:text="${polegada.descricao}">Tipo Impressora
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="equipamento equipamento-teclado equipamento-mouse container-escondido">
-                    <div class="form-group">
-                        <label for="teclado">Conexao</label>
-                        <select class="form-control" id="teclado" th:field="*{tipoConexao}">
-                            <option selected="selected" value="-1"> ---Selecione uma opção---</option>
-                            <option th:each="tipoConexao : ${tiposConexao}"
-                                    th:value="${tipoConexao}"
-                                    th:text="${tipoConexao.descricao}">Tipo Conexao
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="equipamento equipamento-telefone container-escondido">
-                    <div class="form-group">
-                        <label>Sem Fio</label>
-                        <div class="radio" >
-                            <label> <input type="radio" name="sem-fio" th:value="true" th:field="*{semFio}" />Sim</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" name="sem-fio" th:value="false" th:field="*{semFio}" th:checked="checked" />Nao</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Ip</label>
-                        <div class="radio" >
-                            <label> <input type="radio" name="ip" value="true" th:field="*{ip}"/>Sim</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" name="ip" value="false" th:field="*{ip}" th:checked="checked" />Nao</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="equipamento">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
-                    </div>
-                </div>
-            </form>
+        <div class="row" >
+           <div class="col-md-8 col-md-offset-2">
+                <h1>Cadastro de Equipamentos</h1>
+           </div>
         </div>
+
+        <form class="form-horizontal" method="post" th:action="@{/CadastroEquipamento}" th:object="${equipamentoForm}" name="cadastra-form" onsubmit="return validaForm()">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="equipamento">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('serial')} ? 'has-error' : ''">
+                            <label for="serial" class="control-label">Serial:</label>
+                            <input type="text" class="form-control" id="serial" th:field="*{serial}" autofocus="autofocus"/><p th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">Name Error</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="fabricante">Fabricante</label>
+                            <select class="form-control"  id="fabricante" th:field="*{fabricante}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="fabricante : ${fabricantes}"
+                                        th:value="${fabricante}"
+                                        th:text="${fabricante.descricao}">Fabricante
+                                </option>
+                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelo">Modelo</label>
+                            <input class="form-control" type="text" id="modelo" th:field="*{modelo}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="proprietario">Proprietario</label>
+                            <select class="form-control"  id="proprietario" th:field="*{proprietario}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="proprietario : ${proprietarios}"
+                                        th:value="${proprietario}"
+                                        th:text="${proprietario.descricao}">Proprietario
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="local">Local</label>
+                            <select class="form-control"  id="local" th:field="*{idLocal}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="local : ${locais}"
+                                        th:value="${local.id}"
+                                        th:text="${local.nome}">Local</option>
+                            </select>
+                        </div>
+
+                        <div class="equipamento">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-md-offset-2">
+                    <div class="equipamento">
+                        <div class="form-group">
+                            <label for="tipo-equipamento">Tipo de Equipamento</label>
+                            <select class="form-control" id="tipo-equipamento" th:field="*{tipoEquipamento}" >
+                                <option  selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="tipoEquipamento : ${tiposEquipamento}"
+                                        th:value="${tipoEquipamento}"
+                                        th:text="${tipoEquipamento.descricao}"
+                                        data-th-attr="data-container-class=${tipoEquipamento.categoria}">Equipamento</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="equipamento equipamento-computador container-escondido">
+                        <div class="form-group">
+                            <label for="processador">Processador</label>
+                            <select class="form-control"  id="processador" th:field="*{processador}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="processador : ${processadores}"
+                                        th:value="${processador}"
+                                        th:text="${processador.descricao}">Processador
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="memoria">Memoria</label>
+                            <select class="form-control"  id="memoria" th:field="*{memoria}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="memoria : ${memorias}"
+                                        th:value="${memoria}"
+                                        th:text="${memoria.descricao}">Memoria
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hd">HD</label>
+                            <select class="form-control"  id="hd" th:field="*{hd}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="hd : ${hds}"
+                                        th:value="${hd}"
+                                        th:text="${hd.descricao}">Hd
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="equipamento equipamento-impressora container-escondido">
+                        <div class="form-group">
+                            <label>Colorida</label>
+                            <div class="radio" >
+                                <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" /> Sim </label>
+                            </div>
+                            <div class="radio">
+                                <label> <input type="radio" name="cor" th:value="false" th:field="*{colorida}" th:checked="checked" />Nao</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipo-impressora">Tipo</label>
+                            <select class="form-control" id="tipo-impressora" th:field="*{tipoImpressora}">
+                                <option  selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="tipoImpressora : ${tiposImpressora}"
+                                        th:value="${tipoImpressora}"
+                                     th:text="${tipoImpressora.descricao}">Tipo Impressora
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="equipamento equipamento-monitor container-escondido">
+                        <div class="form-group">
+                            <label for="polegada">Polegadas</label>
+                            <select id="polegada" class="form-control" th:field="*{polegadas}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="polegada : ${polegadas}"
+                                        th:value="${polegada}"
+                                        th:text="${polegada.descricao}">Tipo Impressora
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="equipamento equipamento-teclado equipamento-mouse container-escondido">
+                        <div class="form-group">
+                            <label for="teclado">Conexao</label>
+                            <select class="form-control" id="teclado" th:field="*{tipoConexao}">
+                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option th:each="tipoConexao : ${tiposConexao}"
+                                        th:value="${tipoConexao}"
+                                        th:text="${tipoConexao.descricao}">Tipo Conexao
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="equipamento equipamento-telefone container-escondido">
+                        <div class="form-group">
+                            <label>Sem Fio</label>
+                            <div class="radio" >
+                                <label> <input type="radio" name="sem-fio" th:value="true" th:field="*{semFio}" />Sim</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="sem-fio" th:value="false" th:field="*{semFio}" th:checked="checked" />Nao</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ip</label>
+                            <div class="radio" >
+                                <label> <input type="radio" name="ip" value="true" th:field="*{ip}"/>Sim</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="ip" value="false" th:field="*{ip}" th:checked="checked" />Nao</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 

@@ -13,7 +13,7 @@ public class LeitorCheque extends Equipamento {
         super();
     }
 
-    public LeitorCheque(String serial, String fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
+    public LeitorCheque(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
         super(serial, fabricante, modelo, ativo, local, proprietario);
     }
 }
