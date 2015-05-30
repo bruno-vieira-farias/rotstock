@@ -2,28 +2,46 @@ package br.com.sidlar.rotstock.presentation;
 
 import br.com.sidlar.rotstock.domain.equipamento.*;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class EquipamentoForm {
 
-    @Size(min=6, max=10, message = "O serial deve possuir entre 6 e 10 caracteres")
+    @Size(min=2, max=15, message = "O serial deve possuir entre 2 e 15 caracteres")
     private String serial;
 
+    @NotNull(message = "* Qual é o fabricante deste equipamento?")
     private Fabricante fabricante;
+
+    @Size(min=1 , message = "* Qual é o modelo deste equipamento?")
     private String modelo;
+
+    @NotNull(message = "* Quem é o proprietario")
     private Proprietario proprietario;
+
     private Integer idLocal;
+
+    @NotNull(message = "* Informe qual o equipamento desejado")
     private TipoEquipamento tipoEquipamento;
 
+    @NotNull(message = "* Selecione um processador")
     private Processador processador;
+
+    @NotNull(message = "* Selecione uma memória")
     private Memoria memoria;
+
+    @NotNull(message = "* Selecione um hd")
     private Hd hd;
 
     private Boolean colorida;
+
+    @NotNull(message = "* Selecione um tipo de Impressora")
     private TipoImpressora tipoImpressora;
 
+    @NotNull(message = "* Quantas polegadas tem este monitor?")
     private Polegadas polegadas;
 
+    @NotNull(message = "* Qual o tipo de conexão?")
     private TipoConexao tipoConexao;
 
     private Boolean semFio;
