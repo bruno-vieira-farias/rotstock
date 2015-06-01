@@ -48,9 +48,7 @@
                <hr class="soften"/>
            </div>
         </div>
-
         <form class="form-horizontal" method="post" th:action="@{/CadastroEquipamento}" th:object="${equipamentoForm}" name="cadastra-form" onsubmit="return validaForm()">
-
             <div class="row">
                 <div class="col-md-4 col-md-offset-1">
                     <div class="equipamento">
@@ -86,18 +84,18 @@
                             </select>
                             <label class="control-label" th:if="${#fields.hasErrors('proprietario')}" th:errors="*{proprietario}">Modelo Error</label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('idLocal')} ? 'has-error' : ''">
                             <label for="local">Local</label>
                             <select class="form-control"  id="local" th:field="*{idLocal}">
-                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option selected="selected" value=""> ---Selecione uma opção---</option>
                                 <option th:each="local : ${locais}"
                                         th:value="${local.id}"
                                         th:text="${local.nome}">Local</option>
                             </select>
+                            <label class="control-label" th:if="${#fields.hasErrors('idLocal')}" th:errors="*{idLocal}">Modelo Error</label>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-4 col-md-offset-2">
                     <div class="equipamento">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('tipoEquipamento')} ? 'has-error' : ''">
@@ -112,12 +110,11 @@
                             <label class="control-label" th:if="${#fields.hasErrors('tipoEquipamento')}" th:errors="*{tipoEquipamento}">Tipo Equipamento Error</label>
                         </div>
                     </div>
-
                     <div class="equipamento equipamento-computador container-escondido">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('processador')} ? 'has-error' : ''">
                             <label for="processador">Processador</label>
                             <select class="form-control"  id="processador" th:field="*{processador}">
-                                <option selected="selected" value="-1"> ---Selecione uma opção---</option>
+                                <option selected="selected" value=""> ---Selecione uma opção---</option>
                                 <option th:each="processador : ${processadores}"
                                         th:value="${processador}"
                                         th:text="${processador.descricao}">Processador
@@ -125,8 +122,8 @@
                             </select>
                             <label class="control-label" th:if="${#fields.hasErrors('processador')}" th:errors="*{processador}">Modelo Error</label>
                         </div>
-                        <div class="form-group">
-                            <label for="memoria"  th:classappend="${#fields.hasErrors('memoria')} ? 'has-error' : ''">Memoria</label>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('memoria')} ? 'has-error' : ''">
+                            <label for="memoria">Memoria</label>
                             <select class="form-control"  id="memoria" th:field="*{memoria}">
                                 <option selected="selected" value="-1"> ---Selecione uma opção---</option>
                                 <option th:each="memoria : ${memorias}"
@@ -136,20 +133,20 @@
                             </select>
                             <label class="control-label" th:if="${#fields.hasErrors('memoria')}" th:errors="*{memoria}">Modelo Error</label>
                         </div>
-                        <div class="form-group">
-                            <label for="hd"  th:classappend="${#fields.hasErrors('hd')} ? 'has-error' : ''">HD</label>
+                        <div class="form-group" th:classappend="${#fields.hasErrors('hd')} ? 'has-error' : ''">
+                            <label for="hd">HD</label>
                             <select class="form-control"  id="hd" th:field="*{hd}">
                                 <option selected="selected" value=""> ---Selecione uma opção---</option>
                                 <option th:each="hd : ${hds}"
                                         th:value="${hd}"
                                         th:text="${hd.descricao}">Hd
                                 </option>
-                                <label class="control-label" th:if="${#fields.hasErrors('hd')}" th:errors="*{hd}">Modelo Error</label>
                             </select>
+                            <label class="control-label" th:if="${#fields.hasErrors('hd')}" th:errors="*{hd}">Hd Error</label>
                         </div>
                     </div>
                     <div class="equipamento equipamento-impressora container-escondido">
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('colorida')} ? 'has-error' : ''">
                             <label>Colorida</label>
                             <div class="radio" >
                                 <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" /> Sim </label>
@@ -157,8 +154,8 @@
                             <div class="radio">
                                 <label> <input type="radio" name="cor" th:value="false" th:field="*{colorida}" checked="checked" />Nao</label>
                             </div>
+                            <label class="control-label" th:if="${#fields.hasErrors('colorida')}" th:errors="*{colorida}">Hd Error</label>
                         </div>
-
                         <div class="form-group"  th:classappend="${#fields.hasErrors('fabricante')} ? 'has-error' : ''">
                             <label for="tipo-impressora">Tipo</label>
                             <select class="form-control" id="tipo-impressora" th:field="*{tipoImpressora}">
@@ -168,9 +165,9 @@
                                      th:text="${tipoImpressora.descricao}">Tipo Impressora
                                 </option>
                             </select>
+                            <label class="control-label" th:if="${#fields.hasErrors('tipoImpressora')}" th:errors="*{tipoImpressora}">TipoImpressora Error</label>
                         </div>
                     </div>
-
                     <div class="equipamento equipamento-monitor container-escondido">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('fabricante')} ? 'has-error' : ''">
                             <label for="polegada">Polegadas</label>
@@ -198,7 +195,7 @@
                         </div>
                     </div>
                     <div class="equipamento equipamento-telefone container-escondido">
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('semFio')} ? 'has-error' : ''">
                             <label>Sem Fio</label>
                             <div class="radio" >
                                 <label> <input type="radio" name="sem-fio" th:value="true" th:field="*{semFio}" />Sim</label>
@@ -206,8 +203,9 @@
                             <div class="radio">
                                 <label><input type="radio" name="sem-fio" th:value="false" th:field="*{semFio}" checked="checked" />Nao</label>
                             </div>
+                            <label class="control-label" th:if="${#fields.hasErrors('semFio')}" th:errors="*{semFio}">Sem Fio Error</label>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('ip')} ? 'has-error' : ''">
                             <label>Ip</label>
                             <div class="radio" >
                                 <label> <input type="radio" name="ip" value="true" th:field="*{ip}"/>Sim</label>
@@ -215,6 +213,7 @@
                             <div class="radio">
                                 <label><input type="radio" name="ip" value="false" th:field="*{ip}" checked="checked"/>Nao</label>
                             </div>
+                            <label class="control-label" th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}">Ip Error</label>
                         </div>
                     </div>
                 </div>
