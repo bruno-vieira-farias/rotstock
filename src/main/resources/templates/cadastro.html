@@ -30,11 +30,113 @@
             $("." + selectedContainerClass).addClass("mostra");
         });
         $(function () {
-            $("#tipo-equipamento").on("change", function(){
+            $("#tipo-equipamento").change(function(){
                 var selectedContainerClass = $(this).find("option:selected").data("container-class");
                 $("[class*='equipamento-']").fadeOut(1 , function(){
                     $("." + selectedContainerClass).fadeIn(1);
                 });
+            });
+        });
+
+
+        $(function () {
+            $("#fabricante").change(function(){
+               $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-fabricante").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#proprietario").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-proprietario").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#local").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-local").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#tipo-equipamento").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-tipo-equipamento").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#tipo-conexao").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-tipo-conexao").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#polegada").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-polegadas").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#processador").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-processador").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#memoria").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-memoria").replaceWith("");
+            });
+        });
+        $(function () {
+            $("#hd").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-hd").replaceWith("");
+            });
+        });
+        $(function () {
+            $("#tipo-impressora").change(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-tipo-impressora").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("#serial").keypress(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-serial").replaceWith("");
+            });
+        });
+        $(function () {
+            $("#modelo").keypress(function(){
+                $(this).closest("div").removeClass("has-error");
+                $("#msn-validacao-modelo").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("[name='colorida']").change(function(){
+                $(this).parents("div").removeClass("has-error");
+                $("#msn-validacao-cor").replaceWith("");
+            });
+        });
+        $(function () {
+            $("[name='semFio']").change(function(){
+                $(this).parents("div").removeClass("has-error");
+                $("#msn-validacao-sem-fio").replaceWith("");
+            });
+        });
+
+        $(function () {
+            $("[name='ip']").change(function(){
+                $(this).parents("div").removeClass("has-error");
+                $("#msn-validacao-ip").replaceWith("");
             });
         });
     </script>
@@ -55,7 +157,7 @@
                         <div class="form-group" th:classappend="${#fields.hasErrors('serial')} ? 'has-error' : ''">
                             <label for="serial">Serial:</label>
                             <input type="text" class="form-control" id="serial" th:field="*{serial}" autofocus="autofocus"/>
-                            <label  class="control-label" th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">Serial Error</label>
+                            <label id="msn-validacao-serial" class="control-label" th:if="${#fields.hasErrors('serial')}" th:errors="*{serial}">Serial Error</label>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('fabricante')} ? 'has-error' : ''">
                             <label for="fabricante">Fabricante</label>
@@ -66,12 +168,12 @@
                                         th:text="${fabricante.descricao}">Fabricante
                                 </option>
                              </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('fabricante')}" th:errors="*{fabricante}">Fabricante Error</label>
+                            <label id="msn-validacao-fabricante" class="control-label" th:if="${#fields.hasErrors('fabricante')}" th:errors="*{fabricante}">Fabricante Error</label>
                         </div>
                         <div class="form-group"  th:classappend="${#fields.hasErrors('modelo')} ? 'has-error' : ''">
                             <label for="modelo">Modelo</label>
                             <input class="form-control" type="text" id="modelo" th:field="*{modelo}"/>
-                            <label class="control-label" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}">Modelo Error</label>
+                            <label id="msn-validacao-modelo" class="control-label" th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}">Modelo Error</label>
                         </div>
                         <div class="form-group"  th:classappend="${#fields.hasErrors('proprietario')} ? 'has-error' : ''">
                             <label for="proprietario">Proprietario</label>
@@ -82,7 +184,7 @@
                                         th:text="${proprietario.descricao}">Proprietario
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('proprietario')}" th:errors="*{proprietario}">Modelo Error</label>
+                            <label id="msn-validacao-proprietario" class="control-label" th:if="${#fields.hasErrors('proprietario')}" th:errors="*{proprietario}">Modelo Error</label>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('idLocal')} ? 'has-error' : ''">
                             <label for="local">Local</label>
@@ -92,7 +194,7 @@
                                         th:value="${local.id}"
                                         th:text="${local.nome}">Local</option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('idLocal')}" th:errors="*{idLocal}">Modelo Error</label>
+                            <label id="msn-validacao-local" class="control-label" th:if="${#fields.hasErrors('idLocal')}" th:errors="*{idLocal}">Modelo Error</label>
                         </div>
                     </div>
                 </div>
@@ -107,7 +209,7 @@
                                         th:text="${tipoEquipamento.descricao}"
                                         data-th-attr="data-container-class=${tipoEquipamento.categoria}">Equipamento</option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('tipoEquipamento')}" th:errors="*{tipoEquipamento}">Tipo Equipamento Error</label>
+                            <label id="msn-validacao-tipo-equipamento" class="control-label" th:if="${#fields.hasErrors('tipoEquipamento')}" th:errors="*{tipoEquipamento}">Tipo Equipamento Error</label>
                         </div>
                     </div>
                     <div class="equipamento equipamento-computador container-escondido">
@@ -120,7 +222,7 @@
                                         th:text="${processador.descricao}">Processador
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('processador')}" th:errors="*{processador}">Modelo Error</label>
+                            <label id="msn-validacao-processador" class="control-label" th:if="${#fields.hasErrors('processador')}" th:errors="*{processador}">Modelo Error</label>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('memoria')} ? 'has-error' : ''">
                             <label for="memoria">Memoria</label>
@@ -128,10 +230,10 @@
                                 <option selected="selected" value="-1"> ---Selecione uma opção---</option>
                                 <option th:each="memoria : ${memorias}"
                                         th:value="${memoria}"
-                                        th:text="${memoria.descricao}">Memoria
+                                        th:text="${memoria.descricao}">Memoriatipo-impre
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('memoria')}" th:errors="*{memoria}">Modelo Error</label>
+                            <label id="msn-validacao-memoria" class="control-label" th:if="${#fields.hasErrors('memoria')}" th:errors="*{memoria}">Modelo Error</label>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('hd')} ? 'has-error' : ''">
                             <label for="hd">HD</label>
@@ -142,19 +244,19 @@
                                         th:text="${hd.descricao}">Hd
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('hd')}" th:errors="*{hd}">Hd Error</label>
+                            <label id="msn-validacao-hd" class="control-label" th:if="${#fields.hasErrors('hd')}" th:errors="*{hd}">Hd Error</label>
                         </div>
                     </div>
                     <div class="equipamento equipamento-impressora container-escondido">
                         <div class="form-group" th:classappend="${#fields.hasErrors('colorida')} ? 'has-error' : ''">
                             <label>Colorida</label>
                             <div class="radio" >
-                                <label> <input type="radio" name="cor" th:value="true" th:field="*{colorida}" /> Sim </label>
+                                <label> <input  type="radio"  th:value="true" th:field="*{colorida}" />Sim</label>
                             </div>
                             <div class="radio">
-                                <label> <input type="radio" name="cor" th:value="false" th:field="*{colorida}" checked="checked" />Nao</label>
+                                <label> <input type="radio"  th:value="false" th:field="*{colorida}" />Nao</label>
                             </div>
-                            <label class="control-label" th:if="${#fields.hasErrors('colorida')}" th:errors="*{colorida}">Hd Error</label>
+                            <label id="msn-validacao-cor" class="control-label" th:if="${#fields.hasErrors('colorida')}" th:errors="*{colorida}">Hd Error</label>
                         </div>
                         <div class="form-group"  th:classappend="${#fields.hasErrors('fabricante')} ? 'has-error' : ''">
                             <label for="tipo-impressora">Tipo</label>
@@ -165,7 +267,7 @@
                                      th:text="${tipoImpressora.descricao}">Tipo Impressora
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('tipoImpressora')}" th:errors="*{tipoImpressora}">TipoImpressora Error</label>
+                            <label id="msn-validacao-tipo-impressora" class="control-label" th:if="${#fields.hasErrors('tipoImpressora')}" th:errors="*{tipoImpressora}">TipoImpressora Error</label>
                         </div>
                     </div>
                     <div class="equipamento equipamento-monitor container-escondido">
@@ -178,20 +280,20 @@
                                         th:text="${polegada.descricao}">Tipo Impressora
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('polegadas')}" th:errors="*{polegadas}">Polegadas Error</label>
+                            <label  id="msn-validacao-polegadas" class="control-label" th:if="${#fields.hasErrors('polegadas')}" th:errors="*{polegadas}">Polegadas Error</label>
                         </div>
                     </div>
                     <div class="equipamento equipamento-teclado equipamento-mouse container-escondido">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('tipoConexao')} ? 'has-error' : ''">
-                            <label for="teclado">Conexao</label>
-                            <select class="form-control" id="teclado" th:field="*{tipoConexao}">
+                            <label for="tipo-conexao">Conexao</label>
+                            <select class="form-control" id="tipo-conexao" th:field="*{tipoConexao}">
                                 <option selected="selected" value=""> ---Selecione uma opção---</option>
                                 <option th:each="tipoConexao : ${tiposConexao}"
                                         th:value="${tipoConexao}"
                                         th:text="${tipoConexao.descricao}">Tipo Conexao
                                 </option>
                             </select>
-                            <label class="control-label" th:if="${#fields.hasErrors('tipoConexao')}" th:errors="*{tipoConexao}">Tipo Conexao Error</label>
+                            <label id="msn-validacao-tipo-conexao" class="control-label" th:if="${#fields.hasErrors('tipoConexao')}" th:errors="*{tipoConexao}">Tipo Conexao Error</label>
                         </div>
                     </div>
                     <div class="equipamento equipamento-telefone container-escondido">
@@ -201,9 +303,9 @@
                                 <label> <input type="radio" name="sem-fio" th:value="true" th:field="*{semFio}" />Sim</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" name="sem-fio" th:value="false" th:field="*{semFio}" checked="checked" />Nao</label>
+                                <label><input type="radio" name="sem-fio" th:value="false" th:field="*{semFio}" />Nao</label>
                             </div>
-                            <label class="control-label" th:if="${#fields.hasErrors('semFio')}" th:errors="*{semFio}">Sem Fio Error</label>
+                            <label id="msn-validacao-sem-fio" class="control-label" th:if="${#fields.hasErrors('semFio')}" th:errors="*{semFio}">Sem Fio Error</label>
                         </div>
                         <div class="form-group" th:classappend="${#fields.hasErrors('ip')} ? 'has-error' : ''">
                             <label>Ip</label>
@@ -213,7 +315,7 @@
                             <div class="radio">
                                 <label><input type="radio" name="ip" value="false" th:field="*{ip}" checked="checked"/>Nao</label>
                             </div>
-                            <label class="control-label" th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}">Ip Error</label>
+                            <label id="msn-validacao-ip" class="control-label" th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}">Ip Error</label>
                         </div>
                     </div>
                 </div>

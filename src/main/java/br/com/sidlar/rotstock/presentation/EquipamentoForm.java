@@ -10,46 +10,46 @@ public class EquipamentoForm {
     @Size(min=2, max=15, message = "* O serial deve possuir entre 2 e 15 caracteres")
     private String serial;
 
-    @NotNull(message = "* Qual é o fabricante deste equipamento?")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Fabricante fabricante;
 
-    @Size(min=1 , message = "* Qual é o modelo deste equipamento?")
+    @Size(min=1 , message = "* Insira um modelo")
     private String modelo;
 
-    @NotNull(message = "* Quem é o proprietario")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Proprietario proprietario;
 
-    @NotNull(message = "* Informe um local")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Integer idLocal;
 
-    @NotNull(message = "* Informe qual o equipamento desejado")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoEquipamento tipoEquipamento;
 
-    @NotNull(message = "* Selecione um processador")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Processador processador;
 
-    @NotNull(message = "* Selecione uma memória")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Memoria memoria;
 
-    @NotNull(message = "* Selecione um hd")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Hd hd;
 
-    @NotNull(message = "* Selecione uma das opções")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Boolean colorida;
 
-    @NotNull(message = "* Selecione um tipo de Impressora")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoImpressora tipoImpressora;
 
-    @NotNull(message = "* Quantas polegadas tem este monitor?")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Polegadas polegadas;
 
-    @NotNull(message = "* Qual o tipo de conexão?")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoConexao tipoConexao;
 
-    @NotNull(message = "* Selecione uma das opções")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Boolean semFio;
 
-    @NotNull(message = "* Selecione uma das opções")
+    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Boolean ip;
 
     public String getSerial() {

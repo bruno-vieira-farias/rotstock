@@ -27,7 +27,7 @@ public class CadastroEquipamentoController {
     private ConvertToEquipamento conversor;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String goHome(EquipamentoForm equipamentoForm ) {
+    public String goHome(EquipamentoForm equipamentoForm) {
         return "cadastro";
     }
 
