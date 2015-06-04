@@ -25,32 +25,25 @@ public class EquipamentoForm {
     @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoEquipamento tipoEquipamento;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Processador processador;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Memoria memoria;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Hd hd;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Boolean colorida;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoImpressora tipoImpressora;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Polegadas polegadas;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoConexao tipoConexao;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Boolean semFio;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Boolean ip;
+
+    private String labelBotao = "Cadastrar Now";
 
     public String getSerial() {
         return serial;
@@ -170,5 +163,13 @@ public class EquipamentoForm {
 
     public void setIp(Boolean ip) {
         this.ip = ip;
+    }
+
+    public String getLabelBotao() {
+        return labelBotao;
+    }
+
+    public void setLabelBotao(String labelBotao) {
+        this.labelBotao = labelBotao;
     }
 }
