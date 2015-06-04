@@ -46,8 +46,7 @@ public class CadastroEquipamentoController {
             return "cadastro";
         }
         equipamentoRepository.gravaEquipamento(conversor.getEquipamento(equipamentoForm));
-        modelMap.addFlashAttribute("mensagem","O Objeto x foi salvo com sucesso");
-
+        modelMap.addFlashAttribute("mensagem","O equipamento "+ equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
         return "redirect:/CadastroEquipamento";
     }
     @ModelAttribute("proprietarios")

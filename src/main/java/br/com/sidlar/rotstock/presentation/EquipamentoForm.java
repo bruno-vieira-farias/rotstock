@@ -22,7 +22,6 @@ public class EquipamentoForm {
     @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Integer idLocal;
 
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private TipoEquipamento tipoEquipamento;
 
     private Processador processador;
@@ -43,7 +42,7 @@ public class EquipamentoForm {
 
     private Boolean ip;
 
-    private String labelBotao = "Cadastrar Now";
+    private String labelBotao = "Cadastrar";
 
     public String getSerial() {
         return serial;
