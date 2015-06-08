@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layoutDecorator/mainDecorator">
+<head>
+    <script th:src="@{/js/cadastro.js}"></script>
+    <style>
+        hr.soften {
+            height: 2px;
+            background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+            background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+            background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+            background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+<section id="content" class="container" layout:fragment="content">
+    <div class="container">
+        <div class="row" >
+            <div class="col-md-12  form-group" >
+                <h2 class="text-center">Consulta de Equipamentos</h2>
+                <hr class="soften"/>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-md-12  form-group" >
+                <label for="serial">Serial:</label>
+                <input type="text" class="form-control" id="serial" autofocus="autofocus"/>
+            </div>
+        </div>
+
+
+        <div class="row" >
+            <div class="col-md-12  form-group" >
+                <table class="table table-striped">
+                    <tr>
+                        <th>Serial</th>
+                        <th>Equipamento</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Local</th>
+                        <th>Complemento</th>
+                    </tr>
+                    <tr>
+                       <td>130343</td>
+                        <td>Computador</td>
+                        <td>Toshiba</td>
+                        <td>9690dlx</td>
+                        <td>Matriz</td>
+                        <td>i5 , 256Mb , 500Gb Hd</td>
+                    </tr>
+                    <tr>
+                        <td>9e00e9</td>
+                        <td>Impressora</td>
+                        <td>Hp</td>
+                        <td>1505 dn</td>
+                        <td>Matriz</td>
+                        <td>Preto e Branca</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
