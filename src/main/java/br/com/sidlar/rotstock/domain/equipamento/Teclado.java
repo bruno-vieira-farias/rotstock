@@ -8,13 +8,18 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("Teclado")
 public class Teclado extends Equipamento{
-    private Enum<TipoConexao> tipoConexao;
+    private TipoConexao tipoConexao;
 
     public Teclado() {
     }
 
-    public Teclado(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Enum<TipoConexao> tipoConexao) {
+    public Teclado(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, TipoConexao tipoConexao) {
         super(serial, fabricante, modelo, ativo, local, proprietario);
         this.tipoConexao = tipoConexao;
+    }
+
+    @Override
+    public String getInformacoesEspecificas() {
+        return "Tipo de Conexão:" + tipoConexao.getDescricao();
     }
 }

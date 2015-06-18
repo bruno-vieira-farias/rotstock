@@ -21,4 +21,9 @@ public class Monitor extends Equipamento{
         super(serial, fabricante, modelo, ativo, local, proprietario);
         this.polegadas = polegadas;
     }
+
+    @Override
+    public String getInformacoesEspecificas() {
+        return polegadas.getDescricao() + " polegadas";
+    }
 }

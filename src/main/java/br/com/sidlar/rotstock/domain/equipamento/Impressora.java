@@ -40,4 +40,9 @@ public class Impressora extends Equipamento{
     public void setTipoImpressora(TipoImpressora tipoImpressora) {
         this.tipoImpressora = tipoImpressora;
     }
+
+    @Override
+    public String getInformacoesEspecificas() {
+        return  (colorida?"Colorida":"Preto e Branco") + " , " + tipoImpressora.getDescricao();
+    }
 }

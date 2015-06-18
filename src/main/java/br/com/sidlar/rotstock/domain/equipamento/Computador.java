@@ -28,4 +28,9 @@ public class Computador extends Equipamento {
         this.memoria = memoria;
         this.hd = hd;
     }
+
+    @Override
+    public String getInformacoesEspecificas() {
+        return processador.getDescricao() + " , " + memoria.getDescricao() + " de Ram , " + hd.getDescricao() + " de Hd.";
+    }
 }

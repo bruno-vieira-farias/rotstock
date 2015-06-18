@@ -1,5 +1,6 @@
 package br.com.sidlar.rotstock.presentation;
 
+import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.equipamento.*;
 
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,8 @@ public class EquipamentoForm {
     @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Integer idLocal;
 
+    private Local local;
+
     private TipoEquipamento tipoEquipamento;
 
     private Processador processador;
@@ -43,6 +46,20 @@ public class EquipamentoForm {
     private Boolean ip;
 
     private String labelBotao = "Cadastrar";
+
+    private String informacoesEspecificas;
+
+    public EquipamentoForm() {
+    }
+
+    public EquipamentoForm(String serial, Fabricante fabricante, String modelo, Local local, String informacoesEspecificas, TipoEquipamento tipoEquipamento) {
+        this.serial = serial;
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.local = local;
+        this.informacoesEspecificas = informacoesEspecificas;
+        this.tipoEquipamento = tipoEquipamento;
+    }
 
     public String getSerial() {
         return serial;
@@ -166,6 +183,18 @@ public class EquipamentoForm {
 
     public String getLabelBotao() {
         return labelBotao;
+    }
+
+    public String getInformacoesEspecificas() {
+        return informacoesEspecificas;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     public void setLabelBotao(String labelBotao) {

@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name="equipamento")
+@Table(name = "equipamento")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="discriminator", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "discriminator", discriminatorType = DiscriminatorType.STRING)
 abstract public class Equipamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ abstract public class Equipamento {
     private boolean ativo;
 
     @ManyToOne
-    @JoinColumn(name="id_local")
+    @JoinColumn(name = "id_local")
     private Local local;
 
     @Enumerated(EnumType.STRING)
@@ -40,6 +40,28 @@ abstract public class Equipamento {
         this.local = local;
         this.proprietario = proprietario;
     }
+
+    public String getSerial() {
+        return serial;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Fabricante getFabricante() {
+        return fabricante;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    abstract public String getInformacoesEspecificas();
 
     @Override
     public boolean equals(Object o) {

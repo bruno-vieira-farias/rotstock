@@ -5,7 +5,6 @@ import br.com.sidlar.rotstock.domain.LocalRepository;
 import br.com.sidlar.rotstock.domain.equipamento.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -28,7 +27,7 @@ public class CadastroEquipamentoController {
     private EquipamentoRepository equipamentoRepository;
 
     @Autowired
-    private ConvertToEquipamento conversor;
+    private EquipamentoFormToEquipamentoConverter conversor;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {

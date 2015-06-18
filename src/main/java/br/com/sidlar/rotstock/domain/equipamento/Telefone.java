@@ -19,4 +19,9 @@ public class Telefone extends Equipamento{
         this.semFio = semFio;
         this.ip = ip;
     }
+
+    @Override
+    public String getInformacoesEspecificas() {
+        return "Sem Fio:" + (semFio?"Sim":"Não") + "Ip:" + (ip?"Sim":"Não");
+    }
 }

@@ -17,4 +17,9 @@ public class Mouse extends Equipamento{
         super(serial, fabricante, modelo, ativo, local, proprietario);
         this.tipoConexao = tipoConexao;
     }
+
+    @Override
+    public String getInformacoesEspecificas() {
+        return "Tipo de Conexão:" + tipoConexao.getDescricao();
+    }
 }

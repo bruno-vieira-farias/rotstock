@@ -52,7 +52,7 @@ public class EquipamentoFactory {
                 caracteristicasBasicasEquipamento.getProprietario(),
                 tipoConexao);
     }
-    public Equipamento criaTeclado(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, Enum<TipoConexao> tipoConexao) {
+    public Equipamento criaTeclado(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, TipoConexao tipoConexao) {
         return new Teclado(
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
