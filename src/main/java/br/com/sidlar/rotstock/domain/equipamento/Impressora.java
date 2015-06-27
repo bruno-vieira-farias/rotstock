@@ -1,6 +1,5 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
-
 import br.com.sidlar.rotstock.domain.Local;
 
 import javax.persistence.DiscriminatorValue;

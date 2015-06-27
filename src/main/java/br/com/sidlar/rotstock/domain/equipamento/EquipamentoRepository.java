@@ -75,8 +75,10 @@ public class EquipamentoRepository {
         return em.createQuery(criteria).getResultList();
     }
 
-
-
+    @Transactional
+    public void removeEquipamento(Integer id) {
+        em.remove(em.find(Equipamento.class,id));
+    }
 
 
 }

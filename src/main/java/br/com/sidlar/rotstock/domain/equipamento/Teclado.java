@@ -20,6 +20,6 @@ public class Teclado extends Equipamento{
 
     @Override
     public String getInformacoesEspecificas() {
-        return "Tipo de Conexão:" + tipoConexao.getDescricao();
+        return "Conexão " + tipoConexao.getDescricao();
     }
 }

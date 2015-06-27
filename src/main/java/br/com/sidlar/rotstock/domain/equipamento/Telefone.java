@@ -22,6 +22,6 @@ public class Telefone extends Equipamento{
 
     @Override
     public String getInformacoesEspecificas() {
-        return "Sem Fio:" + (semFio?"Sim":"Não") + "Ip:" + (ip?"Sim":"Não");
+        return (semFio?"Sem Fio":"Com Fio") + ", "+(ip?"com conectividade ip":"sem conectividade ip");
     }
 }

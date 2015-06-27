@@ -29,16 +29,18 @@ VALUES
 
 
 INSERT INTO "equipamento"
-  (id ,serial   ,fabricante ,modelo   ,ativo ,proprietario ,id_local  ,discriminator ,processador ,memoria ,hd     ,colorida ,tipo_impressora   ,polegadas  ,tipo_conexao ,sem_fio  ,ip)
+  (id ,serial   ,fabricante ,modelo   ,ativo ,proprietario ,id_local  ,discriminator ,processador ,memoria   ,hd            ,colorida ,tipo_impressora   ,polegadas  ,tipo_conexao ,sem_fio  ,ip)
 VALUES
-  (1  ,'SID01'  ,'STI'      ,'CS-1047',TRUE  ,'VIVO'       ,1         ,'Computador'  ,'Intel i5'  ,'8GB'   ,'500GB',NULL     ,NULL              ,NULL       ,NULL         ,NULL     ,NULL),
-  (2  ,'SID02'  ,'STI'      ,'CS-1047',TRUE  ,'VIVO'       ,2         ,'Computador'  ,'Intel i5'  ,'8GB'   ,'500GB',NULL     ,NULL              ,NULL       ,NULL         ,NULL     ,NULL),
-  (3  ,'SID03'  ,'HP'       ,'1505n'  ,TRUE  ,'SIDLAR'     ,3         ,'Impressora'  ,NULL        ,NULL    ,NULL   ,FALSE    ,'LASER'           ,NULL       ,NULL         ,NULL     ,NULL),
-  (4  ,'SID04'  ,'HP'       ,'1605n'  ,TRUE  ,'SIDLAR'     ,4         ,'Impressora'  ,NULL        ,NULL    ,NULL   ,FALSE    ,'LASER'           ,NULL       ,NULL         ,NULL     ,NULL),
-  (5  ,'SID05'  ,'EPSON'    ,'C87'    ,TRUE  ,'SIDLAR'     ,5         ,'Impressora'  ,NULL        ,NULL    ,NULL   ,TRUE     ,'JATO_TINTA'      ,NULL       ,NULL         ,NULL     ,NULL),
-  (6  ,'SID06'  ,'ELGIN'    ,'BGXTZ'  ,TRUE  ,'SIDLAR'     ,6         ,'Impressora'  ,NULL        ,NULL    ,NULL   ,FALSE    ,'MATRICIAL_CHEQUE',NULL       ,NULL         ,NULL     ,NULL),
-  (7  ,'SID07'  ,'SANSUNG'  ,'SYNCB'  ,TRUE  ,'SIDLAR'     ,7          ,'Monitor'     ,NULL        ,NULL    ,NULL   ,NULL     ,NULL              ,'QUINZE'   ,NULL         ,NULL     ,NULL)
+  (1  ,'SID01'  ,'DELL'     ,'CS-1047',TRUE  ,'VIVO'       ,1         ,'Computador'  ,'DUAL_CORE'  ,'UM_GB'   ,'CENTO_VINTE',NULL     ,NULL              ,NULL       ,NULL         ,NULL     ,NULL),
+  (2  ,'SID02'  ,'HP'       ,'CS-1047',TRUE  ,'VIVO'       ,2         ,'Computador'  ,'CORE_2_DUO' ,'DOIS_GB' ,'CENTO_VINTE',NULL     ,NULL              ,NULL       ,NULL         ,NULL     ,NULL),
+  (3  ,'SID03'  ,'HP'       ,'1505n'  ,TRUE  ,'SIDLAR'     ,3         ,'Impressora'  ,NULL         ,NULL      ,NULL         ,FALSE    ,'LASER'           ,NULL       ,NULL         ,NULL     ,NULL),
+  (4  ,'SID04'  ,'HP'       ,'1605n'  ,TRUE  ,'SIDLAR'     ,4         ,'Impressora'  ,NULL         ,NULL      ,NULL         ,FALSE    ,'LASER'           ,NULL       ,NULL         ,NULL     ,NULL),
+  (5  ,'SID05'  ,'EPSON'    ,'C87'    ,TRUE  ,'SIDLAR'     ,5         ,'Impressora'  ,NULL         ,NULL      ,NULL         ,TRUE     ,'JATO_TINTA'      ,NULL       ,NULL         ,NULL     ,NULL),
+  (6  ,'SID06'  ,'ELGIN'    ,'BGXTZ'  ,TRUE  ,'SIDLAR'     ,6         ,'Impressora'  ,NULL         ,NULL      ,NULL         ,FALSE    ,'MATRICIAL_CHEQUE',NULL       ,NULL         ,NULL     ,NULL),
+  (7  ,'SID07'  ,'SANSUNG'  ,'SYNCB'  ,TRUE  ,'SIDLAR'     ,7         ,'Monitor'     ,NULL         ,NULL      ,NULL         ,NULL     ,NULL              ,'QUINZE'   ,NULL         ,NULL     ,NULL)
 ;
 ALTER SEQUENCE equipamento_id_seq RESTART WITH 15;
 ALTER SEQUENCE local_id_seq RESTART WITH 15;
 ALTER SEQUENCE usuario_id_seq RESTART WITH 5;
+
+

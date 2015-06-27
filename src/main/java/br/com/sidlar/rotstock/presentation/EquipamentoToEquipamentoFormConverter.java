@@ -14,6 +14,7 @@ class EquipamentoToEquipamentoFormConverter {
 
         for (Equipamento equipamento : equipamentos) {
             equipamentosForm.add(new EquipamentoForm(
+                    equipamento.getId(),
                     equipamento.getSerial(),
                     equipamento.getFabricante(),
                     equipamento.getModelo(),

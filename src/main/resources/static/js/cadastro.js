@@ -1,12 +1,18 @@
-function validaForm() {
-    $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
-    return true;
-}
+$(function (){
+    function validaForm() {
+        $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
+        return true;
+    }
+});
+
+
 $(window).load(function() {
     var selectedContainerClass =  $("#tipo-equipamento").find("option:selected").data("container-class");
     $("." + selectedContainerClass).addClass("mostra");
     $("#msg-salvar").delay(8000).fadeOut(900);
 });
+
+
 $(function () {
     $("#tipo-equipamento").change(function(){
         var $tipoEquipamento = $(this);
