@@ -1,19 +1,36 @@
 $(function (){
-    function validaForm() {
-        $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
-        return true;
-    }
+    validaForm();
+    geraVisualizacaoFormulario();
+    atualizaVisualizaoFormulario();
+    removeMensagemErroFabricante();
+    removeMensagemErroColorida();
+    removeMensagemErroHd();
+    removeMensagemErroIp();
+    removeMensagemErroLocal();
+    removeMensagemErroMemoria();
+    removeMensagemErroModelo();
+    removeMensagemErroPolegada();
+    removeMensagemErroProcessador();
+    removeMensagemErroProprietario();
+    removeMensagemErroTipoEquipamento();
+    removeMensagemErroTipoTipoConexao();
+    removeMensagemErroTipoImpressora();
+    removeMensagemErroSerial();
+    removeMensagemErroSemFio();
 });
 
+function validaForm() {
+    $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
+    return true;
+};
 
-$(window).load(function() {
+function geraVisualizacaoFormulario(){
     var selectedContainerClass =  $("#tipo-equipamento").find("option:selected").data("container-class");
     $("." + selectedContainerClass).addClass("mostra");
     $("#msg-salvar").delay(8000).fadeOut(900);
-});
+};
 
-
-$(function () {
+function atualizaVisualizaoFormulario(){
     $("#tipo-equipamento").change(function(){
         var $tipoEquipamento = $(this);
         $tipoEquipamento.prop('disabled', true);
@@ -31,105 +48,108 @@ $(function () {
             $tipoEquipamento.focus();
         });
     });
-});
+};
 
-$(function () {
+function removeMensagemErroFabricante(){
     $("#fabricante").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-fabricante").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroProprietario() {
     $("#proprietario").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-proprietario").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroLocal() {
     $("#local").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-local").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroTipoEquipamento() {
     $("#tipo-equipamento").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-tipo-equipamento").replaceWith("");
     });
-});
+}
 
-$(function () {
+function removeMensagemErroTipoTipoConexao() {
     $("#tipo-conexao").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-tipo-conexao").replaceWith("");
     });
-});
-
-$(function () {
+}
+function removeMensagemErroPolegada() {
     $("#polegada").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-polegadas").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroProcessador() {
     $("#processador").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-processador").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroMemoria() {
     $("#memoria").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-memoria").replaceWith("");
     });
-});
-$(function () {
+};
+
+function removeMensagemErroHd() {
     $("#hd").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-hd").replaceWith("");
     });
-});
-$(function () {
+};
+
+function removeMensagemErroTipoImpressora() {
     $("#tipo-impressora").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-tipo-impressora").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroSerial() {
     $("#serial").keypress(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-serial").replaceWith("");
     });
-});
-$(function () {
+};
+
+function removeMensagemErroModelo() {
     $("#modelo").keypress(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-modelo").replaceWith("");
     });
-});
+};
 
-$(function () {
+function removeMensagemErroColorida() {
     $("[name='colorida']").change(function(){
         $(this).parents("div").removeClass("has-error");
         $("#msn-validacao-cor").replaceWith("");
     });
-});
-$(function () {
+};
+
+function removeMensagemErroSemFio() {
     $("[name='semFio']").change(function(){
         $(this).parents("div").removeClass("has-error");
         $("#msn-validacao-sem-fio").replaceWith("");
-    });
-});
+    })
+};
 
-$(function () {
+function removeMensagemErroIp() {
     $("[name='ip']").change(function(){
         $(this).parents("div").removeClass("has-error");
         $("#msn-validacao-ip").replaceWith("");
     });
-});
+};
