@@ -20,6 +20,14 @@ public class Telefone extends Equipamento{
         this.ip = ip;
     }
 
+    public Boolean getSemFio() {
+        return semFio;
+    }
+
+    public Boolean getIp() {
+        return ip;
+    }
+
     @Override
     public String getInformacoesEspecificas() {
         return (semFio?"Sem Fio":"Com Fio") + ", "+(ip?"com conectividade ip":"sem conectividade ip");

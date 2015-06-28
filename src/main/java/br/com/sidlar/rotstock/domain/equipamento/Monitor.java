@@ -22,6 +22,10 @@ public class Monitor extends Equipamento{
         this.polegadas = polegadas;
     }
 
+    public Polegadas getPolegadas() {
+        return polegadas;
+    }
+
     @Override
     public String getInformacoesEspecificas() {
         return polegadas.getDescricao() + " polegadas";

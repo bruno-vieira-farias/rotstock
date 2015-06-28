@@ -18,6 +18,10 @@ public class Mouse extends Equipamento{
         this.tipoConexao = tipoConexao;
     }
 
+    public TipoConexao getTipoConexao() {
+        return tipoConexao;
+    }
+
     @Override
     public String getInformacoesEspecificas() {
         return "Conexão " + tipoConexao.getDescricao();

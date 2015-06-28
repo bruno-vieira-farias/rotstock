@@ -54,13 +54,22 @@ public class EquipamentoForm {
     public EquipamentoForm() {
     }
 
-    public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Local local, String informacoesEspecificas, TipoEquipamento tipoEquipamento) {
+    public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Integer idLocal, String informacoesEspecificas, TipoEquipamento tipoEquipamento) {
         this.id = id;
         this.serial = serial;
         this.fabricante = fabricante;
         this.modelo = modelo;
-        this.local = local;
+        this.idLocal = idLocal;
         this.informacoesEspecificas = informacoesEspecificas;
+        this.tipoEquipamento = tipoEquipamento;
+    }
+
+    public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Proprietario proprietario, TipoEquipamento tipoEquipamento) {
+        this.id = id;
+        this.serial = serial;
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.proprietario = proprietario;
         this.tipoEquipamento = tipoEquipamento;
     }
 
@@ -102,14 +111,6 @@ public class EquipamentoForm {
 
     public void setProprietario(Proprietario proprietario) {
         this.proprietario = proprietario;
-    }
-
-    public Integer getIdLocal() {
-        return idLocal;
-    }
-
-    public void setIdLocal(Integer idLocal) {
-        this.idLocal = idLocal;
     }
 
     public TipoEquipamento getTipoEquipamento() {
@@ -200,6 +201,14 @@ public class EquipamentoForm {
         return informacoesEspecificas;
     }
 
+    public void setLabelBotao(String labelBotao) {
+        this.labelBotao = labelBotao;
+    }
+
+    public void setInformacoesEspecificas(String informacoesEspecificas) {
+        this.informacoesEspecificas = informacoesEspecificas;
+    }
+
     public Local getLocal() {
         return local;
     }
@@ -208,7 +217,11 @@ public class EquipamentoForm {
         this.local = local;
     }
 
-    public void setLabelBotao(String labelBotao) {
-        this.labelBotao = labelBotao;
+    public Integer getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(Integer idLocal) {
+        this.idLocal = idLocal;
     }
 }

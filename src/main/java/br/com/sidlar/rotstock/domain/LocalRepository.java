@@ -17,8 +17,8 @@ public class LocalRepository {
         return query.getResultList();
     }
 
-    public Local buscaPorId(int id) {
-        return em.find(Local.class,id);
+    public Local buscaPorId(int idLocal) {
+        return em.find(Local.class,idLocal);
     }
 
 }

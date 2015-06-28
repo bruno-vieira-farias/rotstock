@@ -1,5 +1,6 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
+import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.LocalRepository;
 import br.com.sidlar.rotstock.presentation.TipoEquipamento;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,12 @@ public class EquipamentoRepository {
 
         return em.createQuery(jpql, Equipamento.class).getResultList();
     }
-    public List<Equipamento> buscaPorLocal(int idLocal) {
+    public List<Equipamento> buscaPorLocal(Local local) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.local.id = :idLocal";
 
         return em.createQuery(jpql, Equipamento.class)
-                .setParameter("idLocal", idLocal)
+                .setParameter("idLocal", local.getId())
                 .getResultList();
     }
     public List<Equipamento> buscaPorSerial(String serial) {
@@ -63,14 +64,14 @@ public class EquipamentoRepository {
         return em.createQuery(criteria).getResultList();
     }
 
-    public List<Equipamento> buscaPorTipoEquipamentoLocal(Class entityClass,int idLocal) {
+    public List<Equipamento> buscaPorTipoEquipamentoLocal(Class entityClass,Local local) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         CriteriaQuery<Equipamento> criteria = builder.createQuery(entityClass);
 
         Root<Equipamento> equipamento = criteria.from(entityClass);
         criteria.select(equipamento);
-        criteria.where(builder.equal(equipamento.get("local").get("id"), idLocal));
+        criteria.where(builder.equal(equipamento.get("local").get("id"), local.getId()));
 
         return em.createQuery(criteria).getResultList();
     }

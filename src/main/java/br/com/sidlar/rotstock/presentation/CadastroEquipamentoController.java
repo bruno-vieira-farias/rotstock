@@ -5,12 +5,10 @@ import br.com.sidlar.rotstock.domain.LocalRepository;
 import br.com.sidlar.rotstock.domain.equipamento.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -27,7 +25,10 @@ public class CadastroEquipamentoController {
     private EquipamentoRepository equipamentoRepository;
 
     @Autowired
-    private EquipamentoFormToEquipamentoConverter conversor;
+    private EquipamentoFormToEquipamentoConverter conversorEquipamentoForm;
+
+    @Autowired
+    private EquipamentoToEquipamentoFormConverter conversorEquipamento;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -35,16 +36,19 @@ public class CadastroEquipamentoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String goHome(EquipamentoForm equipamentoForm) {
+    public String goHome(@RequestParam(value = "btn-edita", required = false) Integer idEquipamento,EquipamentoForm equipamentoForm, ModelMap modelMap) {
+        if (idEquipamento != null) {
+           Equipamento equipamento = equipamentoRepository.buscaPorId(idEquipamento);
+            modelMap.addAttribute("equipamentoForm",conversorEquipamento.getEquipamentoForm(equipamento));
+        }
         return "cadastro";
     }
-
     @RequestMapping(method = RequestMethod.POST)
     public String cadastra(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {
         if (bindingResult.hasErrors()) {
             return "cadastro";
         }
-        equipamentoRepository.gravaEquipamento(conversor.getEquipamento(equipamentoForm));
+        equipamentoRepository.gravaEquipamento(conversorEquipamentoForm.getEquipamento(equipamentoForm));
         modelMap.addFlashAttribute("mensagem","O equipamento "+ equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
         return "redirect:/CadastroEquipamento";
     }
@@ -88,10 +92,4 @@ public class CadastroEquipamentoController {
     public Hd[] getHds() {
         return Hd.values();
     }
-
-
-
-
-
 }
-

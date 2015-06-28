@@ -18,30 +18,28 @@ public class BuscaPorEquipamentoForm {
         List<EquipamentoForm> retorno;
 
         boolean consultaComSerial = !equipamentoForm.getSerial().equalsIgnoreCase("");
-        boolean consultaComLocal = equipamentoForm.getIdLocal() != null;
+        boolean consultaComLocal = equipamentoForm.getLocal() != null;
         boolean consultaComTipoEquipamento = equipamentoForm.getTipoEquipamento() != null;
 
         if(consultaComSerial){
-            retorno =  convertEquipamentoForm.getEquipamentoForm(equipamentoRepository.buscaPorSerial(equipamentoForm.getSerial()));
+            retorno =  convertEquipamentoForm.getEquipamentosForm(equipamentoRepository.buscaPorSerial(equipamentoForm.getSerial()));
 
         }else if(consultaComLocal & consultaComTipoEquipamento){
-            retorno = convertEquipamentoForm.getEquipamentoForm(equipamentoRepository.buscaPorTipoEquipamentoLocal(
-                    classPorTipoEquipamento(equipamentoForm.getTipoEquipamento()),equipamentoForm.getIdLocal()
+            retorno = convertEquipamentoForm.getEquipamentosForm(equipamentoRepository.buscaPorTipoEquipamentoLocal(
+                    classPorTipoEquipamento(equipamentoForm.getTipoEquipamento()), equipamentoForm.getLocal()
             ));
         }else if (consultaComLocal) {
-           retorno = convertEquipamentoForm.getEquipamentoForm(equipamentoRepository.buscaPorLocal(equipamentoForm.getIdLocal()));
+           retorno = convertEquipamentoForm.getEquipamentosForm(equipamentoRepository.buscaPorLocal(equipamentoForm.getLocal()));
         }else if (consultaComTipoEquipamento) {
-            retorno = convertEquipamentoForm.getEquipamentoForm(
-                            equipamentoRepository.buscaPorTipoEquipamento(
-                                    classPorTipoEquipamento(
-                                            equipamentoForm.getTipoEquipamento())));
+            retorno = convertEquipamentoForm.getEquipamentosForm(
+                    equipamentoRepository.buscaPorTipoEquipamento(
+                            classPorTipoEquipamento(
+                                    equipamentoForm.getTipoEquipamento())));
         }else{
-            retorno = convertEquipamentoForm.getEquipamentoForm(equipamentoRepository.buscaTodos());
+            retorno = convertEquipamentoForm.getEquipamentosForm(equipamentoRepository.buscaTodos());
         }
-
         return retorno;
     }
-
     private Class classPorTipoEquipamento(TipoEquipamento tipoEquipamento) {
         switch (tipoEquipamento){
             case COMPUTADOR:
@@ -62,6 +60,4 @@ public class BuscaPorEquipamentoForm {
                 throw new IllegalArgumentException("Não é possivel buscar o equipamento com o identificador " + tipoEquipamento);
         }
     }
-
-
 }

@@ -1,6 +1,5 @@
 package br.com.sidlar.rotstock.presentation;
 
-
 import br.com.sidlar.rotstock.domain.equipamento.*;
 import org.springframework.stereotype.Component;
 
@@ -9,46 +8,61 @@ import java.util.List;
 
 @Component
 class EquipamentoToEquipamentoFormConverter {
-    public List<EquipamentoForm> getEquipamentoForm(List<Equipamento> equipamentos) {
+    public List<EquipamentoForm> getEquipamentosForm(List<Equipamento> equipamentos) {
         ArrayList<EquipamentoForm> equipamentosForm = new ArrayList<EquipamentoForm>();
 
         for (Equipamento equipamento : equipamentos) {
-            equipamentosForm.add(new EquipamentoForm(
-                    equipamento.getId(),
-                    equipamento.getSerial(),
-                    equipamento.getFabricante(),
-                    equipamento.getModelo(),
-                    equipamento.getLocal(),
-                    equipamento.getInformacoesEspecificas(),
-                    getTipoEquipamento(equipamento)
-            ));
+            equipamentosForm.add(getEquipamentoForm(equipamento));
         }
-            return equipamentosForm;
+        return equipamentosForm;
     }
 
-    private TipoEquipamento getTipoEquipamento(Equipamento equipamento) {
+    public EquipamentoForm getEquipamentoForm(Equipamento equipamento) {
+        EquipamentoForm equipamentoForm = new EquipamentoForm();
+            equipamentoForm.setId(equipamento.getId());
+            equipamentoForm.setSerial(equipamento.getSerial());
+            equipamentoForm.setFabricante(equipamento.getFabricante());
+            equipamentoForm.setModelo(equipamento.getModelo());
+            equipamentoForm.setLocal(equipamento.getLocal());
+            equipamentoForm.setProprietario(equipamento.getProprietario());
+            equipamentoForm.setInformacoesEspecificas(equipamento.getInformacoesEspecificas());
         if (equipamento instanceof Computador) {
-            return TipoEquipamento.COMPUTADOR;
+            Computador computador = (Computador) equipamento;
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.COMPUTADOR);
+                equipamentoForm.setProcessador(computador.getProcessador());
+                equipamentoForm.setMemoria(computador.getMemoria());
+                equipamentoForm.setHd(computador.getHd());
         }
-        if (equipamento instanceof Monitor) {
-            return TipoEquipamento.MONITOR;
+        else if (equipamento instanceof Monitor) {
+            Monitor monitor = (Monitor) equipamento;
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.MONITOR);
+                equipamentoForm.setPolegadas(monitor.getPolegadas());
         }
-        if (equipamento instanceof LeitorCheque) {
-            return TipoEquipamento.LEITOR_CHEQUE;
+        else if (equipamento instanceof LeitorCheque) {
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.LEITOR_CHEQUE);
         }
-        if (equipamento instanceof Impressora) {
-            return TipoEquipamento.IMPRESSORA;
+        else if (equipamento instanceof Impressora) {
+            Impressora impressora = (Impressora) equipamento;
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.IMPRESSORA);
+                equipamentoForm.setColorida(impressora.getColorida());
+                equipamentoForm.setTipoImpressora(impressora.getTipoImpressora());
         }
-        if (equipamento instanceof Teclado) {
-            return TipoEquipamento.TECLADO;
+        else if (equipamento instanceof Teclado) {
+            Teclado teclado = (Teclado) equipamento;
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.TECLADO);
+                equipamentoForm.setTipoConexao(teclado.getTipoConexao());
         }
-        if (equipamento instanceof Mouse) {
-            return TipoEquipamento.MOUSE;
+        else if (equipamento instanceof Mouse) {
+            Mouse mouse = (Mouse) equipamento;
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.MOUSE);
+                equipamentoForm.setTipoConexao(mouse.getTipoConexao());
         }
-        if (equipamento instanceof Telefone) {
-            return TipoEquipamento.TELEFONE;
+        else if (equipamento instanceof Telefone) {
+            Telefone telefone = (Telefone) equipamento;
+                equipamentoForm.setTipoEquipamento(TipoEquipamento.TELEFONE);
+                equipamentoForm.setIp(telefone.getIp());
+                equipamentoForm.setSemFio(telefone.getSemFio());
         }
-    return null;
+        return equipamentoForm;
     }
-
 }

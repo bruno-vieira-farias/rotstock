@@ -76,6 +76,7 @@
                 <div class="col-md-4  form-group" >
                     <div class="form-group">
                         <label for="tipo-equipamento">Tipo de Equipamento</label>
+
                         <select class="form-control" id="tipo-equipamento" th:field="*{tipoEquipamento}">
                             <option  selected="selected" value=""> ---Todos---</option>
                             <option th:each="tipoEquipamento : ${tiposEquipamento}"
@@ -83,16 +84,19 @@
                                      th:text="${tipoEquipamento.descricao}"
                                      data-th-attr="data-container-class=${tipoEquipamento.categoria}">Equipamento</option>
                         </select>
+
                     </div>
                 </div>
                 <div class="col-md-4  form-group" >
                     <label for="local">Local</label>
-                    <select class="form-control"  id="local" th:field="*{idLocal}">
-                        <option selected="selected" value=""> ---Todos---</option>
+
+                    <select class="form-control"  id="local" th:field="*{tipoEquipamento}">
+                        <option selected="selected" value=""> ---Todos--- </option>
                         <option th:each="local : ${locais}"
-                                th:value="${local.id}"
+                                th:value="${local}"
                                 th:text="${local.nome}">Local</option>
                     </select>
+
                 </div>
                 <div class="col-md-1  form-group" >
                     <button type="submit" class="btn btn-primary btn-lg">
@@ -113,18 +117,18 @@
                             <th>Ações</th>
                         </tr>
                         <tr th:each="equipamentoForm : ${equipamentosForm}">
-                            <td th:text="${equipamentoForm.serial}"></td>
+                            <td th:text="${equipamentoForm.serial}" ></td>
                             <td th:text="${equipamentoForm.tipoEquipamento.descricao}"></td>
                             <td th:text="${equipamentoForm.fabricante}"></td>
                             <td th:text="${equipamentoForm.modelo}"></td>
                             <td th:text="${equipamentoForm.local.nome}"></td>
                             <td th:text="${equipamentoForm.informacoesEspecificas}"></td>
                             <td>
-                                <input type="hidden" th:value="${equipamentoForm.id}"/>
-                                <button type="submit" class="btn btn-default">
+                                <input type="hidden" th:value="${equipamentoForm.id}" />
+                                <button type="submit" class="btn btn-default" th:value="${equipamentoForm.id}" th:formaction="@{/CadastroEquipamento}" name="btn-edita">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </button>
-                                <button type="button" class="btn btn-default" data-toggle="modal" value="1" onclick="preparaModel($(this))">
+                                <button type="button" class="btn btn-default" data-toggle="modal"  onclick="preparaModel($(this))">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </button>
                             </td>

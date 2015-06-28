@@ -61,6 +61,10 @@ abstract public class Equipamento {
         return local;
     }
 
+    public Proprietario getProprietario() {
+        return proprietario;
+    }
+
     abstract public String getInformacoesEspecificas();
 
     @Override

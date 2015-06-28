@@ -1,5 +1,6 @@
 package br.com.sidlar.rotstock.presentation;
 
+import br.com.sidlar.rotstock.domain.LocalRepository;
 import br.com.sidlar.rotstock.domain.equipamento.Equipamento;
 import br.com.sidlar.rotstock.domain.equipamento.fabrica.CaracteristicasBasicasEquipamento;
 import br.com.sidlar.rotstock.domain.equipamento.fabrica.EquipamentoFactory;
@@ -8,6 +9,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 class EquipamentoFormToEquipamentoConverter {
+   @Autowired
+    LocalRepository localRepository;
+
+
     @Autowired
     private EquipamentoFactory equipamentoFactory;
 
