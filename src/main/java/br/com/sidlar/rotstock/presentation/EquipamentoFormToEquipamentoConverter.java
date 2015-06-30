@@ -19,6 +19,7 @@ class EquipamentoFormToEquipamentoConverter {
     public Equipamento getEquipamento(EquipamentoForm equipamentoForm) {
         CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento =
                 new CaracteristicasBasicasEquipamento(
+                        equipamentoForm.getId(),
                         equipamentoForm.getSerial(),
                         equipamentoForm.getFabricante(),
                         equipamentoForm.getModelo(),

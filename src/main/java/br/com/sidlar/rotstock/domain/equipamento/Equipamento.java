@@ -32,6 +32,16 @@ abstract public class Equipamento {
     public Equipamento() {
     }
 
+    public Equipamento(Integer id, String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
+        this.id = id;
+        this.serial = serial;
+        this.fabricante = fabricante;
+        this.modelo = modelo;
+        this.ativo = ativo;
+        this.local = local;
+        this.proprietario = proprietario;
+    }
+
     public Equipamento(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
         this.serial = serial;
         this.fabricante = fabricante;

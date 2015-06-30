@@ -28,11 +28,13 @@ public class EquipamentoRepository {
     public void gravaEquipamento(Equipamento equipamento) {
         em.persist(equipamento);
     }
-
+    @Transactional
+    public void alteraEquipamento(Equipamento equipamento){
+        em.merge(equipamento);
+    }
     public Equipamento buscaPorId(int id){
         return em.find(Equipamento.class,id);
     }
-
     public List<Equipamento> buscaTodos() {
             String jpql ="SELECT i FROM Equipamento i";
 
@@ -63,7 +65,6 @@ public class EquipamentoRepository {
 
         return em.createQuery(criteria).getResultList();
     }
-
     public List<Equipamento> buscaPorTipoEquipamentoLocal(Class entityClass,Local local) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
@@ -75,11 +76,8 @@ public class EquipamentoRepository {
 
         return em.createQuery(criteria).getResultList();
     }
-
     @Transactional
     public void removeEquipamento(Integer id) {
         em.remove(em.find(Equipamento.class,id));
     }
-
-
 }

@@ -9,14 +9,12 @@ import java.util.List;
 @Component
 class EquipamentoToEquipamentoFormConverter {
     public List<EquipamentoForm> getEquipamentosForm(List<Equipamento> equipamentos) {
-        ArrayList<EquipamentoForm> equipamentosForm = new ArrayList<EquipamentoForm>();
-
-        for (Equipamento equipamento : equipamentos) {
-            equipamentosForm.add(getEquipamentoForm(equipamento));
-        }
+        ArrayList<EquipamentoForm> equipamentosForm = new ArrayList<>();
+            for (Equipamento equipamento : equipamentos) {
+                equipamentosForm.add(getEquipamentoForm(equipamento));
+            }
         return equipamentosForm;
     }
-
     public EquipamentoForm getEquipamentoForm(Equipamento equipamento) {
         EquipamentoForm equipamentoForm = new EquipamentoForm();
             equipamentoForm.setId(equipamento.getId());
@@ -24,6 +22,7 @@ class EquipamentoToEquipamentoFormConverter {
             equipamentoForm.setFabricante(equipamento.getFabricante());
             equipamentoForm.setModelo(equipamento.getModelo());
             equipamentoForm.setLocal(equipamento.getLocal());
+            equipamentoForm.setIdLocal(equipamento.getLocal().getId());
             equipamentoForm.setProprietario(equipamento.getProprietario());
             equipamentoForm.setInformacoesEspecificas(equipamento.getInformacoesEspecificas());
         if (equipamento instanceof Computador) {

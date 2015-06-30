@@ -18,6 +18,11 @@ public class Mouse extends Equipamento{
         this.tipoConexao = tipoConexao;
     }
 
+    public Mouse(Integer id, String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, TipoConexao tipoConexao) {
+        super(id, serial, fabricante, modelo, ativo, local, proprietario);
+        this.tipoConexao = tipoConexao;
+    }
+
     public TipoConexao getTipoConexao() {
         return tipoConexao;
     }

@@ -19,8 +19,9 @@ $(function (){
 });
 
 function validaForm() {
-    $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
-    return true;
+   // $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
+
+    //return true;
 }
 
 function geraVisualizacaoFormulario(){
@@ -33,6 +34,7 @@ function atualizaVisualizacaoFormulario(){
     $("#tipo-equipamento").change(function(){
         var $tipoEquipamento = $(this);
         $tipoEquipamento.prop('disabled', true);
+        $("#idEquipamento").prop('disabled', false);
         var selectedContainerClass = $(this).find("option:selected").data("container-class");
         var nenhumVisivel = $("[class*='equipamento-']:visible").length == 0;
         if(nenhumVisivel) {

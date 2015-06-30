@@ -39,7 +39,9 @@ public class CadastroEquipamentoController {
     public String goHome(@RequestParam(value = "btn-edita", required = false) Integer idEquipamento,EquipamentoForm equipamentoForm, ModelMap modelMap) {
         if (idEquipamento != null) {
            Equipamento equipamento = equipamentoRepository.buscaPorId(idEquipamento);
-            modelMap.addAttribute("equipamentoForm",conversorEquipamento.getEquipamentoForm(equipamento));
+            equipamentoForm = conversorEquipamento.getEquipamentoForm(equipamento);
+
+            modelMap.addAttribute("equipamentoForm",equipamentoForm);
         }
         return "cadastro";
     }
@@ -48,8 +50,13 @@ public class CadastroEquipamentoController {
         if (bindingResult.hasErrors()) {
             return "cadastro";
         }
-        equipamentoRepository.gravaEquipamento(conversorEquipamentoForm.getEquipamento(equipamentoForm));
-        modelMap.addFlashAttribute("mensagem","O equipamento "+ equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
+        if (equipamentoForm.getId() == null) {
+            equipamentoRepository.gravaEquipamento(conversorEquipamentoForm.getEquipamento(equipamentoForm));
+            modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
+        } else {
+            equipamentoRepository.alteraEquipamento(conversorEquipamentoForm.getEquipamento(equipamentoForm));
+            modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi alterado com sucesso");
+        }
         return "redirect:/CadastroEquipamento";
     }
     @ModelAttribute("proprietarios")

@@ -13,6 +13,7 @@ public class EquipamentoFactory {
 
     public Equipamento criaImpressora(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, Boolean colorida, TipoImpressora tipoImpressora) {
         return new Impressora(
+                caracteristicasBasicasEquipamento.getId(),
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
@@ -24,6 +25,7 @@ public class EquipamentoFactory {
     }
     public Equipamento criaTelefone(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, Boolean semFio, Boolean ip) {
         return new Telefone(
+                caracteristicasBasicasEquipamento.getId(),
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
@@ -35,6 +37,7 @@ public class EquipamentoFactory {
     }
     public Equipamento criaLeitorCheque(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento) {
         return new LeitorCheque(
+                caracteristicasBasicasEquipamento.getId(),
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
@@ -44,6 +47,7 @@ public class EquipamentoFactory {
     }
     public Equipamento criaMouse(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, TipoConexao tipoConexao) {
         return new Mouse(
+                caracteristicasBasicasEquipamento.getId(),
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
@@ -54,6 +58,7 @@ public class EquipamentoFactory {
     }
     public Equipamento criaTeclado(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, TipoConexao tipoConexao) {
         return new Teclado(
+                caracteristicasBasicasEquipamento.getId(),
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
@@ -64,6 +69,7 @@ public class EquipamentoFactory {
     }
     public Equipamento criaComputador(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, Processador processador, Memoria memoria, Hd hd) {
         return new Computador(
+                caracteristicasBasicasEquipamento.getId(),
                 caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
@@ -75,7 +81,9 @@ public class EquipamentoFactory {
                 hd);
     }
     public Equipamento criaMonitor(CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento, Polegadas polegadas) {
-        return new Monitor(caracteristicasBasicasEquipamento.getSerial(),
+        return new Monitor(
+                caracteristicasBasicasEquipamento.getId(),
+                caracteristicasBasicasEquipamento.getSerial(),
                 caracteristicasBasicasEquipamento.getFabricante(),
                 caracteristicasBasicasEquipamento.getModelo(),
                 true,

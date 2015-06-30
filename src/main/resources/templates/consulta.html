@@ -13,7 +13,9 @@
                     $("#local").prop("disabled", false);
                 } else {
                     $("#tipo-equipamento").prop("disabled", true);
+                    $("#tipo-equipamento option:eq(0)").prop("selected",true);
                     $("#local").prop("disabled", true);
+                    $("#local option:eq(0)").prop("selected",true);
                 }
             });
         }
@@ -42,8 +44,7 @@
 <section id="content" class="container" layout:fragment="content">
     <div class="container">
         <form method="get" th:action="@{/ConsultaEquipamento}" th:object="${equipamentoForm}" name="cadastra-form"  onsubmit="return validaForm()">
-
-        <div id="confirma-exclusao" class="modal fade">
+            <div id="confirma-exclusao" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -124,7 +125,7 @@
                             <td th:text="${equipamentoForm.local.nome}"></td>
                             <td th:text="${equipamentoForm.informacoesEspecificas}"></td>
                             <td>
-                                <input type="hidden" th:value="${equipamentoForm.id}" />
+                                <input type="hidden" th:value="${equipamentoForm.id}" name="idEquipamento"/>
                                 <button type="submit" class="btn btn-default" th:value="${equipamentoForm.id}" th:formaction="@{/CadastroEquipamento}" name="btn-edita">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </button>

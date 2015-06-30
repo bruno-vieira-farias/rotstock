@@ -17,6 +17,10 @@ public class LeitorCheque extends Equipamento {
         super(serial, fabricante, modelo, ativo, local, proprietario);
     }
 
+    public LeitorCheque(Integer id, String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
+        super(id, serial, fabricante, modelo, ativo, local, proprietario);
+    }
+
     @Override
     public String getInformacoesEspecificas() {
         return "";
