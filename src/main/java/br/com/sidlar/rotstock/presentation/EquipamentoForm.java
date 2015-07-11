@@ -47,7 +47,9 @@ public class EquipamentoForm {
 
     private Boolean ip;
 
-    private String labelBotao = "Cadastrar";
+    private String labelBotao;
+
+    private String labelPrincipal;
 
     private String informacoesEspecificas;
 
@@ -223,5 +225,13 @@ public class EquipamentoForm {
 
     public void setIdLocal(Integer idLocal) {
         this.idLocal = idLocal;
+    }
+
+    public String getLabelPrincipal() {
+        return labelPrincipal;
+    }
+
+    public void setLabelPrincipal(String labelPrincipal) {
+        this.labelPrincipal = labelPrincipal;
     }
 }

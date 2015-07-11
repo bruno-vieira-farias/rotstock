@@ -43,7 +43,6 @@ public class EquipamentoFormValidator implements Validator {
                 break;
         }
     }
-
     private void validaTeclado(EquipamentoForm equipamentoForm, Errors errors) {
         if (equipamentoForm.getTipoConexao() == null) {
             errors.rejectValue("tipoConexao","field.required","* Campo Obrigatario, escolha uma das opções");

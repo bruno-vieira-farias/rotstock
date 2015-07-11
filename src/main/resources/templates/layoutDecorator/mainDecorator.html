@@ -21,8 +21,7 @@
     <script th:src="@{/webjars/underscorejs/1.8.2/underscore-min.js}"></script>
 
     <!-- app -->
-    <link rel="stylesheet" th:href="@{/css/bruno.css}" href="/static/css/bruno.css" />
-
+    <link th:href="@{/css/crudEquipamento.css}" rel="stylesheet" />
     <script>
         $(function () {
             moment.locale('pt-BR');
@@ -37,13 +36,11 @@
 </head>
 <body>
     <form class="form-signin" th:action="@{/logout}" method="post" name="formLogout">
-       <!-- <input type="hidden" name="logout" placeholder="logout" class="input-field" required="required" value="/logout"/>-->
     </form>
-
 <header>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
-                <div class="navbar-header">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -54,16 +51,14 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="/">Home</a></li>
                     <li><a href="/CadastroEquipamento">Cadastro</a></li>
-                    <li><a href="/ConsultaEquipamento">Consulta</a></li>
-                    <li><a href="#contact">Estoque Online</a></li>
+                    <li><a href="/BuscaEquipamento">Busca</a></li>
                     <li><a href="javascript:logout()">Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>
-
 </header>
 
 <section id="content" class="container-fluid" layout:fragment="content">

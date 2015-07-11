@@ -1,40 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layoutDecorator/mainDecorator">
 <head>
-    <script th:src="@{/js/cadastro.js}" ></script>
-    <script>
-        $(function () {
-            atualizaCampo();
-        });
-        function atualizaCampo() {
-            $("#serial").on("focusout", function () {
-                if ($("#serial").val() == '') {
-                    $("#tipo-equipamento").prop("disabled", false);
-                    $("#local").prop("disabled", false);
-                } else {
-                    $("#tipo-equipamento").prop("disabled", true);
-                    $("#tipo-equipamento option:eq(0)").prop("selected",true);
-                    $("#local").prop("disabled", true);
-                    $("#local option:eq(0)").prop("selected",true);
-                }
-            });
-        }
-        function preparaModel(botao) {
-            var idEquipamento = (botao.closest("td").find("input")).val()
-            $("#sim-modal").val(idEquipamento);
-            $("#confirma-exclusao").modal();
-        };
-    </script>
-
+    <script th:src="@{/js/busca.js}"></script>
     <style>
-        hr.soften {
-            height: 2px;
-            background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
-            background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
-            background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
-            background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.8), rgba(0,0,0,0));
-            border: 0;
-        }
         .form-inline{
             display : inline;
         }
@@ -43,7 +11,7 @@
 <body>
 <section id="content" class="container" layout:fragment="content">
     <div class="container">
-        <form method="get" th:action="@{/ConsultaEquipamento}" th:object="${equipamentoForm}" name="cadastra-form"  onsubmit="return validaForm()">
+        <form method="get" th:action="@{/BuscaEquipamentoCom}" th:object="${equipamentoForm}" name="cadastra-form">
             <div id="confirma-exclusao" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -91,10 +59,10 @@
                 <div class="col-md-4  form-group" >
                     <label for="local">Local</label>
 
-                    <select class="form-control"  id="local" th:field="*{tipoEquipamento}">
+                    <select class="form-control"  id="local" th:field="*{idLocal}">
                         <option selected="selected" value=""> ---Todos--- </option>
                         <option th:each="local : ${locais}"
-                                th:value="${local}"
+                                th:value="${local.id}"
                                 th:text="${local.nome}">Local</option>
                     </select>
 
@@ -126,7 +94,7 @@
                             <td th:text="${equipamentoForm.informacoesEspecificas}"></td>
                             <td>
                                 <input type="hidden" th:value="${equipamentoForm.id}" name="idEquipamento"/>
-                                <button type="submit" class="btn btn-default" th:value="${equipamentoForm.id}" th:formaction="@{/CadastroEquipamento}" name="btn-edita">
+                                <button type="submit" class="btn btn-default" th:value="${equipamentoForm.id}" th:formaction="@{/EditaEquipamento}" name="btn-edita">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </button>
                                 <button type="button" class="btn btn-default" data-toggle="modal"  onclick="preparaModel($(this))">

@@ -40,21 +40,21 @@ public class EquipamentoRepository {
 
         return em.createQuery(jpql, Equipamento.class).getResultList();
     }
-    public List<Equipamento> buscaPorLocal(Local local) {
+    public List<Equipamento> buscaPorLocal(int idLocal) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.local.id = :idLocal";
 
         return em.createQuery(jpql, Equipamento.class)
-                .setParameter("idLocal", local.getId())
+                .setParameter("idLocal", idLocal)
                 .getResultList();
     }
-    public List<Equipamento> buscaPorSerial(String serial) {
+    public Equipamento buscaPorSerial(String serial) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.serial = :serial";
 
         return em.createQuery(jpql, Equipamento.class)
                 .setParameter("serial",serial)
-                .getResultList();
+                .getSingleResult();
     }
     public List<Equipamento> buscaPorTipoEquipamento(Class entityClass) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
@@ -65,14 +65,14 @@ public class EquipamentoRepository {
 
         return em.createQuery(criteria).getResultList();
     }
-    public List<Equipamento> buscaPorTipoEquipamentoLocal(Class entityClass,Local local) {
+    public List<Equipamento> buscaPorTipoEquipamentoLocal(Class entityClass,int idLocal) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
         CriteriaQuery<Equipamento> criteria = builder.createQuery(entityClass);
 
         Root<Equipamento> equipamento = criteria.from(entityClass);
         criteria.select(equipamento);
-        criteria.where(builder.equal(equipamento.get("local").get("id"), local.getId()));
+        criteria.where(builder.equal(equipamento.get("local").get("id"), idLocal));
 
         return em.createQuery(criteria).getResultList();
     }

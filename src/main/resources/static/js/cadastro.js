@@ -17,13 +17,6 @@ $(function (){
     removeMensagemErroSerial();
     removeMensagemErroSemFio();
 });
-
-function validaForm() {
-   // $('form :input:hidden').not("input[name='_csrf']").attr("disabled", true);
-
-    //return true;
-}
-
 function geraVisualizacaoFormulario(){
     var selectedContainerClass =  $("#tipo-equipamento").find("option:selected").data("container-class");
     $("." + selectedContainerClass).addClass("mostra");
