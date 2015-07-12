@@ -21,14 +21,6 @@ public class Computador extends Equipamento {
 
     public Computador() {
     }
-
-    public Computador(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Processador processador, Memoria memoria, Hd hd) {
-        super(serial, fabricante, modelo, ativo, local, proprietario);
-        this.processador = processador;
-        this.memoria = memoria;
-        this.hd = hd;
-    }
-
     public Computador(Integer id, String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Processador processador, Memoria memoria, Hd hd) {
         super(id, serial, fabricante, modelo, ativo, local, proprietario);
         this.processador = processador;

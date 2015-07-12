@@ -17,13 +17,6 @@ public class Impressora extends Equipamento{
 
     public Impressora() {
     }
-
-    public Impressora(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Boolean colorida, TipoImpressora tipoImpressora) {
-        super(serial, fabricante, modelo, ativo, local, proprietario);
-        this.colorida = colorida;
-        this.tipoImpressora = tipoImpressora;
-    }
-
     public Impressora(Integer id, String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Boolean colorida, TipoImpressora tipoImpressora) {
         super(id, serial, fabricante, modelo, ativo, local, proprietario);
         this.colorida = colorida;

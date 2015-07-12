@@ -16,9 +16,7 @@ public class LocalRepository {
         TypedQuery<Local> query = em.createQuery("SELECT l FROM Local l", Local.class);
         return query.getResultList();
     }
-
     public Local buscaPorId(int idLocal) {
         return em.find(Local.class,idLocal);
     }
-
 }

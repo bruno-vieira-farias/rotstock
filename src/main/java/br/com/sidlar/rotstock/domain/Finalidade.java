@@ -14,16 +14,13 @@ public enum Finalidade {
     private String descricao;
     private Integer quantidadeMinima;
 
-
     Finalidade(String descricao, Integer quantidadeMinima) {
         this.descricao = descricao;
         this.quantidadeMinima = quantidadeMinima;
     }
-
     public String getDescricao() {
         return descricao;
     }
-
     public Integer getQuantidadeMinima() {
         return quantidadeMinima;
     }

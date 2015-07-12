@@ -12,11 +12,9 @@ public class Local {
     private Integer id;
     private String nome;
 
-
-   public Integer getId() {
+    public Integer getId() {
         return id;
     }
-
     public String getNome() {
         return nome;
     }

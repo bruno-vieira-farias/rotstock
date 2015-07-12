@@ -17,11 +17,6 @@ public class Monitor extends Equipamento{
     public Monitor() {
     }
 
-    public Monitor(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Polegadas polegadas) {
-        super(serial, fabricante, modelo, ativo, local, proprietario);
-        this.polegadas = polegadas;
-    }
-
     public Monitor(Integer id, String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario, Polegadas polegadas) {
         super(id, serial, fabricante, modelo, ativo, local, proprietario);
         this.polegadas = polegadas;

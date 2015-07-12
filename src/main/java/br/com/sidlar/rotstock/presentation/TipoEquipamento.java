@@ -16,11 +16,9 @@ public enum TipoEquipamento {
         this.categoria = categoria;
         this.descricao = descricao;
     }
-
     public String getDescricao() {
         return descricao;
     }
-
     public String getCategoria() {
         return categoria;
     }

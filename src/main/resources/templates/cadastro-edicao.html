@@ -2,20 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layoutDecorator/mainDecorator">
 <head>
     <script th:src="@{/js/cadastro.js}"></script>
-    <script>
-        function selecionaActionForm() {
-            var existeId = $("#idEquipamento").val();
-            if(existeId == '') {
-                $("#cadastra-edita-form").attr('action','/CadastrarEquipamento');
-            }else{
-                $("#cadastra-edita-form").attr('action','/EditarEquipamento');
-            }
-        }
-    </script>
     <style>
-        .mostra{
-            display: block;
-        }
         .equipamento{
             padding-top: 17px
         }

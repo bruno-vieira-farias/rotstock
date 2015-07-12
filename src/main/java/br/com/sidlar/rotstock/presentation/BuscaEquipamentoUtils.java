@@ -1,6 +1,5 @@
 package br.com.sidlar.rotstock.presentation;
 
-import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.equipamento.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

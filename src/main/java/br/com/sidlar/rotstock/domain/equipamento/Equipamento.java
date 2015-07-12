@@ -41,16 +41,6 @@ abstract public class Equipamento {
         this.local = local;
         this.proprietario = proprietario;
     }
-
-    public Equipamento(String serial, Fabricante fabricante, String modelo, boolean ativo, Local local, Proprietario proprietario) {
-        this.serial = serial;
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.ativo = ativo;
-        this.local = local;
-        this.proprietario = proprietario;
-    }
-
     public String getSerial() {
         return serial;
     }

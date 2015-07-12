@@ -2,12 +2,10 @@ package br.com.sidlar.rotstock.presentation;
 
 import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.equipamento.*;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class EquipamentoForm {
-
     private Integer id;
 
     @Size(min=2, max=15, message = "* O serial deve possuir entre 2 e 15 caracteres")
@@ -55,7 +53,6 @@ public class EquipamentoForm {
 
     public EquipamentoForm() {
     }
-
     public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Integer idLocal, String informacoesEspecificas, TipoEquipamento tipoEquipamento) {
         this.id = id;
         this.serial = serial;
@@ -65,16 +62,6 @@ public class EquipamentoForm {
         this.informacoesEspecificas = informacoesEspecificas;
         this.tipoEquipamento = tipoEquipamento;
     }
-
-    public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Proprietario proprietario, TipoEquipamento tipoEquipamento) {
-        this.id = id;
-        this.serial = serial;
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.proprietario = proprietario;
-        this.tipoEquipamento = tipoEquipamento;
-    }
-
     public Integer getId() {
         return id;
     }

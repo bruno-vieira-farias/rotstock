@@ -1,28 +1,18 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
-import br.com.sidlar.rotstock.domain.Local;
-import br.com.sidlar.rotstock.domain.LocalRepository;
-import br.com.sidlar.rotstock.presentation.TipoEquipamento;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.EntityType;
-import javax.persistence.metamodel.Metamodel;
 import java.util.List;
 
 @Repository
 public class EquipamentoRepository {
     @PersistenceContext
     private EntityManager em;
-
-    @Autowired
-    LocalRepository localRepository;
 
     @Transactional
     public void gravaEquipamento(Equipamento equipamento) {

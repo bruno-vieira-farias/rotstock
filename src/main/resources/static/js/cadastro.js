@@ -133,3 +133,11 @@ function removeMensagemErroIp() {
         $("#msn-validacao-ip").replaceWith("");
     });
 }
+function selecionaActionForm() {
+    var existeId = $("#idEquipamento").val();
+    if(existeId == '') {
+        $("#cadastra-edita-form").attr('action','/CadastrarEquipamento');
+    }else{
+        $("#cadastra-edita-form").attr('action','/EditarEquipamento');
+    }
+}

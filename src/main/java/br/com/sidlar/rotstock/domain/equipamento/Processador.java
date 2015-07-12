@@ -13,7 +13,6 @@ public enum Processador {
     Processador(String descricao) {
         Descricao = descricao;
     }
-
     public String getDescricao() {
         return Descricao;
     }

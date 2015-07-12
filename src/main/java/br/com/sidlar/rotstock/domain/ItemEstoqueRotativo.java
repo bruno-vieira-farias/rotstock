@@ -26,6 +26,5 @@ public class ItemEstoqueRotativo {
             return descricao;
         }
     }
-
     private Status status;
 }

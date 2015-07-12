@@ -1,6 +1,5 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
-
 public enum TipoConexao {
     USB("USB"),
     PS2("PS2"),
@@ -12,7 +11,6 @@ public enum TipoConexao {
     TipoConexao(String descricao){
         this.descricao = descricao;
     }
-
     public String getDescricao() {
         return descricao;
     }

@@ -75,6 +75,7 @@ public class ManterEquipamentoController {
     public String buscaVazia(EquipamentoForm equipamentoForm ,ModelMap modelMap) {
         return "busca";
     }
+
     @RequestMapping(value = "/BuscaEquipamentoCom",method = RequestMethod.GET)
     public String buscaComResultado(EquipamentoForm equipamentoForm,ModelMap modelMap) {
         modelMap.addAttribute("equipamentosForm", buscaEquipamentoUtils.buscaEquipamento(equipamentoForm));

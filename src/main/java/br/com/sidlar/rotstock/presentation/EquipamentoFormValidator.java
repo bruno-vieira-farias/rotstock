@@ -17,7 +17,6 @@ public class EquipamentoFormValidator implements Validator {
             errors.rejectValue("tipoEquipamento","field.required","* Campo Obrigatório, escolha uma das opções");
             return;
         }
-
         switch (equipamentoForm.getTipoEquipamento()){
             case MONITOR:
                validaMonitor(equipamentoForm,errors);
