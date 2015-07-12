@@ -38,20 +38,21 @@ public class ManterEquipamentoController {
         equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
         return "cadastro-edicao";
     }
-    @RequestMapping(value="/EditaEquipamento",method = RequestMethod.POST)
+    @RequestMapping(value="/EditaEquipamento",method = RequestMethod.GET)
     public String mostraTelaEdicao(@RequestParam(value = "btn-edita") Integer idEquipamento,EquipamentoForm equipamentoForm, ModelMap modelMap) {
-        if (idEquipamento != null) {
-            Equipamento equipamento = equipamentoRepository.buscaPorId(idEquipamento);
-            equipamentoForm = converter.convertToEquipamentoForm(equipamento);
-            equipamentoForm.setLabelBotao("Alterar");
-            equipamentoForm.setLabelPrincipal("Alteração de Equipamentos");
+         Equipamento equipamento = equipamentoRepository.buscaPorId(idEquipamento);
+         equipamentoForm = converter.convertToEquipamentoForm(equipamento);
+         equipamentoForm.setLabelBotao("Alterar");
+         equipamentoForm.setLabelPrincipal("Alteração de Equipamentos");
 
-            modelMap.addAttribute("equipamentoForm",equipamentoForm);
-        }
+         modelMap.addAttribute("equipamentoForm",equipamentoForm);
         return "cadastro-edicao";
     }
     @RequestMapping(value = "/CadastrarEquipamento" ,method = RequestMethod.POST)
     public String cadastraEquipamento(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {
+        equipamentoForm.setLabelBotao("Cadastrar");
+        equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
+
         if (bindingResult.hasErrors()) {
             return "cadastro-edicao";
         }
@@ -68,7 +69,7 @@ public class ManterEquipamentoController {
         equipamentoRepository.alteraEquipamento(converter.convertToEquipamento(equipamentoForm));
         modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi alterado com sucesso");
 
-        return "redirect:/EditarEquipamento";
+        return "redirect:/CadastroEquipamento";
     }
     @RequestMapping(value = "/BuscaEquipamento",method = RequestMethod.GET)
     public String buscaVazia(EquipamentoForm equipamentoForm ,ModelMap modelMap) {
