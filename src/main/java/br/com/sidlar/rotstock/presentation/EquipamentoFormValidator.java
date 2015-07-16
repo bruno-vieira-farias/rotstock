@@ -1,9 +1,16 @@
 package br.com.sidlar.rotstock.presentation;
 
+import br.com.sidlar.rotstock.domain.equipamento.EquipamentoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+@Component
 public class EquipamentoFormValidator implements Validator {
+    @Autowired
+    EquipamentoRepository equipamentoRepository;
+
     @Override
     public boolean supports(Class<?> clazz) {
         return clazz.isAssignableFrom(EquipamentoForm.class);
@@ -13,6 +20,13 @@ public class EquipamentoFormValidator implements Validator {
     public void validate(Object target, Errors errors) {
         EquipamentoForm equipamentoForm = (EquipamentoForm) target;
 
+        String serial = equipamentoForm.getSerial();
+
+        if (!serial.equalsIgnoreCase("") && equipamentoForm.getId() == null) {
+            if (equipamentoRepository.exists(equipamentoForm.getSerial())) {
+                errors.rejectValue("serial","field.required","* Já existe equipamento cadastro com o serial informado");
+            }
+        }
         if (equipamentoForm.getTipoEquipamento() == null) {
             errors.rejectValue("tipoEquipamento","field.required","* Campo Obrigatório, escolha uma das opções");
             return;

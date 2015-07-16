@@ -46,6 +46,15 @@ public class EquipamentoRepository {
                 .setParameter("serial",serial)
                 .getSingleResult();
     }
+    public boolean exists(String serial) {
+        String jpql ="SELECT i " +
+                "FROM Equipamento i WHERE i.serial = :serial";
+
+        return !em.createQuery(jpql, Equipamento.class)
+                .setParameter("serial",serial)
+                .getResultList()
+                .isEmpty();
+    }
     public List<Equipamento> buscaPorTipoEquipamento(Class entityClass) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 

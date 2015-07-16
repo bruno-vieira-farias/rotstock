@@ -22,11 +22,14 @@ public class ManterEquipamentoController {
     private EquipamentoRepository equipamentoRepository;
 
     @Autowired
+    private EquipamentoFormValidator validator;
+
+    @Autowired
     private Converter converter;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
-        binder.addValidators(new EquipamentoFormValidator());
+        binder.addValidators(validator);
     }
 
     @Autowired
@@ -38,6 +41,18 @@ public class ManterEquipamentoController {
         equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
         return "cadastro-edicao";
     }
+    @RequestMapping(value = "/CadastrarEquipamento" ,method = RequestMethod.POST)
+    public String cadastraEquipamento(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {
+        equipamentoForm.setLabelBotao("Cadastrar");
+        equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
+        if (bindingResult.hasErrors()) {
+            return "cadastro-edicao";
+        }
+            equipamentoRepository.gravaEquipamento(converter.convertToEquipamento(equipamentoForm));
+            modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
+
+        return "redirect:/CadastroEquipamento";
+    }
     @RequestMapping(value="/EditaEquipamento",method = RequestMethod.GET)
     public String mostraTelaEdicao(@RequestParam(value = "btn-edita") Integer idEquipamento,EquipamentoForm equipamentoForm, ModelMap modelMap) {
          Equipamento equipamento = equipamentoRepository.buscaPorId(idEquipamento);
@@ -47,19 +62,6 @@ public class ManterEquipamentoController {
 
          modelMap.addAttribute("equipamentoForm",equipamentoForm);
         return "cadastro-edicao";
-    }
-    @RequestMapping(value = "/CadastrarEquipamento" ,method = RequestMethod.POST)
-    public String cadastraEquipamento(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {
-        equipamentoForm.setLabelBotao("Cadastrar");
-        equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
-
-        if (bindingResult.hasErrors()) {
-            return "cadastro-edicao";
-        }
-        equipamentoRepository.gravaEquipamento(converter.convertToEquipamento(equipamentoForm));
-        modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
-
-        return "redirect:/CadastroEquipamento";
     }
     @RequestMapping(value = "/EditarEquipamento" ,method = RequestMethod.POST)
     public String editaEquipamento(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {

@@ -16,8 +16,6 @@ VALUES
   (13 ,'Ponta de Estoque'		    ),
   (14 ,'Santo Andre Colchoes'	  );
 
-
-
 INSERT INTO "usuario"
   (id	,email						        ,nome		    ,senha                           )
 VALUES

@@ -3,12 +3,11 @@ package br.com.sidlar.rotstock.presentation;
 import br.com.sidlar.rotstock.domain.equipamento.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BuscaEquipamentoUtils {
+public class BuscaEquipamentoUtils{
     @Autowired
     private Converter converter;
 
@@ -22,8 +21,9 @@ public class BuscaEquipamentoUtils {
 
         if(buscaComSerial){
             ArrayList<EquipamentoForm> listaEquipamentoForm = new ArrayList<>();
-            listaEquipamentoForm.add(buscaPorSerial(equipamentoForm));
-
+            if (equipamentoRepository.exists(equipamentoForm.getSerial())) {
+                listaEquipamentoForm.add(buscaPorSerial(equipamentoForm));
+            }
             return listaEquipamentoForm;
         }else if(buscaComLocal & buscaComTipoEquipamento){
             return buscaPorLocalAndTipoEquipamento(equipamentoForm);
@@ -36,8 +36,8 @@ public class BuscaEquipamentoUtils {
         }
     }
     private EquipamentoForm buscaPorSerial(EquipamentoForm equipamentoForm) {
-        Equipamento equipamento = equipamentoRepository.buscaPorSerial(equipamentoForm.getSerial());
-        return converter.convertToEquipamentoForm(equipamento);
+            Equipamento equipamento = equipamentoRepository.buscaPorSerial(equipamentoForm.getSerial());
+            return converter.convertToEquipamentoForm(equipamento);
     }
     private List<EquipamentoForm> buscaPorLocalAndTipoEquipamento(EquipamentoForm equipamentoForm){
         int idLocal = equipamentoForm.getIdLocal();
