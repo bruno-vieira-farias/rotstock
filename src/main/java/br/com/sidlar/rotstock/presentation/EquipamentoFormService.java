@@ -24,7 +24,11 @@ class EquipamentoFormService {
     }
 
     public EquipamentoForm buscaEquipamentoPorSerial(String serial) {
-        return convertToEquipamentoForm(equipamentoService.buscaPorSerial(serial));
+       EquipamentoModel equipamentoModel = equipamentoService.buscaPorSerial(serial);
+        if (equipamentoModel != null) {
+            return convertToEquipamentoForm(equipamentoModel);
+        }
+        return null;
     }
 
     public List<EquipamentoForm> buscaPorLocalAndTipoEquipamento(int idLocal,TipoEquipamento tipoEquipamento) {

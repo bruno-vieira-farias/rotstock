@@ -32,7 +32,11 @@ public class EquipamentoService {
     }
 
     public EquipamentoModel buscaPorSerial(String serial) {
-        return convertEquipamentoModel(equipamentoRepository.buscaPorSerial(serial));
+       Equipamento equipamento = equipamentoRepository.buscaPorSerial(serial);
+       if(equipamento != null){
+           return convertEquipamentoModel(equipamento);
+       }
+        return null;
     }
 
     public List<EquipamentoModel> buscaPorLocal(int idLocal) {

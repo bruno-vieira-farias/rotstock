@@ -41,6 +41,7 @@ public class ManterEquipamentoController {
         equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
         return "cadastro-edicao";
     }
+
     @RequestMapping(value = "/CadastrarEquipamento" ,method = RequestMethod.POST)
     public String cadastraEquipamento(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {
         equipamentoForm.setLabelBotao("Cadastrar");
@@ -50,16 +51,16 @@ public class ManterEquipamentoController {
         }
             equipamentoFormService.persisteEquipamento(equipamentoForm);
             modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
-
         return "redirect:/CadastroEquipamento";
     }
 
     @RequestMapping(value="/EditaEquipamento",method = RequestMethod.GET)
     public String mostraTelaEdicao(@RequestParam(value = "btn-edita") Integer idEquipamento,EquipamentoForm equipamentoForm, ModelMap modelMap) {
+        equipamentoForm = equipamentoFormService.buscaEquipamentoPorId(idEquipamento);
         equipamentoForm.setLabelBotao("Alterar");
         equipamentoForm.setLabelPrincipal("Alteração de Equipamentos");
 
-         modelMap.addAttribute("equipamentoForm",equipamentoFormService.buscaEquipamentoPorId(idEquipamento));
+       modelMap.addAttribute("equipamentoForm",equipamentoForm);
         return "cadastro-edicao";
     }
 

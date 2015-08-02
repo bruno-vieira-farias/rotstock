@@ -18,18 +18,22 @@ public class EquipamentoRepository {
     public void gravaEquipamento(Equipamento equipamento) {
         em.persist(equipamento);
     }
+
     @Transactional
     public void alteraEquipamento(Equipamento equipamento){
         em.merge(equipamento);
     }
+
     public Equipamento buscaPorId(int id){
         return em.find(Equipamento.class,id);
     }
+
     public List<Equipamento> buscaTodos() {
             String jpql ="SELECT i FROM Equipamento i";
 
         return em.createQuery(jpql, Equipamento.class).getResultList();
     }
+
     public List<Equipamento> buscaPorLocal(int idLocal) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.local.id = :idLocal";
@@ -38,14 +42,21 @@ public class EquipamentoRepository {
                 .setParameter("idLocal", idLocal)
                 .getResultList();
     }
+
     public Equipamento buscaPorSerial(String serial) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.serial = :serial";
 
-        return em.createQuery(jpql, Equipamento.class)
-                .setParameter("serial",serial)
-                .getSingleResult();
+        List retorno = em.createQuery(jpql, Equipamento.class)
+                       .setParameter("serial",serial)
+                        .getResultList();
+
+        if(retorno.isEmpty()){
+            return null;
+        }
+        return (Equipamento) retorno.get(0);
     }
+
     public boolean exists(String serial) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.serial = :serial";
@@ -55,6 +66,7 @@ public class EquipamentoRepository {
                 .getResultList()
                 .isEmpty();
     }
+
     public List<Equipamento> buscaPorTipoEquipamento(Class entityClass) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
@@ -64,6 +76,7 @@ public class EquipamentoRepository {
 
         return em.createQuery(criteria).getResultList();
     }
+
     public List<Equipamento> buscaPorTipoEquipamentoLocal(Class entityClass,int idLocal) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
 
@@ -75,6 +88,7 @@ public class EquipamentoRepository {
 
         return em.createQuery(criteria).getResultList();
     }
+
     @Transactional
     public void removeEquipamento(Integer id) {
         em.remove(em.find(Equipamento.class,id));
