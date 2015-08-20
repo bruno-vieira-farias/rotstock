@@ -33,7 +33,7 @@ public class ManterEquipamentoController {
     }
 
     @Autowired
-    BuscaEquipamentoUtils buscaEquipamentoUtils;
+    SeletorBusca seletorBusca;
 
     @RequestMapping(value="/CadastroEquipamento",method = RequestMethod.GET)
     public String mostraTelaCadastro(EquipamentoForm equipamentoForm, ModelMap modelMap) {
@@ -82,7 +82,7 @@ public class ManterEquipamentoController {
 
     @RequestMapping(value = "/BuscaEquipamentoCom",method = RequestMethod.GET)
     public String buscaComResultado(EquipamentoForm equipamentoForm,ModelMap modelMap) {
-        modelMap.addAttribute("equipamentosForm", buscaEquipamentoUtils.buscaEquipamento(equipamentoForm));
+        modelMap.addAttribute("equipamentosForm", seletorBusca.buscaEquipamento(equipamentoForm));
         return "busca";
     }
 

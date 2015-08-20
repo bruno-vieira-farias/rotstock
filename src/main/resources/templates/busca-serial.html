@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layoutDecorator/mainDecorator">
+<head>
+    <meta charset="utf-8" />
+
+    <style>
+        .botaoBuscaModal{
+            padding-top: 15px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            preparaModel();
+        });
+
+        function preparaModel() {
+            $("#busca-modal").modal();
+        };
+    </script>
+
+    <script th:inline="javascript">
+        var idPagina="entrada";
+    </script>
+
+</head>
+<body>
+<section id="content" class="container" layout:fragment="content">
+    <div class="container">
+        <div id="busca-modal" class="modal container fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Busca de Equipamento</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form method="get" th:action="@{/BuscaSerial}" th:object="${equipamentoForm}" name="cadastra-form">
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <label for="seria">Serial:</label>
+                                    <!--<input type="text" class="form-control" id="seria" autofocus="autofocus"  th:field="*{serial}" />-->
+                                    <input type="text" class="form-control" id="seria" autofocus="autofocus" />
+                                </div>
+                                <div class="col-md-2 botaoBuscaModal">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-md-12  form-group" >
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>Serial</th>
+                                            <th>Equipamento</th>
+                                            <th>Fabricante</th>
+                                            <th>Modelo</th>
+                                        </tr>
+                                        <tr th:each="equipamentoForm : ${equipamentosForm}">
+                                            <td th:text="${equipamentoForm.serial}" ></td>
+                                            <td th:text="${equipamentoForm.tipoEquipamento.descricao}"></td>
+                                            <td th:text="${equipamentoForm.fabricante}"></td>
+                                            <td th:text="${equipamentoForm.modelo}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="sim-modal" type="submit" class="btn btn-default" name="btn-id-equipamento" formmethod="post">Selecionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

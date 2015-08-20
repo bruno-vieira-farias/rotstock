@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BuscaEquipamentoUtils{
+public class SeletorBusca {
     @Autowired
     private EquipamentoFormService equipamentoFormService;
 
