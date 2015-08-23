@@ -28,7 +28,6 @@
                <hr class="soften"/>
            </div>
         </div>
-        <!--th:action="${#httpServletRequest.requestURI}"-->
         <form class="form-horizontal" method="post"  th:object="${equipamentoForm}" id="cadastra-edita-form" onsubmit="selecionaActionForm()">
             <input type="hidden" id="idEquipamento"  th:value="${id}" th:field="*{id}"/>
             <div class="row">

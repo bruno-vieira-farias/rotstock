@@ -16,7 +16,6 @@ public class SeletorBusca {
         boolean buscaComTipoEquipamento = equipamentoForm.getTipoEquipamento() != null;
 
         if(buscaComSerial){
-            //if (equipamentoRepository.exists(equipamentoForm.getSerial()));
             EquipamentoForm equipamentoFormPosBusca = equipamentoFormService.buscaEquipamentoPorSerial(equipamentoForm.getSerial());
             return addEquipamentoFormList(equipamentoFormPosBusca);
         }else if(buscaComLocal & buscaComTipoEquipamento){

@@ -39,7 +39,7 @@ public class ManterEquipamentoController {
     public String mostraTelaCadastro(EquipamentoForm equipamentoForm, ModelMap modelMap) {
         equipamentoForm.setLabelBotao("Cadastrar");
         equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
-        return "cadastro-edicao";
+        return "crudEquipamento/cadastro-edicao";
     }
 
     @RequestMapping(value = "/CadastrarEquipamento" ,method = RequestMethod.POST)
@@ -47,7 +47,7 @@ public class ManterEquipamentoController {
         equipamentoForm.setLabelBotao("Cadastrar");
         equipamentoForm.setLabelPrincipal("Cadastro de Equipamentos");
         if (bindingResult.hasErrors()) {
-            return "cadastro-edicao";
+            return "crudEquipamento/cadastro-edicao";
         }
             equipamentoFormService.persisteEquipamento(equipamentoForm);
             modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
@@ -61,13 +61,13 @@ public class ManterEquipamentoController {
         equipamentoForm.setLabelPrincipal("Alteração de Equipamentos");
 
        modelMap.addAttribute("equipamentoForm",equipamentoForm);
-        return "cadastro-edicao";
+        return "crudEquipamento/cadastro-edicao";
     }
 
     @RequestMapping(value = "/EditarEquipamento" ,method = RequestMethod.POST)
     public String editaEquipamento(@Valid EquipamentoForm equipamentoForm, BindingResult bindingResult, RedirectAttributes modelMap) {
         if (bindingResult.hasErrors()) {
-            return "cadastro-edicao";
+            return "crudEquipamento/cadastro-edicao";
         }
         equipamentoFormService.alteraEquipamento(equipamentoForm);
         modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi alterado com sucesso");
@@ -77,13 +77,13 @@ public class ManterEquipamentoController {
 
     @RequestMapping(value = "/BuscaEquipamento",method = RequestMethod.GET)
     public String buscaVazia(EquipamentoForm equipamentoForm ,ModelMap modelMap) {
-        return "busca";
+        return "crudEquipamento/busca";
     }
 
     @RequestMapping(value = "/BuscaEquipamentoCom",method = RequestMethod.GET)
     public String buscaComResultado(EquipamentoForm equipamentoForm,ModelMap modelMap) {
         modelMap.addAttribute("equipamentosForm", seletorBusca.buscaEquipamento(equipamentoForm));
-        return "busca";
+        return "crudEquipamento/busca";
     }
 
     @RequestMapping(value ="/RemoveEquipamento" ,method = RequestMethod.POST)
