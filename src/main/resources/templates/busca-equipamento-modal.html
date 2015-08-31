@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layoutDecorator/mainDecorator">
 <head>
-    <!--<meta charset="utf-8" />-->
     <style>
         .botaoBuscaModal{
             padding-top: 15px;
@@ -10,6 +9,20 @@
     <script type="text/javascript">
         $(function () {
             $("#busca-modal").modal();
+        });
+
+        $(function () {
+            $("#botao-busca").click(function(){
+                var complemento = "SID01" ;
+                var urlConsulta = "/consultaSerial?serial=" + complemento;
+                    $.get(urlConsulta, function(data, status){
+                    $("#serial-text").text(data.serial);
+                    $("#equipamento-text").text(data.tipoEquipamento);
+                    $("#fabricante-text").text(data.fabricante);
+                    $("#modelo-text").text(data.modelo);
+//                    console.debug(data);
+                });
+            });
         });
     </script>
 </head>
@@ -33,7 +46,7 @@
                                     <input type="text" class="form-control" id="serial" autofocus="autofocus" th:field="*{serial}" />
                                 </div>
                                 <div class="col-md-2 botaoBuscaModal">
-                                    <button type="submit" class="btn btn-primary btn-lg">
+                                    <button id="botao-busca" type="button" class="btn btn-primary btn-lg">
                                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                     </button>
                                 </div>
@@ -48,10 +61,10 @@
                                             <th>Modelo</th>
                                         </tr>
                                         <tr>
-                                            <td th:text="${equipamentoForm.serial}" ></td>
-                                            <td th:text="${equipamentoForm.tipoEquipamento != null} ? ${equipamentoForm.tipoEquipamento.descricao}"></td>
-                                            <td th:text="${equipamentoForm.fabricante}"></td>
-                                            <td th:text="${equipamentoForm.modelo}"></td>
+                                            <td><span id="serial-text"></span></td>
+                                            <td><span id="equipamento-text"></span></td>
+                                            <td><span id="fabricante-text"></span></td>
+                                            <td><span id="modelo-text"></span></td>
                                         </tr>
                                     </table>
                                 </div>
