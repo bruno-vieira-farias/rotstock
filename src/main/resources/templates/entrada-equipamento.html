@@ -28,29 +28,31 @@
                 <hr class="soften"/>
             </div>
         </div>
-        <form class="form-horizontal" method="get" th:object="${equipamentoForm}">
+        <form class="form-horizontal" method="post" th:action="@{/DarEntradaEquipamento}" th:object="${itemEstoqueRotativoForm}">
+            <input type="hidden" th:field="*{equipamento.id}" />
+
         <div class="sub-container bordas">
             <div class="row">
                 <div class="col-md-4">
                     <label for="serial">Serial:</label>
-                    <input type="text" class="form-control" id="serial" disabled="disabled" th:field="*{serial}" />
+                    <input type="text" class="form-control" id="serial" disabled="disabled" th:field="*{equipamento.serial}" />
                 </div>
                 <div class="col-md-5">
                     <label for="tipo-equipamento">Tipo de Equipamento:</label>
-                    <input type="text" class="form-control" id="tipo-equipamento" disabled="disabled" th:field="*{tipoEquipamento.descricao}" />
+                    <input type="text" class="form-control" id="tipo-equipamento" disabled="disabled" th:field="*{tipoEquipamento}"/>
                 </div>
                 <div class="col-md-3 botaoAlihamento">
-                    <button type="submit" data-toggle="modal" class="form-control btn btn-primary" th:formaction="@{/EntradaEquipamento}">Alterar Equipamento</button>
+                    <button type="submit" data-toggle="modal" class="form-control btn btn-primary" th:formaction="@{/EntradaEquipamentoSemEquipamento}">Alterar Equipamento</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <label for="fabricante">Fabricante:</label>
-                    <input type="text" class="form-control" id="fabricante" disabled="disabled" th:field="*{fabricante.descricao}"/>
+                    <input type="text" class="form-control" id="fabricante" disabled="disabled" th:field="*{equipamento.fabricante}"/>
                 </div>
                 <div class="col-md-4">
                     <label for="modelo">Modelo:</label>
-                    <input type="text" class="form-control" id="modelo" disabled="disabled" th:field="*{modelo}"/>
+                    <input type="text" class="form-control" id="modelo" disabled="disabled" th:field="*{equipamento.modelo}"/>
                 </div>
                 <div class="col-md-4">
                     <label for="local">Local:</label>
@@ -61,7 +63,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="status">Status</label>
-                    <select class="form-control"  id="status">
+                    <select class="form-control"  id="status" th:field="*{status}">
                         <option selected="selected" value=""> ---Selecione uma opção---</option>
                         <option th:each="status : ${statusItemRotativo}"
                                 th:value="${status}"
@@ -71,7 +73,7 @@
                 </div>
                 <div class="col-md-8">
                     <label for="finalidade">Finalidade</label>
-                    <select class="form-control"  id="finalidade">
+                    <select class="form-control"  id="finalidade" th:field="*{finalidade}">
                         <option selected="selected" value=""> ---Selecione uma opção---</option>
                         <option th:each="finalidade : ${finalidades}"
                                 th:value="${finalidade}"
@@ -82,7 +84,7 @@
             </div>
 
             <label for="defeito">Defeito</label>
-            <textarea id="defeito" class="form-control" name="textarea" rows="5" cols="50"></textarea>
+            <textarea id="defeito" class="form-control" name="textarea" rows="5" cols="50" th:field="*{defeito}"></textarea>
 
             <div class="row" >
                 <div class="col-md-12  form-group" >
