@@ -11,7 +11,7 @@ public class ItemEstoqueRotativoForm {
     private Equipamento equipamento;
     private StatusItemEstoqueRotativo status;
     private TipoEquipamento tipoEquipamento;
-    private Local local;
+
 
     public String getDefeito() {
         return defeito;
@@ -51,13 +51,5 @@ public class ItemEstoqueRotativoForm {
 
     public void setTipoEquipamento(TipoEquipamento tipoEquipamento) {
         this.tipoEquipamento = tipoEquipamento;
-    }
-
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
     }
 }

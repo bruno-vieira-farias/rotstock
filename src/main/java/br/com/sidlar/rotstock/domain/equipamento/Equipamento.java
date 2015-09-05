@@ -1,7 +1,6 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
 import br.com.sidlar.rotstock.domain.Local;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -64,6 +63,8 @@ abstract public class Equipamento {
     public Proprietario getProprietario() {
         return proprietario;
     }
+
+    abstract public TipoEquipamento getTipoEquipamento();
 
     abstract public String getInformacoesEspecificas();
 

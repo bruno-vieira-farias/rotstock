@@ -12,16 +12,23 @@
         });
 
         $(function () {
+            $("#btn-selecionar").click(function(){
+                idEquipamento = $("#id-equipamento").val();
+                if(idEquipamento != "") {
+                    $("#formulario").submit();
+                }
+            });
+        });
+        $(function () {
             $("#botao-busca").click(function(){
                 var complemento = $("#serial").val() ;
                 var urlConsulta = "/consultaSerial?serial=" + complemento;
                     $.get(urlConsulta, function(data, status){
-                    $("#id-text").val(data.id);
+                    $("#id-equipamento").val(data.id);
                     $("#serial-text").text(data.serial);
                     $("#equipamento-text").text(data.tipoEquipamento);
                     $("#fabricante-text").text(data.fabricante);
                     $("#modelo-text").text(data.modelo);
-//                    console.debug(data);
                 });
             });
         });
@@ -33,11 +40,10 @@
         <div id="busca-modal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="get" th:action="@{/BuscaEquipamentoSerial}" th:object="${equipamentoForm}" name="cadastra-form">
-                        <input id="id-text" type="hidden" th:field="*{id}"/>
+                    <form method="get" th:action="@{/EntradaEquipamentoComEquipamento}" name="cadastra-form" id="formulario">
+                        <input id="id-equipamento" type="hidden" name="id-equipamento"/>
 
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title">Seleção de Equipamento</h4>
                         </div>
                         <div class="modal-body">
@@ -72,7 +78,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="sim-modal" type="submit" class="btn btn-primary btn-lg" name="btn-id-equipamento" formmethod="get" th:formaction="@{/EntradaEquipamentoComEquipamento}">Selecionar</button>
+                        <button id="btn-selecionar" type="button" class="btn btn-primary btn-lg" name="btn-id-equipamento">Selecionar</button>
                     </div>
                     </form>
                 </div>

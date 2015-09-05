@@ -21,4 +21,9 @@ public class LeitorCheque extends Equipamento {
     public String getInformacoesEspecificas() {
         return "";
     }
+
+    @Override
+    public TipoEquipamento getTipoEquipamento() {
+        return TipoEquipamento.LEITOR_CHEQUE;
+    }
 }

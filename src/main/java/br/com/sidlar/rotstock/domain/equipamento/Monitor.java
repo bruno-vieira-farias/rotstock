@@ -30,4 +30,9 @@ public class Monitor extends Equipamento{
     public String getInformacoesEspecificas() {
         return polegadas.getDescricao() + " polegadas";
     }
+
+    @Override
+    public TipoEquipamento getTipoEquipamento() {
+        return TipoEquipamento.MONITOR;
+    }
 }

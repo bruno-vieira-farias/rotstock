@@ -29,6 +29,7 @@
             </div>
         </div>
         <form class="form-horizontal" method="post" th:action="@{/DarEntradaEquipamento}" th:object="${itemEstoqueRotativoForm}">
+            <input type="hidden" th:field="*{equipamento}" />
             <input type="hidden" th:field="*{equipamento.id}" />
 
         <div class="sub-container bordas">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="col-md-5">
                     <label for="tipo-equipamento">Tipo de Equipamento:</label>
-                    <input type="text" class="form-control" id="tipo-equipamento" disabled="disabled" th:field="*{tipoEquipamento}"/>
+                    <input type="text" class="form-control" id="tipo-equipamento" disabled="disabled" th:field="*{equipamento.tipoEquipamento}"/>
                 </div>
                 <div class="col-md-3 botaoAlihamento">
                     <button type="submit" data-toggle="modal" class="form-control btn btn-primary" th:formaction="@{/EntradaEquipamentoSemEquipamento}">Alterar Equipamento</button>
@@ -56,7 +57,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="local">Local:</label>
-                    <input type="text" class="form-control" id="local" disabled="disabled" th:field="*{local.nome}" />
+                    <input type="text" class="form-control" id="local" disabled="disabled" th:field="*{equipamento.local.nome}" />
                 </div>
             </div>
         </div>

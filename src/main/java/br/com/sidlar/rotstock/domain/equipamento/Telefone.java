@@ -30,4 +30,9 @@ public class Telefone extends Equipamento{
     public String getInformacoesEspecificas() {
         return (semFio?"Sem Fio":"Com Fio") + ", "+(ip?"com conectividade ip":"sem conectividade ip");
     }
+
+    @Override
+    public TipoEquipamento getTipoEquipamento() {
+        return TipoEquipamento.TELEFONE;
+    }
 }

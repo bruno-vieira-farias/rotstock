@@ -44,4 +44,9 @@ public class Computador extends Equipamento {
     public String getInformacoesEspecificas() {
         return processador.getDescricao() + " , " + memoria.getDescricao() + " de Ram , " + hd.getDescricao() + " de Hd.";
     }
+
+    @Override
+    public TipoEquipamento getTipoEquipamento() {
+        return TipoEquipamento.COMPUTADOR;
+    }
 }

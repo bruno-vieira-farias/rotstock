@@ -43,4 +43,9 @@ public class Impressora extends Equipamento{
     public String getInformacoesEspecificas() {
         return  (colorida?"Colorida":"Preto e Branco") + " , " + tipoImpressora.getDescricao();
     }
+
+    @Override
+    public TipoEquipamento getTipoEquipamento() {
+        return TipoEquipamento.IMPRESSORA;
+    }
 }

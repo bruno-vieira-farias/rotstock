@@ -26,4 +26,9 @@ public class Mouse extends Equipamento{
     public String getInformacoesEspecificas() {
         return "Conexão " + tipoConexao.getDescricao();
     }
+
+    @Override
+    public TipoEquipamento getTipoEquipamento() {
+        return TipoEquipamento.MOUSE;
+    }
 }
