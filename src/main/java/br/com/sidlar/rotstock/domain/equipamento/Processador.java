@@ -8,7 +8,7 @@ public enum Processador {
     I7("i7"),
     PENTIUM_4("Pentium 4");
 
-    String Descricao;
+    private String Descricao;
 
     Processador(String descricao) {
         Descricao = descricao;

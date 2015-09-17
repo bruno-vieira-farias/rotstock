@@ -13,23 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class EntradaEquipamentoController {
     @Autowired
-    EquipamentoRepository equipamentoRepository;
+    private EquipamentoRepository equipamentoRepository;
 
     @Autowired
-    EstoqueRotativoService estoqueRotativoService;
+    private EstoqueRotativoService estoqueRotativoService;
 
     @RequestMapping(value = "/EntradaEquipamentoSemEquipamento", method = RequestMethod.GET)
     public String goHome(ItemEstoqueRotativoForm itemEstoqueRotativoForm) {
         return "busca-equipamento-modal";
     }
 
-//    @RequestMapping(value = "/BuscaEquipamentoSerial",method = RequestMethod.GET)
-//    public String buscaComResultado(ItemEstoqueRotativoForm itemEstoqueRotativoForm) {
-//        itemEstoqueRotativoForm = estoqueRotativoService.buscaPorSerialEquipamento(itemEstoqueRotativoForm.getEquipamento().getSerial());
-//        return "busca-equipamento-modal";
-//    }
-
-    //Pay Atention in this Sheat
     @RequestMapping(value = "/EntradaEquipamentoComEquipamento",method = RequestMethod.GET)
     public String mostraTelaPopulEquipamentoForm(@RequestParam("id-equipamento") int idEquipamento , ItemEstoqueRotativoForm itemEstoqueRotativoForm) {
             itemEstoqueRotativoForm.setEquipamento(equipamentoRepository.buscaPorId(idEquipamento));

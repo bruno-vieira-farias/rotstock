@@ -13,7 +13,7 @@ public enum Fabricante {
     TOSHIBA("Semp Toshiba"),
     GENERICO("Generico");
 
-    String descricao;
+    private String descricao;
 
     Fabricante(String descricao) {
         this.descricao = descricao;

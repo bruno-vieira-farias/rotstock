@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public class LocalRepository {
-
     @PersistenceContext
     private EntityManager em;
 

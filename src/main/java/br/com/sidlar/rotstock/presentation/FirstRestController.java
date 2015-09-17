@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RestController
 public class FirstRestController {
     @Autowired
-    EquipamentoFormService equipamentoFormService;
+    private EquipamentoFormService equipamentoFormService;
 
     @RequestMapping(value ="/consultaSerial" ,method = RequestMethod.GET)
     public EquipamentoForm consultaSerial(@RequestParam("serial") String serial) {

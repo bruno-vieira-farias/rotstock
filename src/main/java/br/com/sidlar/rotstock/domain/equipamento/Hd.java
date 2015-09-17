@@ -7,7 +7,7 @@ public enum Hd {
     QUINHENTOS("500GB"),
     MIL("1TB");
 
-    String descricao;
+    private String descricao;
 
     Hd(String descricao) {
         this.descricao = descricao;

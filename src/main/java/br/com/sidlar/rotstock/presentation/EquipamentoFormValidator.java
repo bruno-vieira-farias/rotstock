@@ -9,7 +9,7 @@ import org.springframework.validation.Validator;
 @Component
 public class EquipamentoFormValidator implements Validator {
     @Autowired
-    EquipamentoRepository equipamentoRepository;
+    private EquipamentoRepository equipamentoRepository;
 
     @Override
     public boolean supports(Class<?> clazz) {

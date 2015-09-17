@@ -12,10 +12,10 @@ import java.util.List;
 @Component
 public class EquipamentoService {
     @Autowired
-    EquipamentoFactory equipamentoFactory;
+    private EquipamentoFactory equipamentoFactory;
 
     @Autowired
-    EquipamentoRepository equipamentoRepository;
+    private EquipamentoRepository equipamentoRepository;
 
     public void persisteEquipamento(EquipamentoModel equipamentoModel) {
         Equipamento equipamento = criarEquipamento(equipamentoModel);

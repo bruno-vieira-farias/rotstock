@@ -33,7 +33,7 @@ public class ManterEquipamentoController {
     }
 
     @Autowired
-    SeletorBusca seletorBusca;
+    private SeletorBusca seletorBusca;
 
     @RequestMapping(value="/CadastroEquipamento",method = RequestMethod.GET)
     public String mostraTelaCadastro(EquipamentoForm equipamentoForm, ModelMap modelMap) {

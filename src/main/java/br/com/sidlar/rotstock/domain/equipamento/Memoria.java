@@ -7,7 +7,7 @@ public enum Memoria {
     QUATRO_GB("4GB"),
     OITO_GB("8GB");
 
-    String descricao;
+    private String descricao;
 
     Memoria(String descricao) {
         this.descricao = descricao;

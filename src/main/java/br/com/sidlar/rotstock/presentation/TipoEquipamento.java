@@ -9,8 +9,8 @@ public enum TipoEquipamento {
     LEITOR_CHEQUE("Leitor de Cheque","equipamento-leitor_cheque"),
     TELEFONE("Telefone","equipamento-telefone");
 
-    String descricao;
-    String categoria;
+    private String descricao;
+    private String categoria;
 
     TipoEquipamento(String descricao,String categoria) {
         this.categoria = categoria;

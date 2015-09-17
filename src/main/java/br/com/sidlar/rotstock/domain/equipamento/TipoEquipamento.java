@@ -9,7 +9,7 @@ public enum TipoEquipamento {
     LEITOR_CHEQUE("Leitor de Cheque"),
     TELEFONE("Telefone");
 
-    String descricao;
+    private String descricao;
 
     TipoEquipamento(String descricao) {
         this.descricao = descricao;

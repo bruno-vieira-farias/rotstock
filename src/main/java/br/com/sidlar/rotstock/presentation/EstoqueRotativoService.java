@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EstoqueRotativoService {
     @Autowired
-    EquipamentoService equipamentoService;
+    private EquipamentoService equipamentoService;
 
     public ItemEstoqueRotativoForm buscaPorSerialEquipamento(String serial) {
         EquipamentoModel equipamentoModel = equipamentoService.buscaPorSerial(serial);
