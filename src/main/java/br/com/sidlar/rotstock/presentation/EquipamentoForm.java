@@ -5,6 +5,10 @@ import br.com.sidlar.rotstock.domain.equipamento.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Classe que representa o objeto de domino Equipamento na camada de apresentação.
+ */
+
 public class EquipamentoForm {
     private Integer id;
 

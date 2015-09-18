@@ -50,7 +50,7 @@ public class ManterEquipamentoController {
             return "crudEquipamento/cadastro-edicao";
         }
             equipamentoFormService.persisteEquipamento(equipamentoForm);
-            modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
+            modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().getDescricao() + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
         return "redirect:/CadastroEquipamento";
     }
 
@@ -70,7 +70,7 @@ public class ManterEquipamentoController {
             return "crudEquipamento/cadastro-edicao";
         }
         equipamentoFormService.alteraEquipamento(equipamentoForm);
-        modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().descricao + " de serial " + equipamentoForm.getSerial() + " foi alterado com sucesso");
+        modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().getDescricao() + " de serial " + equipamentoForm.getSerial() + " foi alterado com sucesso");
 
         return "redirect:/CadastroEquipamento";
     }

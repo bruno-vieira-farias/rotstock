@@ -1,15 +1,17 @@
 package br.com.sidlar.rotstock.presentation;
 
-
 import br.com.sidlar.rotstock.domain.equipamento.EquipamentoModel;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * Classe resposavel pela conversão do objeto Equipamento para a transição deste objeto para a camada
+ * de dominio para a apresentação e vice-versa.
+ */
 
 @Component
 class ConvertEquipamento {
-
     protected EquipamentoModel toEquipamentoModel(EquipamentoForm equipamentoForm) {
         return new EquipamentoModel(
                 equipamentoForm.getId(),
@@ -56,11 +58,10 @@ class ConvertEquipamento {
     }
 
     protected List<EquipamentoForm> toListOfEquipamentoForm(List<EquipamentoModel> listaEquipamentoModel) {
-        ArrayList<EquipamentoForm> listaEquipamanentoForm = new ArrayList<>();
-
-        for (EquipamentoModel equipamentoModel : listaEquipamentoModel) {
-            listaEquipamanentoForm.add(toEquipamentoForm(equipamentoModel));
-        }
+        List<EquipamentoForm> listaEquipamanentoForm =
+                listaEquipamentoModel.stream()
+                        .map(this::toEquipamentoForm)
+                        .collect(Collectors.toList());
         return listaEquipamanentoForm;
     }
 }

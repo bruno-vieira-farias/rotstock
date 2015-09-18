@@ -1,17 +1,18 @@
 package br.com.sidlar.rotstock.presentation;
 
 import br.com.sidlar.rotstock.domain.Finalidade;
-import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.StatusItemEstoqueRotativo;
-import br.com.sidlar.rotstock.domain.equipamento.Equipamento;
+
+/**
+ * Classe que representa o objeto de domino ItemEstoqueRotativo no formulario html do de entrada de equipamentos.
+ */
 
 public class ItemEstoqueRotativoForm {
     private String defeito;
     private Finalidade finalidade;
-    private Equipamento equipamento;
+    private EquipamentoForm equipamentoForm;
     private StatusItemEstoqueRotativo status;
     private TipoEquipamento tipoEquipamento;
-
 
     public String getDefeito() {
         return defeito;
@@ -29,12 +30,12 @@ public class ItemEstoqueRotativoForm {
         this.finalidade = finalidade;
     }
 
-    public Equipamento getEquipamento() {
-        return equipamento;
+    public EquipamentoForm getEquipamentoForm() {
+        return equipamentoForm;
     }
 
-    public void setEquipamento(Equipamento equipamento) {
-        this.equipamento = equipamento;
+    public void setEquipamentoForm(EquipamentoForm equipamento) {
+        this.equipamentoForm = equipamento;
     }
 
     public StatusItemEstoqueRotativo getStatus() {

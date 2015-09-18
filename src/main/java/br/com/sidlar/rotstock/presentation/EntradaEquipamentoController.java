@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class EntradaEquipamentoController {
     @Autowired
-    private EquipamentoRepository equipamentoRepository;
+    private EquipamentoFormService equipamentoFormService;
 
     @Autowired
     private EstoqueRotativoService estoqueRotativoService;
@@ -25,7 +25,7 @@ public class EntradaEquipamentoController {
 
     @RequestMapping(value = "/EntradaEquipamentoComEquipamento",method = RequestMethod.GET)
     public String mostraTelaPopulEquipamentoForm(@RequestParam("id-equipamento") int idEquipamento , ItemEstoqueRotativoForm itemEstoqueRotativoForm) {
-            itemEstoqueRotativoForm.setEquipamento(equipamentoRepository.buscaPorId(idEquipamento));
+            itemEstoqueRotativoForm.setEquipamentoForm(equipamentoFormService.buscaEquipamentoPorId(idEquipamento));
         return "entrada-equipamento";
     }
 

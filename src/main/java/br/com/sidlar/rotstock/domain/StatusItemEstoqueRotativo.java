@@ -1,8 +1,8 @@
 package br.com.sidlar.rotstock.domain;
 
 public enum StatusItemEstoqueRotativo {
-    EM_AVALIACAO("Em avaliação"),
-    AGUARDANDO_PECA("Aguardando_Peça"),
+    EM_AVALIACAO("Em avaliaÃ§Ã£o"),
+    AGUARDANDO_PECA("Aguardando_PeÃ§a"),
     PRONTO("Pronto");
 
     private String descricao;
