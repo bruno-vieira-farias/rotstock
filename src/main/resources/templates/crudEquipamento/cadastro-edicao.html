@@ -6,9 +6,12 @@
         .equipamento{
             padding-top: 17px
         }
-        [class*="equipamento-"]{
+        .container-visualizacao-dinamica {
             display: none;
         }
+        /*[class*="equipamento-"]{*/
+            /*display: none;*/
+        /*}*/
     </style>
     <script th:inline="javascript">
         var idPagina="cadastro";
@@ -85,13 +88,12 @@
                                 <option  selected="selected" value=""> ---Selecione uma opção---</option>
                                 <option th:each="tipoEquipamento : ${tiposEquipamento}"
                                         th:value="${tipoEquipamento}"
-                                        th:text="${tipoEquipamento.descricao}"
-                                        data-th-attr="data-container-class=${tipoEquipamento.categoria}">Equipamento</option>
+                                        th:text="${tipoEquipamento.descricao}">Equipamento</option>
                             </select>
                             <label id="msn-validacao-tipo-equipamento" class="control-label" th:if="${#fields.hasErrors('tipoEquipamento')}" th:errors="*{tipoEquipamento}">Tipo Equipamento Error</label>
                         </div>
                     </div>
-                    <div class="equipamento equipamento-computador container-escondido">
+                    <div class="equipamento container-visualizacao-dinamica COMPUTADOR">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('processador')} ? 'has-error' : ''">
                             <label for="processador">Processador</label>
                             <select class="form-control"  id="processador" th:field="*{processador}">
@@ -126,7 +128,7 @@
                             <label id="msn-validacao-hd" class="control-label" th:if="${#fields.hasErrors('hd')}" th:errors="*{hd}">Hd Error</label>
                         </div>
                     </div>
-                    <div class="equipamento equipamento-impressora container-escondido">
+                    <div class="equipamento container-visualizacao-dinamica IMPRESSORA">
                         <div class="form-group" th:classappend="${#fields.hasErrors('colorida')} ? 'has-error' : ''">
                             <label>Colorida</label>
                             <div class="radio" >
@@ -149,7 +151,7 @@
                             <label id="msn-validacao-tipo-impressora" class="control-label" th:if="${#fields.hasErrors('tipoImpressora')}" th:errors="*{tipoImpressora}">TipoImpressora Error</label>
                         </div>
                     </div>
-                    <div class="equipamento equipamento-monitor container-escondido">
+                    <div class="equipamento  container-visualizacao-dinamica MONITOR">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('polegadas')} ? 'has-error' : ''">
                             <label for="polegada">Polegadas</label>
                             <select id="polegada" class="form-control" th:field="*{polegadas}">
@@ -162,7 +164,7 @@
                             <label  id="msn-validacao-polegadas" class="control-label" th:if="${#fields.hasErrors('polegadas')}" th:errors="*{polegadas}">Polegadas Error</label>
                         </div>
                     </div>
-                    <div class="equipamento equipamento-teclado equipamento-mouse container-escondido">
+                    <div class="equipamento  container-visualizacao-dinamica TECLADO MOUSE">
                         <div class="form-group"  th:classappend="${#fields.hasErrors('tipoConexao')} ? 'has-error' : ''">
                             <label for="tipo-conexao">Conexao</label>
                             <select class="form-control" id="tipo-conexao" th:field="*{tipoConexao}">
@@ -175,7 +177,7 @@
                             <label id="msn-validacao-tipo-conexao" class="control-label" th:if="${#fields.hasErrors('tipoConexao')}" th:errors="*{tipoConexao}">Tipo Conexao Error</label>
                         </div>
                     </div>
-                    <div class="equipamento equipamento-telefone container-escondido">
+                    <div class="equipamento container-visualizacao-dinamica TELEFONE ">
                         <div class="form-group" th:classappend="${#fields.hasErrors('semFio')} ? 'has-error' : ''">
                             <label>Sem Fio</label>
                             <div class="radio" >

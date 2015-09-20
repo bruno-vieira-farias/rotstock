@@ -1,7 +1,6 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
 import br.com.sidlar.rotstock.domain.Local;
-import br.com.sidlar.rotstock.presentation.TipoEquipamento;
 
 public class EquipamentoModel {
     private Integer id;

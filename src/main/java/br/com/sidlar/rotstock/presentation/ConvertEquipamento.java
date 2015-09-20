@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Classe resposavel pela convers„o do objeto Equipamento para a transiÁ„o deste objeto para a camada
- * de dominio para a apresentaÁ„o e vice-versa.
+ * Classe respons√°vel pela convers√£o do objeto EquipamentoForm e EquipamentoModel, possibilitando a transi√ß√£oo
+ * deste objeto entre as camadas de dominio e apresenta√ß√£o
  */
 
 @Component

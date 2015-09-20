@@ -18,32 +18,33 @@ $(function (){
     removeMensagemErroSemFio();
 });
 function geraVisualizacaoFormulario(){
-    var selectedContainerClass =  $("#tipo-equipamento").find("option:selected").data("container-class");
-    $("." + selectedContainerClass).fadeIn();
-    $("#msg-salvar").delay(8000).fadeOut(900);
+    var selectedContainerClass = $("#tipo-equipamento").val();
+    if(selectedContainerClass != "") {
+        $("." + selectedContainerClass).fadeIn();
+        $("#msg-salvar").delay(8000).fadeOut(900);
+    }
 }
 function atualizaVisualizacaoFormulario(){
     $("#tipo-equipamento").change(function(){
-        var $tipoEquipamento = $(this);
-        $tipoEquipamento.prop('disabled', true);
-        $("#idEquipamento").prop('disabled', false);
-        var selectedContainerClass = $(this).find("option:selected").data("container-class");
-        var nenhumVisivel = $("[class*='equipamento-']:visible").length == 0;
+        var tipoEquipamento = $(this);
+        tipoEquipamento.prop('disabled', true);
+        var selectedContainerClass = tipoEquipamento.val();
+        var nenhumVisivel = $("[class*='container-visualizacao-dinamica']:visible").length == 0;
         if(nenhumVisivel) {
             $("." + selectedContainerClass).fadeIn(500);
-            $tipoEquipamento.prop('disabled', false);
-            $tipoEquipamento.focus();
+            tipoEquipamento.prop('disabled', false);
+            tipoEquipamento.focus();
             return;
         }
-        $("[class*='equipamento-']:visible").fadeOut(1 , function(){
+        $("[class*='container-visualizacao-dinamica']:visible").fadeOut(1 , function(){
             $("." + selectedContainerClass).fadeIn(500);
-            $tipoEquipamento.prop('disabled', false);
-            $tipoEquipamento.focus();
+            tipoEquipamento.prop('disabled', false);
+            tipoEquipamento.focus();
         });
     });
 }
 function removeMensagemErroFabricante(){
-    $("#fabricante").change(function(){5
+    $("#fabricante").change(function(){
         $(this).closest("div").removeClass("has-error");
         $("#msn-validacao-fabricante").replaceWith("");
     });

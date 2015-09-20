@@ -9,16 +9,14 @@
     <script type="text/javascript">
         $(function () {
             $("#busca-modal").modal();
-        });
 
-        $(function () {
-            $("#btn-selecionar").click(function(){
+            $("form").on("submit", function () {
                 idEquipamento = $("#id-equipamento").val();
-                if(idEquipamento != "") {
-                    $("#formulario").submit();
+                if(idEquipamento == "") {
+                    return false;
                 }
+                });
             });
-        });
         $(function () {
             $("#botao-busca").click(function(){
                 var complemento = $("#serial").val() ;
@@ -78,7 +76,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="btn-selecionar" type="button" class="btn btn-primary btn-lg" name="btn-id-equipamento">Selecionar</button>
+                        <button id="btn-selecionar" type="submit" class="btn btn-primary btn-lg" name="btn-id-equipamento">Selecionar</button>
                     </div>
                     </form>
                 </div>

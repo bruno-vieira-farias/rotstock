@@ -2,7 +2,6 @@ package br.com.sidlar.rotstock.domain.equipamento;
 
 import br.com.sidlar.rotstock.domain.equipamento.fabrica.CaracteristicasBasicasEquipamento;
 import br.com.sidlar.rotstock.domain.equipamento.fabrica.EquipamentoFactory;
-import br.com.sidlar.rotstock.presentation.TipoEquipamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

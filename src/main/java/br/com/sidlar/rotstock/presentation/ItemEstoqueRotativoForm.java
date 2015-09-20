@@ -2,6 +2,7 @@ package br.com.sidlar.rotstock.presentation;
 
 import br.com.sidlar.rotstock.domain.Finalidade;
 import br.com.sidlar.rotstock.domain.StatusItemEstoqueRotativo;
+import br.com.sidlar.rotstock.domain.equipamento.TipoEquipamento;
 
 /**
  * Classe que representa o objeto de domino ItemEstoqueRotativo no formulario html do de entrada de equipamentos.

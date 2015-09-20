@@ -19,7 +19,6 @@ public class EquipamentoFormValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         EquipamentoForm equipamentoForm = (EquipamentoForm) target;
-
         String serial = equipamentoForm.getSerial();
 
         if (!serial.equalsIgnoreCase("") && equipamentoForm.getId() == null) {
