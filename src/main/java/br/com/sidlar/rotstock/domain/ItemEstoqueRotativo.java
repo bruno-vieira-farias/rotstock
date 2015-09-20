@@ -2,21 +2,21 @@ package br.com.sidlar.rotstock.domain;
 
 import br.com.sidlar.rotstock.domain.Usuario.Usuario;
 import br.com.sidlar.rotstock.domain.equipamento.Equipamento;
-import org.joda.time.DateTime;
+import java.util.Date;
 
 public class ItemEstoqueRotativo {
-    private DateTime dataEntrada;
+    private Date dataEntrada;
     private String defeito;
     private Usuario usuarioEntrada;
     private Finalidade finalidade;
     private Equipamento equipamento;
     private StatusItemEstoqueRotativo status;
 
-    public DateTime getDataEntrada() {
+    public Date getDataEntrada() {
         return dataEntrada;
     }
 
-    public void setDataEntrada(DateTime dataEntrada) {
+    public void setDataEntrada(Date dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
 

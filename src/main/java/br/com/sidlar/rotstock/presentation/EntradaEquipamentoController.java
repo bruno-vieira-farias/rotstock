@@ -31,7 +31,7 @@ public class EntradaEquipamentoController {
 
     @RequestMapping(value = "/DarEntradaEquipamento",method = RequestMethod.POST)
     public String darEntradaEquipamento(ItemEstoqueRotativoForm itemEstoqueRotativoForm){
-        //TODO Dar entrada no equipamanento
+            itemEstoqueRotativoForm.darEntrada();
         return "entrada-equipamento";
     }
 
