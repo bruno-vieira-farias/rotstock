@@ -16,6 +16,15 @@ public class ItemEstoqueRotativo {
         return dataEntrada;
     }
 
+    public ItemEstoqueRotativo(Date dataEntrada, String defeito, Usuario usuarioEntrada, Finalidade finalidade, Equipamento equipamento, StatusItemEstoqueRotativo status) {
+        this.dataEntrada = dataEntrada;
+        this.defeito = defeito;
+        this.usuarioEntrada = usuarioEntrada;
+        this.finalidade = finalidade;
+        this.equipamento = equipamento;
+        this.status = status;
+    }
+
     public void setDataEntrada(Date dataEntrada) {
         this.dataEntrada = dataEntrada;
     }

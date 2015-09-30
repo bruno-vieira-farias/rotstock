@@ -1,7 +1,6 @@
 package br.com.sidlar.rotstock.domain.equipamento;
 
 import br.com.sidlar.rotstock.domain.Local;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -19,6 +18,7 @@ public class Teclado extends Equipamento{
     public TipoConexao getTipoConexao() {
         return tipoConexao;
     }
+
     @Override
     public String getInformacoesEspecificas() {
         return "Conexão " + tipoConexao.getDescricao();

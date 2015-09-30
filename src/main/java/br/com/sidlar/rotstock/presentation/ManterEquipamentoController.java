@@ -3,6 +3,10 @@ package br.com.sidlar.rotstock.presentation;
 import br.com.sidlar.rotstock.domain.Local;
 import br.com.sidlar.rotstock.domain.LocalRepository;
 import br.com.sidlar.rotstock.domain.equipamento.*;
+import br.com.sidlar.rotstock.presentation.formularios.EquipamentoForm;
+import br.com.sidlar.rotstock.presentation.servicos.EquipamentoFormService;
+import br.com.sidlar.rotstock.presentation.servicos.EquipamentoFormValidator;
+import br.com.sidlar.rotstock.presentation.servicos.SeletorBusca;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -50,7 +55,10 @@ public class ManterEquipamentoController {
             return "crudEquipamento/cadastro-edicao";
         }
             equipamentoFormService.persisteEquipamento(equipamentoForm);
-            modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().getDescricao() + " de serial " + equipamentoForm.getSerial() + " foi salvo com sucesso");
+            modelMap.addFlashAttribute("mensagem", "O equipamento " +
+                    equipamentoForm.getEquipamentoEspecificacao().getTipoEquipamento().getDescricao() +
+                    " de serial " + equipamentoForm.getEquipamentoEspecificacao().getSerial() +
+                    " foi salvo com sucesso");
         return "redirect:/CadastroEquipamento";
     }
 
@@ -59,8 +67,7 @@ public class ManterEquipamentoController {
         equipamentoForm = equipamentoFormService.buscaEquipamentoPorId(idEquipamento);
         equipamentoForm.setLabelBotao("Alterar");
         equipamentoForm.setLabelPrincipal("Alteração de Equipamentos");
-
-       modelMap.addAttribute("equipamentoForm",equipamentoForm);
+        modelMap.addAttribute("equipamentoForm",equipamentoForm);
         return "crudEquipamento/cadastro-edicao";
     }
 
@@ -70,8 +77,9 @@ public class ManterEquipamentoController {
             return "crudEquipamento/cadastro-edicao";
         }
         equipamentoFormService.alteraEquipamento(equipamentoForm);
-        modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getTipoEquipamento().getDescricao() + " de serial " + equipamentoForm.getSerial() + " foi alterado com sucesso");
-
+        modelMap.addFlashAttribute("mensagem", "O equipamento " + equipamentoForm.getEquipamentoEspecificacao().getTipoEquipamento().getDescricao() +
+                " de serial " + equipamentoForm.getEquipamentoEspecificacao().getSerial() +
+                " foi alterado com sucesso");
         return "redirect:/CadastroEquipamento";
     }
 

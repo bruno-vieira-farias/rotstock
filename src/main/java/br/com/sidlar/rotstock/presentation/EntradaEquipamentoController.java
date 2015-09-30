@@ -2,7 +2,9 @@ package br.com.sidlar.rotstock.presentation;
 
 import br.com.sidlar.rotstock.domain.Finalidade;
 import br.com.sidlar.rotstock.domain.StatusItemEstoqueRotativo;
-import br.com.sidlar.rotstock.domain.equipamento.EquipamentoRepository;
+import br.com.sidlar.rotstock.presentation.formularios.ItemEstoqueRotativoForm;
+import br.com.sidlar.rotstock.presentation.servicos.EquipamentoFormService;
+import br.com.sidlar.rotstock.presentation.servicos.EstoqueRotativoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,13 +27,13 @@ public class EntradaEquipamentoController {
 
     @RequestMapping(value = "/EntradaEquipamentoComEquipamento",method = RequestMethod.GET)
     public String mostraTelaPopulEquipamentoForm(@RequestParam("id-equipamento") int idEquipamento , ItemEstoqueRotativoForm itemEstoqueRotativoForm) {
-            itemEstoqueRotativoForm.setEquipamentoForm(equipamentoFormService.buscaEquipamentoPorId(idEquipamento));
+            //itemEstoqueRotativoForm.setEquipamentoForm(equipamentoFormService.buscaEquipamentoPorId(idEquipamento));
         return "entrada-equipamento";
     }
 
     @RequestMapping(value = "/DarEntradaEquipamento",method = RequestMethod.POST)
     public String darEntradaEquipamento(ItemEstoqueRotativoForm itemEstoqueRotativoForm){
-            itemEstoqueRotativoForm.darEntrada();
+           // itemEstoqueRotativoForm.darEntrada();
         return "entrada-equipamento";
     }
 

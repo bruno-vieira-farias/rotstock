@@ -33,7 +33,6 @@ public class EquipamentoRepository {
 
         return em.createQuery(jpql, Equipamento.class).getResultList();
     }
-
     public List<Equipamento> buscaPorLocal(int idLocal) {
         String jpql ="SELECT i " +
                 "FROM Equipamento i WHERE i.local.id = :idLocal";

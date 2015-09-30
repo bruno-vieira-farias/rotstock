@@ -8,6 +8,7 @@ public enum Proprietario {
     Proprietario(String descricao) {
         this.descricao = descricao;
     }
+
     public String getDescricao() {
         return descricao;
     }

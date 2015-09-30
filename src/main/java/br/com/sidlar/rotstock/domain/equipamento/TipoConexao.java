@@ -11,6 +11,7 @@ public enum TipoConexao {
     TipoConexao(String descricao){
         this.descricao = descricao;
     }
+
     public String getDescricao() {
         return descricao;
     }

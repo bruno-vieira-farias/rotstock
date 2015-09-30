@@ -16,21 +16,21 @@ public class EquipamentoService {
     @Autowired
     private EquipamentoRepository equipamentoRepository;
 
-    public void persisteEquipamento(EquipamentoModel equipamentoModel) {
-        Equipamento equipamento = criarEquipamento(equipamentoModel);
+    public void persisteEquipamento(EquipamentoEspecificacao equipamentoEspecificacao) {
+        Equipamento equipamento = criarEquipamento(equipamentoEspecificacao);
         equipamentoRepository.gravaEquipamento(equipamento);
     }
 
-    public void alteraEquipamento(EquipamentoModel equipamentoModel) {
-        Equipamento equipamento = criarEquipamento(equipamentoModel);
+    public void alteraEquipamento(EquipamentoEspecificacao equipamentoEspecificacao) {
+        Equipamento equipamento = criarEquipamento(equipamentoEspecificacao);
         equipamentoRepository.alteraEquipamento(equipamento);
     }
 
-    public EquipamentoModel buscaPorId(int idEquipamento){
+    public EquipamentoEspecificacao buscaPorId(int idEquipamento){
        return convertEquipamentoModel(equipamentoRepository.buscaPorId(idEquipamento));
     }
 
-    public EquipamentoModel buscaPorSerial(String serial) {
+    public EquipamentoEspecificacao buscaPorSerial(String serial) {
        Equipamento equipamento = equipamentoRepository.buscaPorSerial(serial);
        if(equipamento != null){
            return convertEquipamentoModel(equipamento);
@@ -38,66 +38,66 @@ public class EquipamentoService {
         return null;
     }
 
-    public List<EquipamentoModel> buscaPorLocal(int idLocal) {
+    public List<EquipamentoEspecificacao> buscaPorLocal(int idLocal) {
         List<Equipamento> listaEquipamentos = equipamentoRepository.buscaPorLocal(idLocal);
         return convertToListEquipamentoModel(listaEquipamentos);
     }
 
-    public List<EquipamentoModel> buscaPorLocalAndTipoEquipamento(int idLocal,TipoEquipamento tipoEquipamento) {
+    public List<EquipamentoEspecificacao> buscaPorLocalAndTipoEquipamento(int idLocal,TipoEquipamento tipoEquipamento) {
         Class clazzTipoEquipamento = classPorTipoEquipamento(tipoEquipamento);
 
         List<Equipamento> listaEquipamentos = equipamentoRepository.buscaPorTipoEquipamentoLocal(clazzTipoEquipamento,idLocal);
         return convertToListEquipamentoModel(listaEquipamentos);
     }
 
-    public List<EquipamentoModel> buscaPorTipoEquipamento(TipoEquipamento tipoEquipamento) {
+    public List<EquipamentoEspecificacao> buscaPorTipoEquipamento(TipoEquipamento tipoEquipamento) {
         Class clazzTipoEquipamento = classPorTipoEquipamento(tipoEquipamento);
 
         List<Equipamento> listaEquipamentos = equipamentoRepository.buscaPorTipoEquipamento(clazzTipoEquipamento);
         return convertToListEquipamentoModel(listaEquipamentos);
     }
 
-    public List<EquipamentoModel> buscaTodosEquipamentos() {
+    public List<EquipamentoEspecificacao> buscaTodosEquipamentos() {
         List<Equipamento> listaEquipamentos = equipamentoRepository.buscaTodos();
         return convertToListEquipamentoModel(listaEquipamentos);
     }
 
-    private Equipamento criarEquipamento(EquipamentoModel equipamentoModel) {
+    private Equipamento criarEquipamento(EquipamentoEspecificacao equipamentoEspecificacao) {
         Equipamento equipamento;
         CaracteristicasBasicasEquipamento caracteristicasBasicasEquipamento =
                 new CaracteristicasBasicasEquipamento(
-                        equipamentoModel.getId(),
-                        equipamentoModel.getSerial(),
-                        equipamentoModel.getFabricante(),
-                        equipamentoModel.getModelo(),
-                        equipamentoModel.getIdLocal(),
-                        equipamentoModel.getProprietario()
+                        equipamentoEspecificacao.getId(),
+                        equipamentoEspecificacao.getSerial(),
+                        equipamentoEspecificacao.getFabricante(),
+                        equipamentoEspecificacao.getModelo(),
+                        equipamentoEspecificacao.getIdLocal(),
+                        equipamentoEspecificacao.getProprietario()
                 );
-        switch (equipamentoModel.getTipoEquipamento()) {
+        switch (equipamentoEspecificacao.getTipoEquipamento()) {
             case COMPUTADOR:
                 equipamento = equipamentoFactory.criaComputador(
                         caracteristicasBasicasEquipamento,
-                        equipamentoModel.getProcessador(),
-                        equipamentoModel.getMemoria(),
-                        equipamentoModel.getHd()
+                        equipamentoEspecificacao.getProcessador(),
+                        equipamentoEspecificacao.getMemoria(),
+                        equipamentoEspecificacao.getHd()
                 );
                 break;
             case MONITOR:
                 equipamento = equipamentoFactory.criaMonitor(
                         caracteristicasBasicasEquipamento,
-                        equipamentoModel.getPolegadas()
+                        equipamentoEspecificacao.getPolegadas()
                 );
                 break;
             case TECLADO:
                 equipamento = equipamentoFactory.criaTeclado(
                         caracteristicasBasicasEquipamento,
-                        equipamentoModel.getTipoConexao()
+                        equipamentoEspecificacao.getTipoConexao()
                 );
                 break;
             case MOUSE:
                 equipamento = equipamentoFactory.criaMouse(
                         caracteristicasBasicasEquipamento,
-                        equipamentoModel.getTipoConexao()
+                        equipamentoEspecificacao.getTipoConexao()
                 );
                 break;
             case LEITOR_CHEQUE:
@@ -108,19 +108,19 @@ public class EquipamentoService {
             case TELEFONE:
                 equipamento =equipamentoFactory.criaTelefone(
                         caracteristicasBasicasEquipamento,
-                        equipamentoModel.getSemFio(),
-                        equipamentoModel.getIp()
+                        equipamentoEspecificacao.getSemFio(),
+                        equipamentoEspecificacao.getIp()
                 );
                 break;
             case IMPRESSORA:
                 equipamento = equipamentoFactory.criaImpressora(
                         caracteristicasBasicasEquipamento,
-                        equipamentoModel.getColorida(),
-                        equipamentoModel.getTipoImpressora()
+                        equipamentoEspecificacao.getColorida(),
+                        equipamentoEspecificacao.getTipoImpressora()
                 );
                 break;
             default:
-                throw new IllegalArgumentException("Não é possivel criar o equipamento com o identificador " + equipamentoModel.getTipoEquipamento());
+                throw new IllegalArgumentException("Não é possivel criar o equipamento com o identificador " + equipamentoEspecificacao.getTipoEquipamento());
         }
         return equipamento;
     }
@@ -146,65 +146,65 @@ public class EquipamentoService {
         }
     }
 
-    private EquipamentoModel convertEquipamentoModel(Equipamento equipamento) {
-        EquipamentoModel equipamentoModel = new EquipamentoModel();
-            equipamentoModel.setId(equipamento.getId());
-            equipamentoModel.setSerial(equipamento.getSerial());
-            equipamentoModel.setFabricante(equipamento.getFabricante());
-            equipamentoModel.setModelo(equipamento.getModelo());
-            equipamentoModel.setLocal(equipamento.getLocal());
-            equipamentoModel.setIdLocal(equipamento.getLocal().getId());
-            equipamentoModel.setProprietario(equipamento.getProprietario());
-            equipamentoModel.setInformacoesEspecificas(equipamento.getInformacoesEspecificas());
+    private EquipamentoEspecificacao convertEquipamentoModel(Equipamento equipamento) {
+        EquipamentoEspecificacao equipamentoEspecificacao = new EquipamentoEspecificacao();
+            equipamentoEspecificacao.setId(equipamento.getId());
+            equipamentoEspecificacao.setSerial(equipamento.getSerial());
+            equipamentoEspecificacao.setFabricante(equipamento.getFabricante());
+            equipamentoEspecificacao.setModelo(equipamento.getModelo());
+            equipamentoEspecificacao.setLocal(equipamento.getLocal());
+            equipamentoEspecificacao.setIdLocal(equipamento.getLocal().getId());
+            equipamentoEspecificacao.setProprietario(equipamento.getProprietario());
+            equipamentoEspecificacao.setInformacoesEspecificas(equipamento.getInformacoesEspecificas());
 
         if (equipamento instanceof Computador) {
             Computador computador = (Computador) equipamento;
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.COMPUTADOR);
-            equipamentoModel.setProcessador(computador.getProcessador());
-            equipamentoModel.setMemoria(computador.getMemoria());
-            equipamentoModel.setHd(computador.getHd());
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.COMPUTADOR);
+            equipamentoEspecificacao.setProcessador(computador.getProcessador());
+            equipamentoEspecificacao.setMemoria(computador.getMemoria());
+            equipamentoEspecificacao.setHd(computador.getHd());
         }
         else if (equipamento instanceof Monitor) {
             Monitor monitor = (Monitor) equipamento;
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.MONITOR);
-            equipamentoModel.setPolegadas(monitor.getPolegadas());
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.MONITOR);
+            equipamentoEspecificacao.setPolegadas(monitor.getPolegadas());
         }
         else if (equipamento instanceof LeitorCheque) {
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.LEITOR_CHEQUE);
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.LEITOR_CHEQUE);
         }
         else if (equipamento instanceof Impressora) {
             Impressora impressora = (Impressora) equipamento;
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.IMPRESSORA);
-            equipamentoModel.setColorida(impressora.getColorida());
-            equipamentoModel.setTipoImpressora(impressora.getTipoImpressora());
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.IMPRESSORA);
+            equipamentoEspecificacao.setColorida(impressora.getColorida());
+            equipamentoEspecificacao.setTipoImpressora(impressora.getTipoImpressora());
         }
         else if (equipamento instanceof Teclado) {
             Teclado teclado = (Teclado) equipamento;
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.TECLADO);
-            equipamentoModel.setTipoConexao(teclado.getTipoConexao());
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.TECLADO);
+            equipamentoEspecificacao.setTipoConexao(teclado.getTipoConexao());
         }
         else if (equipamento instanceof Mouse) {
             Mouse mouse = (Mouse) equipamento;
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.MOUSE);
-            equipamentoModel.setTipoConexao(mouse.getTipoConexao());
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.MOUSE);
+            equipamentoEspecificacao.setTipoConexao(mouse.getTipoConexao());
         }
         else if (equipamento instanceof Telefone) {
             Telefone telefone = (Telefone) equipamento;
-            equipamentoModel.setTipoEquipamento(TipoEquipamento.TELEFONE);
-            equipamentoModel.setIp(telefone.getIp());
-            equipamentoModel.setSemFio(telefone.getSemFio());
+            equipamentoEspecificacao.setTipoEquipamento(TipoEquipamento.TELEFONE);
+            equipamentoEspecificacao.setIp(telefone.getIp());
+            equipamentoEspecificacao.setSemFio(telefone.getSemFio());
         }
-        return equipamentoModel;
+        return equipamentoEspecificacao;
     }
 
-    private List<EquipamentoModel> convertToListEquipamentoModel(List<Equipamento> listaEquipamento) {
-        ArrayList<EquipamentoModel> listaEquipamentoModel = new ArrayList<>();
+    private List<EquipamentoEspecificacao> convertToListEquipamentoModel(List<Equipamento> listaEquipamento) {
+        ArrayList<EquipamentoEspecificacao> listaEquipamentoEspecificacao = new ArrayList<>();
 
         for (Equipamento equipamento : listaEquipamento) {
-            listaEquipamentoModel.add(convertEquipamentoModel(equipamento));
+            listaEquipamentoEspecificacao.add(convertEquipamentoModel(equipamento));
         }
 
-        return listaEquipamentoModel;
+        return listaEquipamentoEspecificacao;
     }
 
 

@@ -1,73 +1,31 @@
-package br.com.sidlar.rotstock.presentation;
+package br.com.sidlar.rotstock.domain.equipamento;
 
 import br.com.sidlar.rotstock.domain.Local;
-import br.com.sidlar.rotstock.domain.equipamento.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-/**
- * Classe que representa o objeto de domino Equipamento na camada de apresentação.
- */
-
-public class EquipamentoForm {
+public class EquipamentoEspecificacao {
     private Integer id;
-
-    @Size(min=2, max=15, message = "* O serial deve possuir entre 2 e 15 caracteres")
     private String serial;
-
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Fabricante fabricante;
-
-    @Size(min=1 , message = "* Insira um modelo")
     private String modelo;
-
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Proprietario proprietario;
-
-    @NotNull(message = "* Campo Obrigatório, selecione uma das opções")
     private Integer idLocal;
-
     private Local local;
-
     private TipoEquipamento tipoEquipamento;
-
     private Processador processador;
-
     private Memoria memoria;
-
     private Hd hd;
-
     private Boolean colorida;
-
     private TipoImpressora tipoImpressora;
-
     private Polegadas polegadas;
-
     private TipoConexao tipoConexao;
-
     private Boolean semFio;
-
     private Boolean ip;
-
-    private String labelBotao;
-
-    private String labelPrincipal;
-
     private String informacoesEspecificas;
 
-    public EquipamentoForm() {
-    }
-    public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Integer idLocal, String informacoesEspecificas, TipoEquipamento tipoEquipamento) {
-        this.id = id;
-        this.serial = serial;
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.idLocal = idLocal;
-        this.informacoesEspecificas = informacoesEspecificas;
-        this.tipoEquipamento = tipoEquipamento;
+    public EquipamentoEspecificacao() {
     }
 
-    public EquipamentoForm(Integer id, String serial, Fabricante fabricante, String modelo, Proprietario proprietario, Integer idLocal, Local local, TipoEquipamento tipoEquipamento, Processador processador, Memoria memoria, Hd hd, Boolean colorida, TipoImpressora tipoImpressora, Polegadas polegadas, TipoConexao tipoConexao, Boolean semFio, Boolean ip, String informacoesEspecificas) {
+    public EquipamentoEspecificacao(Integer id, String serial, Fabricante fabricante, String modelo, Proprietario proprietario, Integer idLocal, Local local, TipoEquipamento tipoEquipamento, Processador processador, Memoria memoria, Hd hd, Boolean colorida, TipoImpressora tipoImpressora, Polegadas polegadas, TipoConexao tipoConexao, Boolean semFio, Boolean ip) {
         this.id = id;
         this.serial = serial;
         this.fabricante = fabricante;
@@ -85,7 +43,6 @@ public class EquipamentoForm {
         this.tipoConexao = tipoConexao;
         this.semFio = semFio;
         this.ip = ip;
-        this.informacoesEspecificas = informacoesEspecificas;
     }
 
     public Integer getId() {
@@ -126,6 +83,22 @@ public class EquipamentoForm {
 
     public void setProprietario(Proprietario proprietario) {
         this.proprietario = proprietario;
+    }
+
+    public Integer getIdLocal() {
+        return idLocal;
+    }
+
+    public void setIdLocal(Integer idLocal) {
+        this.idLocal = idLocal;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     public TipoEquipamento getTipoEquipamento() {
@@ -208,46 +181,11 @@ public class EquipamentoForm {
         this.ip = ip;
     }
 
-    public String getLabelBotao() {
-        return labelBotao;
-    }
-
     public String getInformacoesEspecificas() {
         return informacoesEspecificas;
-    }
-
-    public void setLabelBotao(String labelBotao) {
-        this.labelBotao = labelBotao;
     }
 
     public void setInformacoesEspecificas(String informacoesEspecificas) {
         this.informacoesEspecificas = informacoesEspecificas;
     }
-
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
-    }
-
-    public Integer getIdLocal() {
-        return idLocal;
-    }
-
-    public void setIdLocal(Integer idLocal) {
-        this.idLocal = idLocal;
-    }
-
-    public String getLabelPrincipal() {
-        return labelPrincipal;
-    }
-
-    public void setLabelPrincipal(String labelPrincipal) {
-        this.labelPrincipal = labelPrincipal;
-    }
-
-
-
 }

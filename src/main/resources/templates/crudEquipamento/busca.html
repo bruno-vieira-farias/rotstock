@@ -52,8 +52,7 @@
                             <option  selected="selected" value=""> ---Todos---</option>
                             <option th:each="tipoEquipamento : ${tiposEquipamento}"
                                      th:value="${tipoEquipamento}"
-                                     th:text="${tipoEquipamento.descricao}"
-                                     data-th-attr="data-container-class=${tipoEquipamento.categoria}">Equipamento</option>
+                                     th:text="${tipoEquipamento.descricao}">Equipamento</option>
                         </select>
 
                     </div>

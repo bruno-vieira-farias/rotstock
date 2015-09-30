@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java/br/com/sidlar/rotstock/domain/StatusItemEstoqueRotativo.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/br/com/sidlar/rotstock/presentation/ConvertEquipamento.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/br/com/sidlar/rotstock/presentation/servicos/ConvertEquipamento.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources/templates/busca-equipamento-modal.html" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
